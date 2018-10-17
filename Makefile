@@ -1,6 +1,6 @@
 CC=gcc
 LINKER=gcc
-export INC_DIR=inc
+INC_DIR=inc
 INCLUDES=-I. -I$(INC_DIR)
 CFLAGS=-I. -c -g -Wall $(INCLUDES)
 LINKARGS=-lm -g
@@ -36,12 +36,14 @@ clean :
 	rm -rf $(BUILD_DIR)
 
 includes:
+	if [ -d $(INC_DIR) ]; \
+	then \
+	rm -rf $(INC_DIR); \
+	fi
 	mkdir -p $(INC_DIR)
 	find $(SOURCE_DIR) -name *.h -exec cp --parents \{\} $(INC_DIR) \;
-	find $(LIB_DIR) -name *.h -exec cp --parents \{\} $(INC_DIR) \;
-	for DIR in $(shell ls -d $(INC_DIR)); \
+	for DIR in $(shell ls -d $(INC_DIR)/*); \
 	do \
-	echo $$DIR \
-	cp -r $$INC_DIR/$$DIR/* $$INC_DIR; \
-	rm -rf $$INC_DIR/$$DIR; \
+	cp -r $$DIR/* $$DIR/..; \
+	rm -rf $$DIR; \
 	done

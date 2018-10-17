@@ -1,6 +1,6 @@
 #include<stdlib.h>
 #include<math.h>
-#include "qdbmp/qdbmp.h"
+#include "lib/qdbmp/qdbmp.h"
 #include "vector.h"
 #define P_WIDTH 512
 #define P_HEIGHT 512
