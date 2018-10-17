@@ -1,25 +1,47 @@
 CC=gcc
 LINKER=gcc
-INCLUDES=-I.
+export INC_DIR=inc
+INCLUDES=-I. -I$(INC_DIR)
 CFLAGS=-I. -c -g -Wall $(INCLUDES)
 LINKARGS=-lm -g
-LIBS=-lm
 TARGET=out
 BUILD_DIR=build
 OUTPUT_DIR=bin
-LIB_DIR=lib
+LIBS=-lm
 SOURCE_DIR=src
+LIB_DIR=$(SOURCE_DIR)/lib
+SRCEXT=c
+OBJEXT=o
+
+SOURCES=$(shell find $(SOURCE_DIR) -type f -name *.c)
+OBJECTS=$(patsubst $(SOURCE_DIR)/%,$(BUILD_DIR)/%,$(SOURCES:.c=.o))
 
 OBJECT_FILES= test.o qdbmp.o
 
-$(TARGET) : $(addprefix $(BUILD_DIR)/, $(OBJECT_FILES))
-	$(LINKER) $(LINKARGS) -g $^ -o $@ $(LIBS) 
+all : $(TARGET) includes
 
-test.o : $(SOURCE_DIR)/test.c
-	$(CC) $(CFLAGS) $< -o $(BUILD_DIR)/$@ 
+$(TARGET) : $(OBJECTS)
+	$(LINKER) $(LINKARGS) -g $^ -o $(OUTPUT_DIR)/$@ $(LIBS) 
 
-qdbmp.o : $(LIB_DIR)/qdbmp/qdbmp.c
-	$(CC) $(CFLAGS) $< -o $(BUILD_DIR)/$@ 
-
+$(BUILD_DIR)/%.$(OBJEXT) : $(SOURCE_DIR)/%.$(SRCEXT)
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+	$(CC) $(CFLAGS) $(INC_DIR) -MM $(SOURCE_DIR)/$*.$(SRCEXT) > $(BUILD_DIR)/$*.$(DEPEXT)
+	cp -f $(BUILD_DIR)/$*.$(DEPEXT) $(BUILD_DIR)/$*.$(DEPEXT).tmp
+	sed -e 's|.*:|$(BUILD_DIR)/$*.$(OBJEXT):|' < $(BUILD_DIR)/$*.$(DEPEXT).tmp > $(BUILD_DIR)/$*.$(DEPEXT)
+	sed -e 's/.*://' -e 's/\\$$//' < $(BUILD_DIR)/$*.$(DEPEXT).tmp | fmt -1 | sed -e 's/^ *//' -e 's/$$/:/' >> $(BUILD_DIR)/$*.$(DEPEXT)
+	rm -f $(BUILD_DIR)/$*.$(DEPEXT).tmp
+	
 clean :
-	rm $(OBJECT_FILES)
+	rm -rf $(BUILD_DIR)
+
+includes:
+	mkdir -p $(INC_DIR)
+	find $(SOURCE_DIR) -name *.h -exec cp --parents \{\} $(INC_DIR) \;
+	find $(LIB_DIR) -name *.h -exec cp --parents \{\} $(INC_DIR) \;
+	for DIR in $(shell ls -d $(INC_DIR)); \
+	do \
+	echo $$DIR \
+	cp -r $$INC_DIR/$$DIR/* $$INC_DIR; \
+	rm -rf $$INC_DIR/$$DIR; \
+	done
