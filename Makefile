@@ -12,13 +12,14 @@ SOURCE_DIR=src
 LIB_DIR=$(SOURCE_DIR)/lib
 SRCEXT=c
 OBJEXT=o
+DEPEXT=d
 
 SOURCES=$(shell find $(SOURCE_DIR) -type f -name *.c)
 OBJECTS=$(patsubst $(SOURCE_DIR)/%,$(BUILD_DIR)/%,$(SOURCES:.c=.o))
 
 OBJECT_FILES= test.o qdbmp.o
 
-all : $(TARGET) includes
+all : $(TARGET)
 
 $(TARGET) : $(OBJECTS)
 	$(LINKER) $(LINKARGS) -g $^ -o $(OUTPUT_DIR)/$@ $(LIBS) 

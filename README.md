@@ -1,5 +1,5 @@
 # README #
-This repo is for my work on a map and history generator. The goal is to generate a map with various settlements, kingdoms, and geographical features, and simulate time passing to create locations with history for use in fantasy rpg's
+This repo is for my work on a map and history generator. The goal is to generate a map with various settlements, kingdoms, and geographical features, and simulate time passing to create locations with history for use in fantasy rpgs
 
 ### MapMaker ###
 * Terrain
