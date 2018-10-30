@@ -18,7 +18,7 @@ int main()
 	{
 		printf( "An error has occurred: %s (code %d)\n", BMP_GetErrorDescription(), BMP_GetError() );
 	}
-	Map *m = generateMap(512, 512, 3, 0.9f);
+	Map *m = generateMap(512, 512, 10, 0.9f);
 	for(int i = 0; i < m->x; i++)
 	{
 		for(int j = 0; j < m->y; j++)

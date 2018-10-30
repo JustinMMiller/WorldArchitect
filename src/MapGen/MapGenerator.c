@@ -211,6 +211,7 @@ void makeContinents(Map *map, int numContinents, float percentWater)
 
 vector<GridPoint *> getNeighbors(Map *map, int x, int y)
 {
+	printf("%i, %i\n", x, y);
 	vector<GridPoint *> ret;
 	int lx, ux, ly, uy;
 	if(x == 0)
@@ -248,7 +249,7 @@ vector<GridPoint *> getNeighbors(Map *map, int x, int y)
 	{
 		for(int j = ly; j <= uy; j++)
 		{
-			if(map->points[i][j].LandmassIndex != -2)
+			if(map->points[i][j].LandmassIndex == -1)
 			{
 				ret.push_back(&map->points[i][j]);
 			}
@@ -259,9 +260,9 @@ vector<GridPoint *> getNeighbors(Map *map, int x, int y)
 
 void makeContinents(Map *map, int numContinents, float percentWater)
 {
-	vector<vector<GridPoint *> > Landmasses(numContinents, vector<GridPoint *>(numContinents));
+	vector<vector<GridPoint *> > Landmasses(numContinents, vector<GridPoint *>());
 	Landmasses.push_back(vector<GridPoint *>());
-	vector<vector<GridPoint *> > Candidates(numContinents, vector<GridPoint *>(numContinents));
+	vector<vector<GridPoint *> > Candidates(numContinents, vector<GridPoint *>());
 	Candidates.push_back(vector<GridPoint *>());
 	int *numCands = new int[numContinents];
 	int cx, cy;
@@ -292,12 +293,14 @@ void makeContinents(Map *map, int numContinents, float percentWater)
 				map->points[cx][cy].LandmassIndex = continentsMade;
 				map->points[cx][cy].water = false;
 				Landmasses[continentsMade].push_back(&map->points[cx][cy]);
+				Candidates[continentsMade].erase(Candidates[continentsMade].begin()+4);
 				numUsed++;
 				continentsMade++;
 			}
 		}//end if continentsMade < numContinents
 		else
 		{
+			printf("%i, %i, %i\n", numUsed, landTiles, numContinents);
 			int c = rand()%numContinents;
 			if(numCands[c] == 0)
 			{
@@ -307,6 +310,11 @@ void makeContinents(Map *map, int numContinents, float percentWater)
 					if(numCands[i] > 0)c = i;
 				}
 				if(numCands[c] > 0)canContinue = true;
+				else
+				{
+					printf("Couldn't find any candidates\n");
+					break;
+				}
 			}
 			int cn = rand()%numCands[c];
 			GridPoint *add = Candidates[c][cn];
@@ -322,6 +330,7 @@ void makeContinents(Map *map, int numContinents, float percentWater)
 			}
 			add->water = false;
 			Landmasses[c].push_back(add);
+			Candidates[c].erase(Candidates[c].begin()+cn-1);
 			numUsed++;
 			numCands[c]--;
 		}//end else of if continentsMade < numContinents
