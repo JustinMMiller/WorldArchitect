@@ -1,3 +1,4 @@
 *.bmp
 build/
 bin/
+output/*

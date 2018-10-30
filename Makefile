@@ -1,12 +1,12 @@
-CC=gcc
-LINKER=gcc
+CC=g++
+LINKER=g++
 INC_DIR=inc
 INCLUDES=-I. -I$(INC_DIR)
 CFLAGS=-I. -c -g -Wall $(INCLUDES)
 LINKARGS=-lm -g
 TARGET=out
 BUILD_DIR=build
-OUTPUT_DIR=bin
+OUTPUT_DIR=output
 LIBS=-lm
 SOURCE_DIR=src
 LIB_DIR=$(SOURCE_DIR)/lib
@@ -35,6 +35,10 @@ $(BUILD_DIR)/%.$(OBJEXT) : $(SOURCE_DIR)/%.$(SRCEXT)
 	
 clean :
 	rm -rf $(BUILD_DIR)
+
+incl: 
+	make includes
+	make includes
 
 includes:
 	if [ -d $(INC_DIR) ]; \
