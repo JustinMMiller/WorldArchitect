@@ -3,8 +3,8 @@
 #include "lib/qdbmp/qdbmp.h"
 #include "Graphics/Draw.h"
 #include "MapGen/MapGenerator.h"
-#define P_WIDTH 14000
-#define P_HEIGHT 14000
+#define P_WIDTH 512
+#define P_HEIGHT 512
 int main()
 {
 	BMP *bmp;
