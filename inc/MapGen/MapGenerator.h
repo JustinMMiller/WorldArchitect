@@ -1,6 +1,7 @@
 #ifndef MAPGEN_H
 #define MAPGEN_H
-#include "Graphics/Draw.h"
+using namespace std;
+#include<vector>
 #include <stdbool.h>
 
 typedef struct _GRIDPOINT
@@ -15,7 +16,7 @@ typedef struct _GRIDPOINT
 typedef struct _MAP
 {
 	int x, y;
-	GridPoint **points;
+	vector<vector<GridPoint> > points;
 
 } Map;
 

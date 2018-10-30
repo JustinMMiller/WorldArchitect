@@ -3,6 +3,7 @@
 using namespace std;
 #include<vector>
 #include <stdbool.h>
+#include<stdlib.h>
 
 typedef struct _GRIDPOINT
 {

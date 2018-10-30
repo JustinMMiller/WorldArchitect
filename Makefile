@@ -2,7 +2,7 @@ CC=g++
 LINKER=g++
 INC_DIR=inc
 INCLUDES=-I. -I$(INC_DIR)
-CFLAGS=-I. -c -g -Wall $(INCLUDES)
+CFLAGS=-I. -c -std=c++11 -g -Wall $(INCLUDES)
 LINKARGS=-lm -g
 TARGET=out
 BUILD_DIR=build

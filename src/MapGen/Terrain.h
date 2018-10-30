@@ -5,6 +5,6 @@ class Terrain
 {
 	public:
 		ColorMap color;
-		string name;
-}
+	//	string name;
+};
 #endif
