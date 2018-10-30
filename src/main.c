@@ -3,8 +3,8 @@
 #include "lib/qdbmp/qdbmp.h"
 #include "Graphics/Draw.h"
 #include "MapGen/MapGenerator.h"
-#define P_WIDTH 512
-#define P_HEIGHT 512
+#define P_WIDTH 14000
+#define P_HEIGHT 14000
 int main()
 {
 	BMP *bmp;
@@ -18,7 +18,7 @@ int main()
 	{
 		printf( "An error has occurred: %s (code %d)\n", BMP_GetErrorDescription(), BMP_GetError() );
 	}
-	Map *m = generateMap(512, 512, 10, 0.9f);
+	Map *m = generateMap(P_WIDTH, P_HEIGHT, 3, 0.5f);
 	for(int i = 0; i < m->x; i++)
 	{
 		for(int j = 0; j < m->y; j++)
