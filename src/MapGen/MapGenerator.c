@@ -4,7 +4,8 @@
 #include<stdio.h>
 
 using namespace std;
-
+/**
+ * Commenting out to refactor, potentially remove.
 vector<GridPoint> getNeighbors(vector<vector<GridPoint> > points, GridPoint p, int mX, int mY)
 {
 	printf("Passed in point %i, %i\n", p.x, p.y);
@@ -59,9 +60,7 @@ void makeContinents(Map *map, int numContinents, float percentWater)
 	vector<vector<GridPoint> > AllPoints (map->x, vector<GridPoint>(map->y));
 	vector<vector<GridPoint> > Landmasses (map->x, vector<GridPoint>(map->y));
 	vector<vector<GridPoint> > Candidates (map->x, vector<GridPoint>(map->y));
-	int numUsed = 0;
 	int *numCands = new int[numContinents];
-	int cx, cy;
 	for(int i = 0; i < map->x; i++)
 	{
 		for(int j = 0; j < map->y; j++)
@@ -69,6 +68,8 @@ void makeContinents(Map *map, int numContinents, float percentWater)
 			AllPoints[i][j] = map->points[i][j];
 		}
 	}
+	int cx, cy;
+	int numUsed = 0;
 	int mapSize = map->x * map->y;
 	int landTiles = (int)round(mapSize * (1.0f - percentWater));
 	int continentsMade = 0;
@@ -197,6 +198,133 @@ void makeContinents(Map *map, int numContinents, float percentWater)
 		{
 			map->points[g.x][g.y] = g;
 		}
+	}
+}
+*/
+
+
+
+
+
+
+
+
+vector<GridPoint *> getNeighbors(Map *map, int x, int y)
+{
+	vector<GridPoint *> ret;
+	int lx, ux, ly, uy;
+	if(x == 0)
+	{
+		lx = 0;
+		ux = 1;
+	}
+	else if(x == map->x-1)
+	{
+		lx = map->x-2;
+		ux = map->x-1;
+	}
+	else
+	{
+		lx = x-1;
+		ux = x+1;
+	}
+	if(y == 0)
+	{
+		ly = 0;
+		uy = 1;
+	}
+	else if(y == map->y-1)
+	{
+		ly = map->y-2;
+		uy = map->y-1;
+	}
+	else
+	{
+		ly = y-1;
+		uy = y+1;
+	}
+	printf("bounds : %i, %i,   %i, %i\n", lx, ux, ly, uy);
+	for(int i = lx; i <= ux; i++)
+	{
+		for(int j = ly; j <= uy; j++)
+		{
+			if(map->points[i][j].LandmassIndex != -2)
+			{
+				ret.push_back(&map->points[i][j]);
+			}
+		}
+	}
+	return ret;
+}
+
+void makeContinents(Map *map, int numContinents, float percentWater)
+{
+	vector<vector<GridPoint *> > Landmasses(numContinents, vector<GridPoint *>(numContinents));
+	Landmasses.push_back(vector<GridPoint *>());
+	vector<vector<GridPoint *> > Candidates(numContinents, vector<GridPoint *>(numContinents));
+	Candidates.push_back(vector<GridPoint *>());
+	int *numCands = new int[numContinents];
+	int cx, cy;
+	int numUsed = 0;
+	int mapSize = map->x * map->y;
+	int landTiles = (int)round(mapSize * (1.0f - percentWater));
+	int continentsMade = 0;
+	bool canContinue = true;
+	for(int i = 0; i < numContinents; i++)numCands[i] = 0;
+	while(numUsed < landTiles && canContinue)
+	{
+		if(continentsMade < numContinents)
+		{
+			cx = rand()%map->x;
+			cy = rand()%map->y;
+			if(map->points[cx][cy].LandmassIndex == -1)
+			{
+				vector<GridPoint *> neighbors = getNeighbors(map, cx, cy);
+				for(GridPoint *g : neighbors)
+				{
+					if(g->LandmassIndex == -1)
+					{
+						g->LandmassIndex = continentsMade;
+						Candidates[continentsMade].push_back(g);
+						numCands[continentsMade]++;
+					}
+				}
+				map->points[cx][cy].LandmassIndex = continentsMade;
+				map->points[cx][cy].water = false;
+				Landmasses[continentsMade].push_back(&map->points[cx][cy]);
+				numUsed++;
+				continentsMade++;
+			}
+		}//end if continentsMade < numContinents
+		else
+		{
+			int c = rand()%numContinents;
+			if(numCands[c] == 0)
+			{
+				canContinue = false;
+				for(int i = 0; i < numContinents; i++)
+				{
+					if(numCands[i] > 0)c = i;
+				}
+				if(numCands[c] > 0)canContinue = true;
+			}
+			int cn = rand()%numCands[c];
+			GridPoint *add = Candidates[c][cn];
+			vector<GridPoint *> neighbors = getNeighbors(map, add->x, add->y);
+			for(GridPoint *g : neighbors)
+			{
+				if(g->LandmassIndex == -1)
+				{
+					g->LandmassIndex = add->LandmassIndex;
+					Candidates[c].push_back(g);
+					numCands[c]++;
+				}
+			}
+			add->water = false;
+			Landmasses[c].push_back(add);
+			numUsed++;
+			numCands[c]--;
+		}//end else of if continentsMade < numContinents
 	}
 }
 
