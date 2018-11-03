@@ -1,22 +1,22 @@
 #include "GridPointStorage.h"
 
 GridPointStorage::GridPointStorage(int numX, int numY, GridPoint *initial)
-	: x(abs(numX)),
-	y(abs(numY))
 {
+	this->lock = new shared_mutex();
+	this->x = abs(numX);
+	this->y = abs(numY);
 	printf("%i %i\n", initial->x, initial->y);
 	arr = new GridPoint*[numX];
 	for(int i = 0; i < numY; i++)
 	{
 		arr[i] = new GridPoint[numY];
 	}
-	printf("arr : %p\n", arr);
-	for(int i = 0; i < x; i++)
+	for(int i = 0; i < this->x; i++)
 	{
-		for(int j = 0; j < y; j++)
+		for(int j = 0; j < this->y; j++)
 		{
-			arr[i][j].x = initial->x;
-			arr[i][j].y = initial->y;
+			arr[i][j].x = i;
+			arr[i][j].y = j;
 			arr[i][j].height = initial->height;
 			arr[i][j].ClimateIndex = initial->ClimateIndex;
 			arr[i][j].LandmassIndex = initial->LandmassIndex;
@@ -28,6 +28,7 @@ GridPointStorage::GridPointStorage(int numX, int numY, GridPoint *initial)
 
 GridPoint GridPointStorage::getGridPointAt(int locX, int locY)
 {
+	lock->lock_shared();
 	GridPoint ret;
 	if(locX < 0 || locX > x || locY < 0 || locY > y)
 	{
@@ -37,11 +38,13 @@ GridPoint GridPointStorage::getGridPointAt(int locX, int locY)
 	{
 		ret = arr[locX][locY];
 	}
+	lock->unlock_shared();
 	return ret;
 }
 
 void GridPointStorage::updateGridPointAt(int locX, int locY, GridPoint *change)
 {	
+	lock->lock();
 	if(locX < 0 || locX > x || locY < 0 || locY > y)
 	{
 		printf("Invalid bounds to updateGridPointAt, coord : %i, %i\n", locX, locY);
@@ -54,13 +57,17 @@ void GridPointStorage::updateGridPointAt(int locX, int locY, GridPoint *change)
 	{
 		arr[locX][locY] = *change;
 	}
+	lock->unlock();
 }
 
 GridPointStorage::~GridPointStorage()
 {
+	lock->lock();
 	for(int i = 0; i < x; i++)
 	{
 		delete[] arr[i];
 	}
+	lock->unlock();
+	delete lock;
 	delete[] arr;
 }

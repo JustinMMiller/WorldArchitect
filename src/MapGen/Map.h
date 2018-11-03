@@ -9,5 +9,6 @@ class Map{
 		virtual bool isWaterAt(int x, int y) = 0;
 		int getSizeX(){return x;}
 		int getSizeY(){return y;}
+		virtual ~Map() = 0;
 };
 #endif

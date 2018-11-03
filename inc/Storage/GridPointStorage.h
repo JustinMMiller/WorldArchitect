@@ -1,13 +1,16 @@
 #ifndef GRIDPOINTSTORAGE_H
 #define GRIDPOINTSTORAGE_H
+using namespace std;
 #include "utils/GridPoint.h"
 #include<stdlib.h>
 #include<stdio.h>
+#include<shared_mutex>
 
 class GridPointStorage
 {
 	private:
 		GridPoint **arr;
+		shared_mutex *lock;
 		int x, y;
 	public:
 		GridPointStorage(int numX, int numY, GridPoint *initial);

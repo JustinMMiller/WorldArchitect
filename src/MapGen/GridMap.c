@@ -12,3 +12,18 @@ GridMap::GridMap(int x, int y, GridPoint *initial)
 	this->x = x;
 	this->y = y;
 }
+
+GridMap::~GridMap()
+{
+	points.~GridPointStorage();
+}
+
+GridPoint GridMap::getGridPointAt(int x, int y)
+{
+	return points.getGridPointAt(x, y);
+}
+
+void GridMap::updateGridPointAt(int x, int y, GridPoint *update)
+{
+	points.updateGridPointAt(x, y, update);
+}

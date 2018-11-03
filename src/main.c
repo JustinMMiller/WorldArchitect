@@ -32,6 +32,6 @@ int main()
 	//drawPointsVector(v, bmp);
 	BMP_WriteFile(bmp, "drawing.bmp");
 	BMP_Free(bmp);
-	delete m;
+	//delete m;
 	return 0;
 }
