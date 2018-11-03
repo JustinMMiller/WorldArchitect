@@ -7,9 +7,11 @@
 #include<stdio.h>
 #include<shared_mutex>
 #include<thread>
+#include<queue>
 #include "vector.h"
 #include "MapGenerator.h"
 #include "GridMap.h"
+#include "utils/Perlin.h"
 using namespace std;
 
 class GridMapGenerator : public MapGenerator

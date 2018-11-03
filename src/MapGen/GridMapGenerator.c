@@ -1,6 +1,9 @@
 #include "GridMapGenerator.h"
 
-GridMapGenerator::GridMapGenerator(Method method) :lock() {}
+GridMapGenerator::GridMapGenerator(Method method) :lock() 
+{
+	selection = method;
+}
 
 vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 {
@@ -49,10 +52,35 @@ vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 	return ret;
 }
 
+class Compare
+{
+	bool reverse;
+	Perlin *p;
+	public:
+	Compare(const bool& revparam = false)
+	{
+		p = new Perlin(64);
+		reverse = revparam;
+	}
+	bool operator() (Point& lhs, Point& rhs)
+	{
+		double lx, ly, rx, ry;
+		lx = (double)lhs.x;
+		ly = (double)lhs.y;
+		rx = (double)rhs.x;
+		ry = (double)rhs.y;
+		if(reverse) return (p->noise(lx, ly) > p->noise(rx, ry));
+		else return p->noise(lx, ly) < p->noise(rx, ry); 
+	}
+};
+
 void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector<Point> Candidates, int numCand)
 {
 	int numCands = numCand;
 	bool canContinue = true;
+	typedef priority_queue<Point, vector<Point>, Compare> mypq;
+	mypq pq;
+	for(Point p : Candidates)pq.push(p);
 	while(numUsed < landTiles && canContinue)
 	{
 		if(numCands == 0)
@@ -60,20 +88,36 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 			canContinue = false;
 			break;
 		}
-		int cn = rand()%numCands;
-		Point addPoint = Candidates[cn];
+		Point addPoint;
+		int cn = 0;
+		if(selection == GridPerlin)
+		{
+			addPoint = (Point)pq.top();
+		}
+		else
+		{
+			cn = rand()%numCands;
+			addPoint = Candidates[cn];
+		}
 		GridPoint add = map->getGridPointAt(addPoint.x, addPoint.y);
 		bool canAdd = true;
 		vector<Point> neighbors = getNeighbors(map, add.x, add.y);
 		for(Point p : neighbors)
 		{
 			GridPoint g = map->getGridPointAt(p.x, p.y);
-			printf("add landmass %i : g landmass %i : point %i %i\n", add.LandmassIndex, g.LandmassIndex, p.x, p.y);
+			printf("point %i %i, LandmassIndex %i \n", p.x, p.y, g.LandmassIndex);
 			if(g.LandmassIndex == -1)
 			{
 				g.LandmassIndex = add.LandmassIndex;
 				map->updateGridPointAt(p.x, p.y, &g);
-				Candidates.push_back(p);
+				if(selection == GridPerlin)
+				{
+					pq.push(p);
+				}
+				else
+				{
+					Candidates.push_back(p);
+				}
 				numCands++;
 			}
 			else if(g.LandmassIndex != add.LandmassIndex)
@@ -84,17 +128,23 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 		if(canAdd)
 		{
 			add.water = false;
-			vector<Point> candUpdate;
 			map->updateGridPointAt(addPoint.x, addPoint.y, &add);
-			copy(Candidates.begin(), Candidates.begin()+cn, back_inserter(candUpdate));
-			copy(Candidates.begin()+cn+1, Candidates.end(), back_inserter(candUpdate));
 			Landmass.push_back(addPoint);
-			Candidates = candUpdate;
-			numCands--;
 			lock.lock();
 			numUsed++;
 			lock.unlock();
 		}
+		if(selection == GridPerlin)
+		{
+			pq.pop();
+		}
+		else{
+			vector<Point> candUpdate;
+			copy(Candidates.begin(), Candidates.begin()+cn, back_inserter(candUpdate));
+			copy(Candidates.begin()+cn+1, Candidates.end(), back_inserter(candUpdate));
+			Candidates = candUpdate;
+		}
+		numCands--;
 	}
 }
 

@@ -6,6 +6,11 @@ using namespace std;
 #include<stdlib.h>
 #include "Map.h"
 
+enum Method
+{
+	GridRandom, 
+	GridPerlin
+};
 
 /**
  * This function will return a completed Map object. The program should
@@ -16,5 +21,7 @@ class MapGenerator
 	public:
 		virtual Map *generateMap(int mapX, int mapY, int numContinents, float percentWater) = 0;
 };
+
+MapGenerator *getMapGenerator(Method method);
 
 #endif
