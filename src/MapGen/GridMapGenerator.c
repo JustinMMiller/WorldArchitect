@@ -1,8 +1,9 @@
 #include "GridMapGenerator.h"
 
+GridMapGenerator::GridMapGenerator() :lock() {}
+
 vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 {
-	printf("%i, %i\n", x, y);
 	vector<Point> ret;
 	int lx, ux, ly, uy;
 	if(x == 0)
@@ -35,7 +36,6 @@ vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 		ly = y-1;
 		uy = y+1;
 	}
-	printf("bounds : %i, %i,   %i, %i\n", lx, ux, ly, uy);
 	for(int i = lx; i <= ux; i++)
 	{
 		for(int j = ly; j <= uy; j++)
@@ -52,6 +52,47 @@ vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 	return ret;
 }
 
+void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector<Point> Candidates, int numCand)
+{
+	int numCands = numCand;
+	bool canContinue = true;
+	while(numUsed < landTiles && canContinue)
+	{
+		if(numCands == 0)
+		{
+			canContinue = false;
+			break;
+		}
+		int cn = rand()%Candidates.size();
+		printf("numCands : %i numUsed : %i\n", numCands, numUsed);
+		Point addPoint = Candidates[cn];
+		GridPoint add = map->getGridPointAt(addPoint.x, addPoint.y);
+		vector<Point> neighbors = getNeighbors(map, add.x, add.y);
+		for(Point p : neighbors)
+		{
+			GridPoint g = map->getGridPointAt(p.x, p.y);
+			if(g.LandmassIndex == -1)
+			{
+				g.LandmassIndex = add.LandmassIndex;
+				map->updateGridPointAt(p.x, p.y, &g);
+				Candidates.push_back(p);
+				numCands++;
+			}
+		}
+		add.water = false;
+		vector<Point> candUpdate;
+		map->updateGridPointAt(addPoint.x, addPoint.y, &add);
+		copy(Candidates.begin(), Candidates.begin()+cn, back_inserter(candUpdate));
+		copy(Candidates.begin()+cn+1, Candidates.end(), back_inserter(candUpdate));
+		Landmass.push_back(addPoint);
+		Candidates = candUpdate;
+		numCands--;
+		lock.lock();
+		numUsed++;
+		lock.unlock();
+	}
+}
+
 void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float percentWater)
 {
 	vector<vector<Point> > Landmasses(numContinents, vector<Point>());
@@ -60,11 +101,10 @@ void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float per
 	Candidates.push_back(vector<Point>());
 	int *numCands = new int[numContinents];
 	int cx, cy;
-	int numUsed = 0;
+	numUsed = 0;
 	int mapSize = map->getSizeX() * map->getSizeY();
 	landTiles = (int)round(mapSize * (1.0f - percentWater));
 	int continentsMade = 0;
-	bool canContinue = true;
 	for(int i = 0; i < numContinents; i++)numCands[i] = 0;
 	while(numUsed < numContinents)
 	{
@@ -102,50 +142,17 @@ void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float per
 		//end if continentsMade < numContinents
 
 	}
-	while(numUsed < landTiles && canContinue)
+	thread *threads = new thread[numContinents];
+	for(int i = 0; i < numContinents; i++)
 	{
-		printf("%i, %i, %i\n", numUsed, landTiles, numContinents);
-		int c = rand()%numContinents;
-		if(numCands[c] == 0)
-		{
-			canContinue = false;
-			for(int i = 0; i < numContinents; i++)
-			{
-				if(numCands[i] > 0)c = i;
-			}
-			if(numCands[c] > 0)canContinue = true;
-			else
-			{
-				printf("Couldn't find any candidates\n");
-				break;
-			}
-		}
-		int cn = rand()%numCands[c];
-		Point addPoint = Candidates[c][cn];
-		GridPoint add = map->getGridPointAt(addPoint.x, addPoint.y);
-		vector<Point> neighbors = getNeighbors(map, add.x, add.y);
-		for(Point p : neighbors)
-		{
-			GridPoint g = map->getGridPointAt(p.x, p.y);
-			if(g.LandmassIndex == -1)
-			{
-				g.LandmassIndex = add.LandmassIndex;
-				Candidates[c].push_back(p);
-				map->updateGridPointAt(p.x, p.y, &g);
-				numCands[c]++;
-			}
-		}
-		add.water = false;
-		Landmasses[c].push_back(addPoint);
-		map->updateGridPointAt(addPoint.x, addPoint.y, &add);
-		vector<Point> candUpdate;
-		copy(Candidates[c].begin(), Candidates[c].begin()+cn, back_inserter(candUpdate));
-		copy(Candidates[c].begin()+cn+1, Candidates[c].end(), back_inserter(candUpdate));
-		Candidates[c] = candUpdate;
-		numUsed++;
-		numCands[c]--;
+		threads[i] = thread(&GridMapGenerator::growLandmass, this, map, Landmasses[i], Candidates[i], numCands[i]);
+	}
+	for(int i = 0; i < numContinents; i++)
+	{
+		threads[i].join();
 	}
 	delete[] numCands;
+	delete[] threads;
 }
 
 /**
@@ -164,6 +171,7 @@ Map * GridMapGenerator::generateMap(int mapX, int mapY, int numContinents, float
 	t->TerrainIndex = 0;
 	GridMap *m = new GridMap(mapX, mapY, t);
 	free(t);
+	srand(time(NULL));
 	makeContinents(m, numContinents, percentWater);
 	return m;
 }
