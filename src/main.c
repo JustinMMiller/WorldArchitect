@@ -13,8 +13,8 @@ int main()
 	{
 		printf( "An error has occurred: %s (code %d)\n", BMP_GetErrorDescription(), BMP_GetError() );
 	}
-	GridMapGenerator mapGen;
-	Map *m = mapGen.generateMap(P_WIDTH, P_HEIGHT, 80, 0.7f);
+	MapGenerator *mapGen = getMapGenerator(GridRandom);
+	Map *m = mapGen->generateMap(P_WIDTH, P_HEIGHT, 8, 0.7f);
 	for(int i = 0; i < m->getSizeX(); i++)
 	{
 		for(int j = 0; j < m->getSizeY(); j++)

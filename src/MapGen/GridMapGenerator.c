@@ -1,6 +1,6 @@
 #include "GridMapGenerator.h"
 
-GridMapGenerator::GridMapGenerator() :lock() {}
+GridMapGenerator::GridMapGenerator(Method method) :lock() {}
 
 vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 {
@@ -40,13 +40,10 @@ vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 	{
 		for(int j = ly; j <= uy; j++)
 		{
-			if(map->getGridPointAt(i, j).LandmassIndex == -1)
-			{
-				Point p;
-				p.x = i;
-				p.y = j;
-				ret.push_back(p);
-			}
+			Point p;
+			p.x = i;
+			p.y = j;
+			ret.push_back(p);
 		}
 	}
 	return ret;
@@ -63,14 +60,15 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 			canContinue = false;
 			break;
 		}
-		int cn = rand()%Candidates.size();
-		printf("numCands : %i numUsed : %i\n", numCands, numUsed);
+		int cn = rand()%numCands;
 		Point addPoint = Candidates[cn];
 		GridPoint add = map->getGridPointAt(addPoint.x, addPoint.y);
+		bool canAdd = true;
 		vector<Point> neighbors = getNeighbors(map, add.x, add.y);
 		for(Point p : neighbors)
 		{
 			GridPoint g = map->getGridPointAt(p.x, p.y);
+			printf("add landmass %i : g landmass %i : point %i %i\n", add.LandmassIndex, g.LandmassIndex, p.x, p.y);
 			if(g.LandmassIndex == -1)
 			{
 				g.LandmassIndex = add.LandmassIndex;
@@ -78,18 +76,25 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 				Candidates.push_back(p);
 				numCands++;
 			}
+			else if(g.LandmassIndex != add.LandmassIndex)
+			{
+				canAdd = false;
+			}
 		}
-		add.water = false;
-		vector<Point> candUpdate;
-		map->updateGridPointAt(addPoint.x, addPoint.y, &add);
-		copy(Candidates.begin(), Candidates.begin()+cn, back_inserter(candUpdate));
-		copy(Candidates.begin()+cn+1, Candidates.end(), back_inserter(candUpdate));
-		Landmass.push_back(addPoint);
-		Candidates = candUpdate;
-		numCands--;
-		lock.lock();
-		numUsed++;
-		lock.unlock();
+		if(canAdd)
+		{
+			add.water = false;
+			vector<Point> candUpdate;
+			map->updateGridPointAt(addPoint.x, addPoint.y, &add);
+			copy(Candidates.begin(), Candidates.begin()+cn, back_inserter(candUpdate));
+			copy(Candidates.begin()+cn+1, Candidates.end(), back_inserter(candUpdate));
+			Landmass.push_back(addPoint);
+			Candidates = candUpdate;
+			numCands--;
+			lock.lock();
+			numUsed++;
+			lock.unlock();
+		}
 	}
 }
 
@@ -119,6 +124,7 @@ void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float per
 				if(g.LandmassIndex == -1)
 				{
 					g.LandmassIndex = continentsMade;
+					map->updateGridPointAt(p.x, p.y, &g);
 					Candidates[continentsMade].push_back(p);
 					numCands[continentsMade]++;
 				}

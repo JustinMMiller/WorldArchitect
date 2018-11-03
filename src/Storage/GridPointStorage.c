@@ -55,6 +55,10 @@ void GridPointStorage::updateGridPointAt(int locX, int locY, GridPoint *change)
 	}
 	else
 	{
+		if(arr[locX][locY].LandmassIndex > 0)
+		{
+			printf("Double write to point %i %i, was %i, changed to %i\n", locX, locY, arr[locX][locY].LandmassIndex, change->LandmassIndex);
+		}
 		arr[locX][locY] = *change;
 	}
 	lock->unlock();
