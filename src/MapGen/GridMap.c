@@ -15,7 +15,6 @@ GridMap::GridMap(int x, int y, GridPoint *initial)
 
 GridMap::~GridMap()
 {
-	points.~GridPointStorage();
 }
 
 GridPoint GridMap::getGridPointAt(int x, int y)
