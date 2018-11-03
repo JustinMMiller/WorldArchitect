@@ -12,7 +12,9 @@ using namespace std;
 class GridMapGenerator : public MapGenerator
 {
 	private:
-		vector<Point> getNeighbors(Map *map, int x, int y);
+		vector<Point> getNeighbors(GridMap *map, int x, int y);
 		void makeContinents(GridMap *map, int numContinents, float percentWater);
-}
+	public:
+		Map * generateMap(int mapX, int mapY, int numContinents, float percentWater);
+};
 #endif

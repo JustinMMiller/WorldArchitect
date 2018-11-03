@@ -2,6 +2,7 @@
 #define GRIDPOINTSTORAGE_H
 #include "utils/GridPoint.h"
 #include<stdlib.h>
+#include<stdio.h>
 
 class GridPointStorage
 {

@@ -7,5 +7,6 @@ class GridMap : public Map
 	public :
 		GridMap(int x, int y, GridPoint *initial);
 		GridPointStorage points;
+		bool isWaterAt(int x, int y);
 };
 #endif

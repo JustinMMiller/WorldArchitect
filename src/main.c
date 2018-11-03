@@ -14,7 +14,7 @@ int main()
 		printf( "An error has occurred: %s (code %d)\n", BMP_GetErrorDescription(), BMP_GetError() );
 	}
 	GridMapGenerator mapGen;
-	Map *m = mapGen.generateMap(P_WIDTH, P_HEIGHT, 3, 0.9f);
+	Map *m = mapGen.generateMap(P_WIDTH, P_HEIGHT, 3, 0.99f);
 	for(int i = 0; i < m->getSizeX(); i++)
 	{
 		for(int j = 0; j < m->getSizeY(); j++)
@@ -32,5 +32,6 @@ int main()
 	//drawPointsVector(v, bmp);
 	BMP_WriteFile(bmp, "drawing.bmp");
 	BMP_Free(bmp);
+	delete m;
 	return 0;
 }

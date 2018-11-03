@@ -173,6 +173,7 @@ Map * GridMapGenerator::generateMap(int mapX, int mapY, int numContinents, float
 		}
 	}
 	makeContinents(m, numContinents, percentWater);
+	delete t;
 	return m;
 }
 
