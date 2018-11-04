@@ -56,21 +56,23 @@ class Compare
 {
 	bool reverse;
 	Perlin *p;
+	double scaleX, scaleY;
 	public:
-	Compare(const bool& revparam = false)
+	Compare(const bool& revparam = false, int x = 0, int y = 0)
+		: scaleX(x), scaleY(y)
 	{
-		p = new Perlin(64);
+		p = new Perlin(37, 8);
 		reverse = revparam;
 	}
 	bool operator() (Point& lhs, Point& rhs)
 	{
 		double lx, ly, rx, ry;
-		lx = (double)lhs.x;
-		ly = (double)lhs.y;
-		rx = (double)rhs.x;
-		ry = (double)rhs.y;
-		if(reverse) return (p->noise(lx, ly) > p->noise(rx, ry));
-		else return p->noise(lx, ly) < p->noise(rx, ry); 
+		lx = (double)lhs.x / scaleX;
+		ly = (double)lhs.y / scaleY;
+		rx = (double)rhs.x / scaleX;
+		ry = (double)rhs.y / scaleY;
+		if(reverse) return (p->octaveNoise(lx, ly) > p->octaveNoise(rx, ry));
+		else return p->octaveNoise(lx, ly) < p->octaveNoise(rx, ry); 
 	}
 };
 
@@ -79,7 +81,8 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 	int numCands = numCand;
 	bool canContinue = true;
 	typedef priority_queue<Point, vector<Point>, Compare> mypq;
-	mypq pq;
+	GridPoint first = map->getGridPointAt(Landmass[0].x, Landmass[0].y);
+	mypq pq(Compare(first.LandmassIndex%2==0, map->getSizeX(), map->getSizeY()));
 	for(Point p : Candidates)pq.push(p);
 	while(numUsed < landTiles && canContinue)
 	{
@@ -92,7 +95,18 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 		int cn = 0;
 		if(selection == GridPerlin)
 		{
-			addPoint = (Point)pq.top();
+			cn = ceil((double)numCands * 0.1);
+			int sel = 0;
+			if(cn > 0)sel = rand()%cn;
+			vector<Point> t(sel);
+			for(int k = 0; k < sel; k++)
+			{
+				t.push_back(pq.top());
+				pq.pop();
+			}
+			addPoint = pq.top();
+			pq.pop();
+			for(Point p : t)pq.push(p);
 		}
 		else
 		{
@@ -136,7 +150,6 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 		}
 		if(selection == GridPerlin)
 		{
-			pq.pop();
 		}
 		else{
 			vector<Point> candUpdate;
@@ -217,7 +230,7 @@ void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float per
  */
 Map * GridMapGenerator::generateMap(int mapX, int mapY, int numContinents, float percentWater)
 {
-	GridPoint *t = (GridPoint *)malloc(sizeof(GridPoint));
+	GridPoint *t = new GridPoint(); 
 	t->x = 0;
 	t->y = 0;
 	t->height = 0.0f;
@@ -226,7 +239,7 @@ Map * GridMapGenerator::generateMap(int mapX, int mapY, int numContinents, float
 	t->water = true;
 	t->TerrainIndex = 0;
 	GridMap *m = new GridMap(mapX, mapY, t);
-	free(t);
+	delete t;
 	srand(time(NULL));
 	makeContinents(m, numContinents, percentWater);
 	return m;

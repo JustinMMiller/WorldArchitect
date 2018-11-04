@@ -6,14 +6,14 @@ GridPointStorage::GridPointStorage(int numX, int numY, GridPoint *initial)
 	this->x = abs(numX);
 	this->y = abs(numY);
 	printf("%i %i\n", initial->x, initial->y);
-	arr = new GridPoint*[numX];
-	for(int i = 0; i < numY; i++)
+	arr = new GridPoint*[x];
+	for(int i = 0; i < x; i++)
 	{
-		arr[i] = new GridPoint[numY];
+		arr[i] = new GridPoint[y];
 	}
-	for(int i = 0; i < this->x; i++)
+	for(int i = 0; i < x; i++)
 	{
-		for(int j = 0; j < this->y; j++)
+		for(int j = 0; j < y; j++)
 		{
 			arr[i][j].x = i;
 			arr[i][j].y = j;
