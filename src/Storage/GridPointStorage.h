@@ -7,8 +7,8 @@ using namespace std;
 #include<stdio.h>
 #include<shared_mutex>
 
-//This is used by a GridMap to store its data, with the GridMap being blind to the 
-//internal workings. Currently uses a 2d array of GridPoints to store data.
+/// This is used by a GridMap to store its data, with the GridMap being blind to the 
+/// internal workings. Currently uses a 2d array of GridPoints to store data.
 class GridPointStorage
 {
 	private:

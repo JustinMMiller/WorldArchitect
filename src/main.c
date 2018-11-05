@@ -8,9 +8,11 @@
 #define P_HEIGHT 512
 
 
-//This is the main function. Currently used to manually render image of map generated
-//with the MapGenerator selected. This functionality will be moved to Graphics later
-//(probably).
+/** 
+ * This is the main function. Currently used to manually render image of map generated
+ * with the MapGenerator selected. This functionality will be moved to Graphics later
+ * (probably).
+ */
 int main()
 {
 	BMP *bmp;

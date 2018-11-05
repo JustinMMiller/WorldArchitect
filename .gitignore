@@ -1,4 +1,4 @@
 *.bmp
 build/
-bin/
 output/*
+docs/
