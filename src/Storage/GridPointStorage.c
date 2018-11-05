@@ -1,5 +1,7 @@
 #include "GridPointStorage.h"
 
+//Note: This storage method is thread safe.
+
 //Constructor of a GridPointStorage.
 //Parameters:
 // 	numX : the size in the X direction.

@@ -1,10 +1,16 @@
 #include "GridMapGenerator.h"
 
+
+//Constructor. Sets the method used.
 GridMapGenerator::GridMapGenerator(Method method) :lock() 
 {
 	selection = method;
 }
 
+
+//This function returns all the points which are neighbors to the 
+//given coordinate (x, y) in the given GridMap.
+//Note: This method does return the given point in the set of Points it returns.
 vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 {
 	vector<Point> ret;
@@ -59,6 +65,9 @@ vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 	return ret;
 }
 
+
+//Class for comparing Points for ordering in a priority_queue. This is used in 
+//Method GridPerlin.
 class Compare
 {
 	bool reverse;
@@ -83,6 +92,9 @@ class Compare
 	}
 };
 
+
+//This is the method each thread runs. It takes in the starter Landmasses and the associated candidates and
+//grows it according to the chosen method. Defaults to GridRandom.
 void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector<Point> Candidates, int numCand)
 {
 	int numCands = numCand;
@@ -167,6 +179,9 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 	}
 }
 
+
+//This method selects numContinents number of continents, then passes of the initial seeds to growLandmass 
+//to grow each one in a thread of it's own.
 void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float percentWater)
 {
 	vector<vector<Point> > Landmasses(numContinents, vector<Point>());
