@@ -1,5 +1,10 @@
 #include "GridPointStorage.h"
 
+//Constructor of a GridPointStorage.
+//Parameters:
+// 	numX : the size in the X direction.
+// 	numY : the size in the Y direction.
+// 	initial : a GridPoint which can be used to give some default values to the contents.
 GridPointStorage::GridPointStorage(int numX, int numY, GridPoint *initial)
 {
 	this->lock = new shared_mutex();
@@ -26,6 +31,8 @@ GridPointStorage::GridPointStorage(int numX, int numY, GridPoint *initial)
 	}
 }
 
+
+//This function returns a copy of the contents of the GridPoint located at (locX, locY)
 GridPoint GridPointStorage::getGridPointAt(int locX, int locY)
 {
 	lock->lock_shared();
@@ -42,6 +49,9 @@ GridPoint GridPointStorage::getGridPointAt(int locX, int locY)
 	return ret;
 }
 
+
+//This updates the contents of the internal storage for the GridPoint at (locX, locY)
+//with the contents of change.
 void GridPointStorage::updateGridPointAt(int locX, int locY, GridPoint *change)
 {	
 	Logger *err = LogManager::getInstance()->getLogger(Error);
@@ -70,6 +80,7 @@ void GridPointStorage::updateGridPointAt(int locX, int locY, GridPoint *change)
 	lock->unlock();
 }
 
+//Destructor for GridPointStorage.
 GridPointStorage::~GridPointStorage()
 {
 	lock->lock();

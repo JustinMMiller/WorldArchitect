@@ -2,6 +2,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+//Default constructor for a Logger. Ensures that the thread for the Logger 
+//is started on creation.
 Logger::Logger(char *filehandle, LogType t)
 	: lock(),
 	fhandle(filehandle),
@@ -12,8 +14,11 @@ Logger::Logger(char *filehandle, LogType t)
 	this->open();
 }
 
+//This is the single instance of a LogManager allowed. Initially null.
 LogManager* LogManager::instance = NULL;
 
+//This is the thread function for a Logger. This runs in the background and consumes Message
+//objects from the messages queue. It sleeps for 1 second if there are no messages to consume.
 void Logger::threadFunc()
 {
 	printf("Opening %s for logging\n", fhandle);
@@ -21,14 +26,16 @@ void Logger::threadFunc()
 	file.open(fhandle);
 	if(!file.is_open())
 	{
-		printf("Unable to open log %s for writing.\n", fhandle);
+		//This was used for debugging purposes. 
+		//printf("Unable to open log %s for writing.\n", fhandle);
 		return;
 	}
 	while(!closing)
 	{
 		if(messages.empty())
 		{
-			printf("No messages, %s sleeping\n", fhandle);
+			//This was used for debugging purposes. 
+			//printf("No messages, %s sleeping\n", fhandle);
 			this_thread::sleep_for(chrono::seconds(1));
 		}
 		else
@@ -39,7 +46,8 @@ void Logger::threadFunc()
 			lock.unlock();
 		}
 	}
-	printf("Log %s closing, flushing queue\n", fhandle);
+	//This was used for debugging purposes. 
+	//printf("Log %s closing, flushing queue\n", fhandle);
 	lock.lock();
 	while(!messages.empty())
 	{
@@ -50,6 +58,11 @@ void Logger::threadFunc()
 	lock.unlock();
 }
 
+
+/**
+ * addMessage(Message mess)
+ * This is an internal method to insert a Message struct into the queue for the Logger to consume.
+ */
 void Logger::addMessage(Message mess)
 {
 	lock.lock();
@@ -57,17 +70,21 @@ void Logger::addMessage(Message mess)
 	lock.unlock();
 }
 
+//The destructor closes the Logger.
 Logger::~Logger()
 {
 	this->close();
 }
 
+
+//This method sets the closing variable to true, which tells the thread to finish the queue and exit.
 void Logger::close()
 {
 	closing = true;
 	logThread->join();
 }
 
+//This method takes in a string and puts it in a Message struct, then passes it to addMessage.
 void Logger::log(string mess)
 {
 	Message newMessage;
@@ -76,22 +93,25 @@ void Logger::log(string mess)
 	addMessage(newMessage);
 }
 
+//This method starts the thread for the Logger.
 void Logger::open()
 {
 	logThread = new thread(&Logger::threadFunc, this);
 }
 
+//This is a helper method for ensuring only one of each Logger is created.
 LogType Logger::getType()
 {
 	return logType;
 }
 
-
+//Constructor for LogManager
 LogManager::LogManager()
 	: logs()
 {
 }
 
+//This function returns the only instance of a LogManager, creating it if it is null.
 LogManager *LogManager::getInstance()
 {
 	if(!instance)
@@ -101,10 +121,13 @@ LogManager *LogManager::getInstance()
 	return instance;
 }
 
+//Empty destructor for LogManager.
 LogManager::~LogManager()
 {
 }
 
+//This function first checks to see if the requested Logger exists, returning it
+//if it does. If not, it creates it, adds it to the vector of Loggers, and returns it.
 Logger *LogManager::getLogger(LogType ltype)
 {
 	for(Logger *l : logs)

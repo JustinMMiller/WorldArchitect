@@ -12,12 +12,18 @@
 
 using namespace std;
 
+//This is an asynchronous logging system. Loggers are requested from the LogManager, and only one of each Logger
+//will exist. 
+
+
+//This enum lists the different types of Loggers. Used for lookup of Loggers when requested with getLogger.
 enum LogType
 {
 	Error,
 	MapCreation
 };
 
+//Struct to order messages for a Logger so that order is preserved.
 typedef struct _MESSAGE
 {
 	time_t timestamp;
@@ -28,6 +34,7 @@ typedef struct _MESSAGE
 	}
 } Message;
 
+//Each Logger writes it's contents to a specific file. Works asynchronously.
 class Logger
 {
 	private:
@@ -48,6 +55,9 @@ class Logger
 		~Logger();
 };
 
+
+//This is a singleton to request a Logger of a specific type. This ensures that only one Logger
+//is writing to a given file.
 class LogManager
 {
 	private:

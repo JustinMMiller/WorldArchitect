@@ -85,6 +85,9 @@ double Perlin::noise(double x, double y, double z) {
 	return (res + 1.0)/2.0;
 }
 
+
+//This is the function I added. (Justin)
+//It sums multiple "octaves" of noise.
 double Perlin::octaveNoise(double x, double y)
 {
 	double result = 0;
