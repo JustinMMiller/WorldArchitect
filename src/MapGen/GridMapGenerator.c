@@ -126,7 +126,6 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 		for(Point p : neighbors)
 		{
 			GridPoint g = map->getGridPointAt(p.x, p.y);
-			printf("point %i %i, LandmassIndex %i \n", p.x, p.y, g.LandmassIndex);
 			if(g.LandmassIndex == -1)
 			{
 				g.LandmassIndex = add.LandmassIndex;

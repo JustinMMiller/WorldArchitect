@@ -33,7 +33,7 @@ class Logger
 	private:
 		mutex lock;
 		priority_queue<Message> messages;
-		string fhandle;
+		char *fhandle;
 		thread *logThread;
 		LogType logType;
 		bool closing;
@@ -52,9 +52,11 @@ class LogManager
 {
 	private:
 		vector<Logger *> logs;
-		static LogManager *manager;
 		LogManager();
+		LogManager(LogManager const& copy);
+		LogManager& operator=(LogManager const&copy);
 		~LogManager();
+		static LogManager *instance;
 	public:
 		static LogManager *getInstance();
 		Logger *getLogger(LogType type);

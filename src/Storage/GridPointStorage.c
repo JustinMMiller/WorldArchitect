@@ -44,8 +44,7 @@ GridPoint GridPointStorage::getGridPointAt(int locX, int locY)
 
 void GridPointStorage::updateGridPointAt(int locX, int locY, GridPoint *change)
 {	
-	LogManager *logmanager = LogManager::getInstance();
-	Logger *err = logmanager->getLogger(Error);
+	Logger *err = LogManager::getInstance()->getLogger(Error);
 	lock->lock();
 	if(locX < 0 || locX > x || locY < 0 || locY > y)
 	{
@@ -61,10 +60,10 @@ void GridPointStorage::updateGridPointAt(int locX, int locY, GridPoint *change)
 	{
 		if(arr[locX][locY].LandmassIndex > 0)
 		{
-			err->log("Double write to point ");
-			err->log(to_string(locX) + " " + to_string(locY));
-			err->log(" was " + to_string(arr[locX][locY].LandmassIndex));
-			err->log(" changed to " + to_string(change->LandmassIndex) + "\n");
+			err->log("Double write to point " +
+			to_string(locX) + " " + to_string(locY) + 
+			" was " + to_string(arr[locX][locY].LandmassIndex) +
+			" changed to " + to_string(change->LandmassIndex) + "\n");
 		}
 		arr[locX][locY] = *change;
 	}

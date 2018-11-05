@@ -1,4 +1,6 @@
 #include "Logging.h"
+#include<stdio.h>
+#include<stdlib.h>
 
 Logger::Logger(char *filehandle, LogType t)
 	: lock(),
@@ -7,12 +9,16 @@ Logger::Logger(char *filehandle, LogType t)
 	messages(),
 	closing(false)
 {
+	this->open();
 }
+
+LogManager* LogManager::instance = NULL;
 
 void Logger::threadFunc()
 {
+	printf("Opening %s for logging\n", fhandle);
 	ofstream file;
-	file.open(fhandle, ios_base::app);
+	file.open(fhandle);
 	if(!file.is_open())
 	{
 		printf("Unable to open log %s for writing.\n", fhandle);
@@ -22,6 +28,7 @@ void Logger::threadFunc()
 	{
 		if(messages.empty())
 		{
+			printf("No messages, %s sleeping\n", fhandle);
 			this_thread::sleep_for(chrono::seconds(1));
 		}
 		else
@@ -32,6 +39,7 @@ void Logger::threadFunc()
 			lock.unlock();
 		}
 	}
+	printf("Log %s closing, flushing queue\n", fhandle);
 	lock.lock();
 	while(!messages.empty())
 	{
@@ -51,7 +59,7 @@ void Logger::addMessage(Message mess)
 
 Logger::~Logger()
 {
-	close();
+	this->close();
 }
 
 void Logger::close()
@@ -86,19 +94,15 @@ LogManager::LogManager()
 
 LogManager *LogManager::getInstance()
 {
-	if(LogManager::manager == NULL)
+	if(!instance)
 	{
-		LogManager::manager = new LogManager();
+		instance = new LogManager();
 	}
-	return LogManager::manager;
+	return instance;
 }
 
 LogManager::~LogManager()
 {
-	for(Logger *l : manager->logs)
-	{
-		l->close();
-	}
 }
 
 Logger *LogManager::getLogger(LogType ltype)
@@ -130,15 +134,18 @@ Logger *LogManager::getLogger(LogType ltype)
 				{
 					if(l->getType() == Error)
 					{
+						printf("Unable to open requested log\n");
 						l->log("Unable to open requested log, returning Error log\n");
 						return l;
 					}
 				}
+				printf("Unable to open requested log\n");
 				log = new Logger("Error.log", Error);
 				log->log("Unable to open requested log, returning Error log\n");
 				logs.push_back(log);
 				return log;
 			}
+			printf("Unable to open requested log\n");
 			log = new Logger("Error.log", Error);
 			log->log("Unable to open requested log, returning Error log\n");
 			logs.push_back(log);

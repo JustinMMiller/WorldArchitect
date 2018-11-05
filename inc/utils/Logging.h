@@ -45,15 +45,18 @@ class Logger
 		void close();
 		void open();
 		Logger(char *filehandle, LogType t);
+		~Logger();
 };
 
 class LogManager
 {
 	private:
 		vector<Logger *> logs;
-		static LogManager *manager;
 		LogManager();
+		LogManager(LogManager const& copy);
+		LogManager& operator=(LogManager const&copy);
 		~LogManager();
+		static LogManager *instance;
 	public:
 		static LogManager *getInstance();
 		Logger *getLogger(LogType type);
