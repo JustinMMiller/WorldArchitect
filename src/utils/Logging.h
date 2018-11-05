@@ -15,6 +15,18 @@ using namespace std;
 //This is an asynchronous logging system. Loggers are requested from the LogManager, and only one of each Logger
 //will exist. 
 
+//
+//USAGE NOTES:
+// To use a predefined Logger:
+// 	Logger *logger = LogManager::getInstance()->getLogger(<Log Type desired>);
+// 	logger->log("String to log");
+//
+// To define a new Logger:
+// 	Add a new LogType (ie TerrainCreation)
+// 	create new case in getLogger()
+// 	Use in same manner as predefined Logger.
+//
+
 
 //This enum lists the different types of Loggers. Used for lookup of Loggers when requested with getLogger.
 enum LogType
