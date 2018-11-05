@@ -12,9 +12,15 @@
 #include "vector.h"
 #include "MapGenerator.h"
 #include "GridMap.h"
-#include "utils/Perlin.h"
+#include "lib/Perlin/Perlin.h"
 using namespace std;
 
+
+//This class extends MapGenerator.
+//This class uses GridPoints as the basis for how it grows landmasses and
+//interprets the world. It uses a thread per landmass to grow it concurrently.
+//
+//This Generator is associated with two Methods, GridRandom and GridPerlin.
 class GridMapGenerator : public MapGenerator
 {
 	private:

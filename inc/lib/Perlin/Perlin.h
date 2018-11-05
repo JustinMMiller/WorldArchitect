@@ -7,7 +7,7 @@
 // I ADDED AN EXTRA METHOD THAT GENERATES A NEW PERMUTATION VECTOR (THIS IS NOT PRESENT IN THE ORIGINAL IMPLEMENTATION)
 
 //
-// This code is from <<INSERT LINK HERE>>. I have added some methods for added functionality not in the 
+// This code is from https://github.com/sol-prog/Perlin_Noise/blob/master/PerlinNoise.h . I have added some methods for added functionality not in the 
 // original implementation.
 //
 #ifndef PERLINNOISE_H
