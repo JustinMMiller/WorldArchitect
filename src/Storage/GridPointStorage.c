@@ -44,20 +44,27 @@ GridPoint GridPointStorage::getGridPointAt(int locX, int locY)
 
 void GridPointStorage::updateGridPointAt(int locX, int locY, GridPoint *change)
 {	
+	LogManager *logmanager = LogManager::getInstance();
+	Logger *err = logmanager->getLogger(Error);
 	lock->lock();
 	if(locX < 0 || locX > x || locY < 0 || locY > y)
 	{
-		printf("Invalid bounds to updateGridPointAt, coord : %i, %i\n", locX, locY);
+		err->log("Invalid bounds to updateGridPointAt, coord : " + to_string(locX) + 
+				", " + to_string(locY) + "\n");
 	}
 	else if(change == NULL)
 	{
+		err->log("Received a NULL pointer in updateGridPointAt\n");
 		printf("Received a NULL pointer in updateGridPointAt\n");
 	}
 	else
 	{
 		if(arr[locX][locY].LandmassIndex > 0)
 		{
-			printf("Double write to point %i %i, was %i, changed to %i\n", locX, locY, arr[locX][locY].LandmassIndex, change->LandmassIndex);
+			err->log("Double write to point ");
+			err->log(to_string(locX) + " " + to_string(locY));
+			err->log(" was " + to_string(arr[locX][locY].LandmassIndex));
+			err->log(" changed to " + to_string(change->LandmassIndex) + "\n");
 		}
 		arr[locX][locY] = *change;
 	}

@@ -8,40 +8,47 @@ GridMapGenerator::GridMapGenerator(Method method) :lock()
 vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 {
 	vector<Point> ret;
-	int lx, ux, ly, uy;
+	vector<int> xSet, ySet;
 	if(x == 0)
 	{
-		lx = 0;
-		ux = 1;
+		xSet.push_back(0);
+		xSet.push_back(1);
+		xSet.push_back(map->getSizeX()-1);
 	}
 	else if(x == map->getSizeX()-1)
 	{
-		lx = map->getSizeX()-2;
-		ux = map->getSizeX()-1;
+		xSet.push_back(map->getSizeX()-2);
+		xSet.push_back(map->getSizeX()-1);
+		xSet.push_back(0);
 	}
 	else
 	{
-		lx = x-1;
-		ux = x+1;
+		xSet.push_back(x-1);
+		xSet.push_back(x);
+		xSet.push_back(x+1);
 	}
 	if(y == 0)
 	{
-		ly = 0;
-		uy = 1;
+		ySet.push_back(0);
+		ySet.push_back(1);
+		ySet.push_back(map->getSizeY()-1);
 	}
-	else if(y == map->getSizeY()-1)
+	else if(x == map->getSizeY()-1)
 	{
-		ly = map->getSizeY()-2;
-		uy = map->getSizeY()-1;
+		ySet.push_back(map->getSizeY()-2);
+		ySet.push_back(map->getSizeY()-1);
+		ySet.push_back(0);
 	}
 	else
 	{
-		ly = y-1;
-		uy = y+1;
+		ySet.push_back(y-1);
+		ySet.push_back(y);
+		ySet.push_back(y+1);
 	}
-	for(int i = lx; i <= ux; i++)
+
+	for(int i : xSet)
 	{
-		for(int j = ly; j <= uy; j++)
+		for(int j : ySet)
 		{
 			Point p;
 			p.x = i;
@@ -134,7 +141,7 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 				}
 				numCands++;
 			}
-			else if(g.LandmassIndex != add.LandmassIndex)
+			else if(g.LandmassIndex != add.LandmassIndex && rand()%100 >= 5)
 			{
 				canAdd = false;
 			}

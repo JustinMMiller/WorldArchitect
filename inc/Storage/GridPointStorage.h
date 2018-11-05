@@ -2,6 +2,7 @@
 #define GRIDPOINTSTORAGE_H
 using namespace std;
 #include "utils/GridPoint.h"
+#include "utils/Logging.h"
 #include<stdlib.h>
 #include<stdio.h>
 #include<shared_mutex>

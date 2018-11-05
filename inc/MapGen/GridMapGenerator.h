@@ -8,6 +8,7 @@
 #include<shared_mutex>
 #include<thread>
 #include<queue>
+#include<random>
 #include "vector.h"
 #include "MapGenerator.h"
 #include "GridMap.h"

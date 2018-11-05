@@ -3,8 +3,12 @@
 #include "lib/qdbmp/qdbmp.h"
 #include "Graphics/Draw.h"
 #include "MapGen/GridMapGenerator.h"
+#include "utils/Logging.h"
 #define P_WIDTH 512
 #define P_HEIGHT 512
+
+LogManager* LogManager::manager = 0;
+
 int main()
 {
 	BMP *bmp;
@@ -14,7 +18,7 @@ int main()
 		printf( "An error has occurred: %s (code %d)\n", BMP_GetErrorDescription(), BMP_GetError() );
 	}
 	MapGenerator *mapGen = getMapGenerator(GridPerlin);
-	Map *m = mapGen->generateMap(P_WIDTH, P_HEIGHT, 4, 0.85f);
+	Map *m = mapGen->generateMap(P_WIDTH, P_HEIGHT, 150, 0.9f);
 	for(int i = 0; i < m->getSizeX(); i++)
 	{
 		for(int j = 0; j < m->getSizeY(); j++)
