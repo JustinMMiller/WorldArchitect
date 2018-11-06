@@ -40,6 +40,9 @@ incl:
 	make includes
 	make includes
 
+doc:
+	doxygen Doxyfile
+
 includes:
 	if [ -d $(INC_DIR) ]; \
 	then \
