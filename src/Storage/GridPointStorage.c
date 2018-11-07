@@ -70,7 +70,7 @@ void GridPointStorage::updateGridPointAt(int locX, int locY, GridPoint *change)
 	}
 	else
 	{
-		if(arr[locX][locY].LandmassIndex > 0)
+		if(arr[locX][locY].LandmassIndex > 0 && (arr[locX][locY].water == false))
 		{
 			err->log("Double write to point " +
 			to_string(locX) + " " + to_string(locY) + 
