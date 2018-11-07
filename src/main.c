@@ -58,15 +58,15 @@ int main(int argc, char *argv[])
 		}
 		if(cmdOptionExists(argv, argv+argc, "-w"))
 		{
-			percentWater = atof(string(getCmdOption(argv, argv+argc, "-f")).c_str());
+			percentWater = atof(getCmdOption(argv, argv+argc, "-f"));
 		}
 		if(cmdOptionExists(argv, argv+argc, "-l"))
 		{
-			numLandmasses = atoi(string(getCmdOption(argv, argv+argc, "-f")).c_str());
+			numLandmasses = atoi(getCmdOption(argv, argv+argc, "-l"));
 		}
 		if(cmdOptionExists(argv, argv+argc, "-s"))
 		{
-			p_width = atoi(string(getCmdOption(argv, argv+argc, "-s")).c_str());
+			p_width = atoi(getCmdOption(argv, argv+argc, "-s"));
 			p_height = p_width;
 		}
 		if(cmdOptionExists(argv, argv+argc, "-g"))
