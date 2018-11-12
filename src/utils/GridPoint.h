@@ -2,8 +2,9 @@
 #define GRIDPOINT_H
 #define INVALID_POINT -5
 
-/** This struct is how a GridMap stores its data for each point internally.
+/** 
  * @struct GridPoint
+ * @brief This struct is how a GridMap stores its data for each point internally.
  * @var GridPoint::x : x coordinate
  * @var GridPoint::y : y coordinate
  * @var GridPoint::height : Height of the location

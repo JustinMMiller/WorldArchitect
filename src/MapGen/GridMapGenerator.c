@@ -8,9 +8,9 @@ GridMapGenerator::GridMapGenerator(Method method) :lock()
 }
 
 
-//This function returns all the points which are neighbors to the 
-//given coordinate (x, y) in the given GridMap.
-//Note: This method does return the given point in the set of Points it returns.
+///This function returns all the points which are neighbors to the 
+///given coordinate (x, y) in the given GridMap.
+///Note: This method does return the given point in the set of Points it returns.
 vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 {
 	vector<Point> ret;
@@ -66,8 +66,12 @@ vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
 }
 
 
-//Class for comparing Points for ordering in a priority_queue. This is used in 
-//Method GridPerlin.
+/// \class Compare
+/// \brief Internal class for ordering Point by Perlin noise value
+///
+/// Internal class to sort Point based on Perlin noise value of x, y coordinate
+/// Class for comparing Points for ordering in a priority_queue. This is used in 
+/// Method GridPerlin.
 class Compare
 {
 	bool reverse;

@@ -3,7 +3,10 @@
 #include "Map.h"
 #include "Storage/GridPointStorage.h"
 
-//This class extends Map. This is a Map for use with GridPoint generation (Generating terrain at a point by point level.)
+/// \class GridMap
+/// \brief This class extends Map.
+/// 
+/// This class extends Map. This is a Map for use with GridPoint generation (Generating terrain at a point by point level.)
 class GridMap : public Map
 {
 	public :

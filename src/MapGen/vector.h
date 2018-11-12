@@ -1,7 +1,7 @@
 #ifndef VECTORDEF
 #define VECTORDEF
 
-//Pair of (x, y) with equivalence operator.
+/// Pair of (x, y) with equivalence operator.
 typedef struct _POINT
 {
 	int x, y;
@@ -11,8 +11,8 @@ typedef struct _POINT
 	}
 }Point;
 
-//Vector of origin and direction
-typedef struct _VECTOR
+/// Vector of origin and direction
+typedef struct 
 {
 	Point point;
 	Point direction;

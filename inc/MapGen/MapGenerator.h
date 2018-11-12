@@ -18,7 +18,8 @@ enum Method
 };
 
 
-//virtual class to represent a Map Generator. Extended with other methods.
+/// \class MapGenerator
+/// \brief Virtual class to represent a Map Generator. Extended with other methods.
 class MapGenerator
 {
 	public:

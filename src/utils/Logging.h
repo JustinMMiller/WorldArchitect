@@ -99,6 +99,9 @@ class Logger
 
 
 /**
+ * \class LogManager
+ * \brief Used to manage Loggers.
+ *
  * This is a singleton to request a Logger of a specific type. This ensures that only one Logger
  * is writing to a given file.
  */
@@ -124,5 +127,5 @@ class LogManager
 		Logger *getLogger(LogType type);
 		/// Closes all open Loggers.
 		void closeAllLogs();
-};
+}; // $$TODO : Should have a lock on the vector of Loggers. Need to figure out lock that'll work. May preemptively initialize every logger then open before returning if they aren't already open.
 #endif
