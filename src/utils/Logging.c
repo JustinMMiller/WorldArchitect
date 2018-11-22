@@ -110,6 +110,8 @@ LogManager::LogManager()
 	: logs(),
 	  m()
 {
+	logs.push_back(new Logger("Error.log", Error));
+	logs.push_back(new Logger("MapCreation.log", MapCreation));
 }
 
 //This function returns the only instance of a LogManager, creating it if it is null.
