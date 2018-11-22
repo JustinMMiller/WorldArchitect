@@ -107,7 +107,8 @@ LogType Logger::getType()
 
 //Constructor for LogManager
 LogManager::LogManager()
-	: logs()
+	: logs(),
+	  m()
 {
 }
 
@@ -130,25 +131,27 @@ LogManager::~LogManager()
 //if it does. If not, it creates it, adds it to the vector of Loggers, and returns it.
 Logger *LogManager::getLogger(LogType ltype)
 {
+	Logger *log;
+	m.lock();
 	for(Logger *l : logs)
 	{
 		if(l->getType() == ltype)
 		{
-			return l;
+			log = l;
+			goto cleanup;
 		}
 	}
-	Logger *log;
 	switch (ltype)
 	{
 		case Error:
 			log = new Logger("Error.log", Error);
 			logs.push_back(log);
-			return log;
+			goto cleanup;
 			break;
 		case MapCreation:
 			log = new Logger("MapCreation.log", MapCreation);
 			logs.push_back(log);
-			return log;
+			goto cleanup;
 			break;
 		default:
 			if(!logs.empty())
@@ -159,19 +162,24 @@ Logger *LogManager::getLogger(LogType ltype)
 					{
 						printf("Unable to open requested log\n");
 						l->log("Unable to open requested log, returning Error log\n");
-						return l;
+						log = l;
+						goto cleanup;
 					}
 				}
 				printf("Unable to open requested log\n");
 				log = new Logger("Error.log", Error);
 				log->log("Unable to open requested log, returning Error log\n");
 				logs.push_back(log);
-				return log;
+				goto cleanup;
 			}
 			printf("Unable to open requested log\n");
 			log = new Logger("Error.log", Error);
 			log->log("Unable to open requested log, returning Error log\n");
 			logs.push_back(log);
-			return log;
+			goto cleanup;
 	}
+
+cleanup:
+	m.unlock();
+	return log;
 }

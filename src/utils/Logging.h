@@ -110,6 +110,7 @@ class LogManager
 	private:
 		/// vector of Loggers created as the Logger is needed.
 		vector<Logger *> logs;
+		mutex m;
 		/// Instantiates LogManager.
 		LogManager();
 		/// Empty constructor to ensure no copy.
