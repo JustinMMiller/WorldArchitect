@@ -2,7 +2,6 @@
 #include<math.h>
 #include<string>
 #include "lib/qdbmp/qdbmp.h"
-#include "Graphics/Draw.h"
 #include "MapGen/GridMapGenerator.h"
 #include "utils/Logging.h"
 
