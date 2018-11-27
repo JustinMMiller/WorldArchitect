@@ -22,6 +22,7 @@ OBJECT_FILES= test.o qdbmp.o
 all : $(TARGET)
 
 $(TARGET) : $(OBJECTS)
+	mkdir -p $(OUTPUT_DIR)
 	$(LINKER) $(LINKARGS) -g $^ -o $(OUTPUT_DIR)/$@ $(LIBS) 
 
 $(BUILD_DIR)/%.$(OBJEXT) : $(SOURCE_DIR)/%.$(SRCEXT)
@@ -36,22 +37,5 @@ $(BUILD_DIR)/%.$(OBJEXT) : $(SOURCE_DIR)/%.$(SRCEXT)
 clean :
 	rm -rf $(BUILD_DIR)
 
-incl: 
-	make includes
-	make includes
-
 doc:
 	doxygen Doxyfile
-
-includes:
-	if [ -d $(INC_DIR) ]; \
-	then \
-	rm -rf $(INC_DIR); \
-	fi
-	mkdir -p $(INC_DIR)
-	find $(SOURCE_DIR) -name *.h -exec cp --parents \{\} $(INC_DIR) \;
-	for DIR in $(shell ls -d $(INC_DIR)/*); \
-	do \
-	cp -r $$DIR/* $$DIR/..; \
-	rm -rf $$DIR; \
-	done
