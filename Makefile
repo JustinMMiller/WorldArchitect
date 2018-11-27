@@ -1,6 +1,6 @@
 CC=g++
 LINKER=g++
-INC_DIR=inc
+INC_DIR=src
 INCLUDES=-I. -I$(INC_DIR)
 CFLAGS=-I. -c -std=c++17 -g -Wall $(INCLUDES)
 LINKARGS=-lm -g -pthread
