@@ -1,7 +1,7 @@
 #include "GridMap.h"
 #include <stdbool.h>
 
-
+using namespace WorldArchitect;
 //This function tells you if a point is water.
 bool GridMap::isWaterAt(int x, int y)
 {

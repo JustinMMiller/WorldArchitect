@@ -1,6 +1,9 @@
 #include "GridMapGenerator.h"
 
 
+
+using namespace std;
+using namespace WorldArchitect;
 //Constructor. Sets the method used.
 GridMapGenerator::GridMapGenerator(Method method) :lock() 
 {

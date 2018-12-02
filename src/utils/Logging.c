@@ -2,6 +2,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+
+using namespace WorldArchitect;
+using namespace std;
 //Default constructor for a Logger. Ensures that the thread for the Logger 
 //is started on creation.
 Logger::Logger(char *filehandle, LogType t)
@@ -11,7 +14,6 @@ Logger::Logger(char *filehandle, LogType t)
 	messages(),
 	closing(false)
 {
-	this->open();
 }
 
 //This is the single instance of a LogManager allowed. Initially null.
@@ -81,12 +83,19 @@ Logger::~Logger()
 void Logger::close()
 {
 	closing = true;
-	logThread->join();
+	if(logThread)
+	{
+		logThread->join();
+	}
 }
 
 //This method takes in a string and puts it in a Message struct, then passes it to addMessage.
 void Logger::log(string mess)
 {
+	if(!logThread)
+	{
+		open();
+	}
 	Message newMessage;
 	newMessage.message = mess;
 	newMessage.timestamp = time(0);
@@ -108,7 +117,7 @@ LogType Logger::getType()
 //Constructor for LogManager
 LogManager::LogManager()
 	: logs(),
-	  m()
+	m()
 {
 	logs.push_back(new Logger("Error.log", Error));
 	logs.push_back(new Logger("MapCreation.log", MapCreation));

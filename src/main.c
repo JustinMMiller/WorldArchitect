@@ -6,6 +6,7 @@
 #include "utils/Logging.h"
 
 using namespace std;
+using namespace WorldArchitect;
 
 char *getCmdOption(char **begin, char **end, const string & option)
 {
@@ -82,7 +83,7 @@ int main(int argc, char *argv[])
 		printf( "An error has occurred: %s (code %d)\n", BMP_GetErrorDescription(), BMP_GetError() );
 	}
 
-	MapGenerator *mapGen = getMapGenerator(gen);
+	MapGenerator *mapGen = WorldArchitect::getMapGenerator(gen);
 	Map *m = mapGen->generateMap(p_width, p_height, numLandmasses, percentWater);
 	for(int i = 0; i < m->getSizeX(); i++)
 	{
@@ -101,6 +102,5 @@ int main(int argc, char *argv[])
 	//drawPointsVector(v, bmp);
 	BMP_WriteFile(bmp, fname.c_str());
 	BMP_Free(bmp);
-	delete m;
 	return 0;
 }

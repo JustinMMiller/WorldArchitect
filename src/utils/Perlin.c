@@ -1,6 +1,6 @@
 #include "Perlin.h"
 
-
+using namespace WorldArchitect;
 Perlin::Perlin()
 	: Perlin(time(NULL), 512)
 {
