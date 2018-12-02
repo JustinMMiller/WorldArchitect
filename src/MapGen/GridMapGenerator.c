@@ -78,10 +78,17 @@ class Compare
 	Perlin *p;
 	double scaleX, scaleY;
 	public:
-	Compare(const bool& revparam = false, int x = 0, int y = 0)
+	Compare(const bool& revparam = false, int x = 0, int y = 0, Perlin *perlin = NULL)
 		: scaleX(x), scaleY(y)
 	{
-		p = new Perlin(37, 8);
+		if(perlin != NULL)
+		{
+			p = perlin;
+		}
+		else
+		{
+			p = new Perlin();
+		}
 		reverse = revparam;
 	}
 	bool operator() (Point& lhs, Point& rhs)
@@ -99,13 +106,13 @@ class Compare
 
 //This is the method each thread runs. It takes in the starter Landmasses and the associated candidates and
 //grows it according to the chosen method. Defaults to GridRandom.
-void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector<Point> Candidates, int numCand)
+void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector<Point> Candidates, int numCand, Perlin *perlin)
 {
 	int numCands = numCand;
 	bool canContinue = true;
 	typedef priority_queue<Point, vector<Point>, Compare> mypq;
 	GridPoint first = map->getGridPointAt(Landmass[0].x, Landmass[0].y);
-	mypq pq(Compare(first.LandmassIndex%2==0, map->getSizeX(), map->getSizeY()));
+	mypq pq(Compare(first.LandmassIndex%2==0, map->getSizeX(), map->getSizeY(), perlin));
 	for(Point p : Candidates)pq.push(p);
 	while(numUsed < landTiles && canContinue)
 	{
@@ -236,10 +243,11 @@ void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float per
 		//end if continentsMade < numContinents
 
 	}
+	Perlin *p = new Perlin();
 	thread *threads = new thread[numContinents];
 	for(int i = 0; i < numContinents; i++)
 	{
-		threads[i] = thread(&GridMapGenerator::growLandmass, this, map, Landmasses[i], Candidates[i], numCands[i]);
+		threads[i] = thread(&GridMapGenerator::growLandmass, this, map, Landmasses[i], Candidates[i], numCands[i], p);
 	}
 	for(int i = 0; i < numContinents; i++)
 	{

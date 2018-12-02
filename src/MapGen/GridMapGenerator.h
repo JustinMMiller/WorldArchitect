@@ -12,7 +12,7 @@
 #include "vector.h"
 #include "MapGenerator.h"
 #include "GridMap.h"
-#include "lib/Perlin/Perlin.h"
+#include "utils/Perlin.h"
 using namespace std;
 
 
@@ -33,7 +33,7 @@ class GridMapGenerator : public MapGenerator
 		shared_mutex lock;
 		vector<Point> getNeighbors(GridMap *map, int x, int y);
 		void makeContinents(GridMap *map, int numContinents, float percentWater);
-		void growLandmass(GridMap *map, vector<Point> Landmass, vector<Point> Candidates, int numCands);
+		void growLandmass(GridMap *map, vector<Point> Landmass, vector<Point> Candidates, int numCands, Perlin *perlin);
 	public:
 		GridMapGenerator(Method method);
 		Map * generateMap(int mapX, int mapY, int numContinents, float percentWater);

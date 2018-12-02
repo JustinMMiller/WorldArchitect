@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 		}
 		if(cmdOptionExists(argv, argv+argc, "-w"))
 		{
-			percentWater = atof(getCmdOption(argv, argv+argc, "-f"));
+			percentWater = atof(getCmdOption(argv, argv+argc, "-w"));
 		}
 		if(cmdOptionExists(argv, argv+argc, "-l"))
 		{
