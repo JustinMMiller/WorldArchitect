@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
 	float percentWater = 0.9;
 	Method gen = GridPerlin;
 	string fname("drawing.bmp");
+	LogManager::getInstance();
 	if(argc < 2)
 	{
 		printf("Note: this program can be run with the following parameters");

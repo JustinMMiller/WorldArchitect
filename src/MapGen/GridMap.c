@@ -8,6 +8,11 @@ bool GridMap::isWaterAt(int x, int y)
 	return points.getGridPointAt(x, y).water;
 }
 
+int GridMap::distToWater(int x, int y)
+{
+	int dist = 0;
+}
+
 //Constructor for GridMap.
 //Parameters:
 // 	x : size in X direction

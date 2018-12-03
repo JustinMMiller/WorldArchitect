@@ -111,6 +111,8 @@ class Compare
 //grows it according to the chosen method. Defaults to GridRandom.
 void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector<Point> Candidates, int numCand, Perlin *perlin)
 {
+	Logger *l = LogManager::getInstance()->getLogger(MapCreation);
+	Perlin *perl = new Perlin();
 	int numCands = numCand;
 	bool canContinue = true;
 	typedef priority_queue<Point, vector<Point>, Compare> mypq;
@@ -147,6 +149,10 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 			addPoint = Candidates[cn];
 		}
 		GridPoint add = map->getGridPointAt(addPoint.x, addPoint.y);
+		add.height = perl->octaveNoise((double)add.x, (double)add.y) * 10000000.0;
+		string str = to_string(add.x) + " " + to_string(add.y) + " " +  to_string(add.height) + "\n";
+		std::cout << str;
+		l->log(str);
 		bool canAdd = true;
 		vector<Point> neighbors = getNeighbors(map, add.x, add.y);
 		for(Point p : neighbors)

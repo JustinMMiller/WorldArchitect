@@ -7,7 +7,7 @@ Perlin::Perlin()
 }
 
 Perlin::Perlin(unsigned int seed, int fidelity)
-	: Perlin(seed, fidelity, 1)
+	: Perlin(seed, fidelity, 50)
 {
 }
 
@@ -31,7 +31,7 @@ void Perlin::initP(unsigned int seed)
 
 double Perlin::noise(double x, double y)
 {
-	noise(x, y, 0);
+	return noise(x, y, 0);
 }
 
 double Perlin::noise(double x, double y, double z)
@@ -63,7 +63,7 @@ double Perlin::noise(double x, double y, double z)
 
 double Perlin::octaveNoise(double x, double y)
 {
-	octaveNoise(x, y, 8);
+	return octaveNoise(x, y, 8);
 }
 
 double Perlin::octaveNoise(double x, double y, int octaves)

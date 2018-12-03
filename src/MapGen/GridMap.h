@@ -18,6 +18,7 @@ namespace WorldArchitect
 			GridPoint getGridPointAt(int x, int y);
 			void updateGridPointAt(int x, int y, GridPoint *update);
 			bool isWaterAt(int x, int y); 	//Inherited from Map superclass.
+			int distToWater(int x, int y); 	//Inherited from Map superclass.
 		private:
 			GridPointStorage points;
 	};
