@@ -149,7 +149,10 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 			addPoint = Candidates[cn];
 		}
 		GridPoint add = map->getGridPointAt(addPoint.x, addPoint.y);
-		add.height = perl->octaveNoise((double)add.x, (double)add.y) * 10000000.0;
+		double h = perl->noise((double)(add.x / (double)map->getSizeX()) * 10,0, (double)(add.y / (double)map->getSizeY())* 10.0);
+		h = h - floor(h);
+		h = floor(255*h);
+		add.height = h;
 		string str = to_string(add.x) + " " + to_string(add.y) + " " +  to_string(add.height) + "\n";
 		std::cout << str;
 		l->log(str);
