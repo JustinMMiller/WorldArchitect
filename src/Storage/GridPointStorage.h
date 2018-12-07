@@ -6,13 +6,14 @@
 #include<stdio.h>
 #include<shared_mutex>
 
-
-/// \brief Used internally by GridMap to store its information, with GridMap being blind to its workings.
-//
-/// This is used by a GridMap to store its data, with the GridMap being blind to the 
-/// internal workings. Currently uses a 2d array of GridPoints to store data.
+/// \namespace WorldArchitect
+/// \brief This is the main namespace for the project. It encompasses all classes and functions.
 namespace WorldArchitect
 {
+	/// \brief Used internally by GridMap to store its information, with GridMap being blind to its workings.
+	//
+	/// This is used by a GridMap to store its data, with the GridMap being blind to the 
+	/// internal workings. Currently uses a 2d array of GridPoints to store data.
 	class GridPointStorage
 	{
 		private:
