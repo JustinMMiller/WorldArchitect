@@ -8,12 +8,12 @@ using namespace std;
 LogManager *LogManager::instance = NULL;
 //Default constructor for a Logger. Ensures that the thread for the Logger 
 //is started on creation.
-Logger::Logger(char *filehandle, LogType t)
+Logger::Logger(std::string filehandle, LogType t)
 	: lock(),
-	fhandle(filehandle),
 	messages(),
 	closing(false)
 {
+	fhandle = std::string(filehandle);
 	this->logType = t;
 	this->open();
 }
@@ -22,9 +22,9 @@ Logger::Logger(char *filehandle, LogType t)
 //objects from the messages queue. It sleeps for 1 second if there are no messages to consume.
 void Logger::threadFunc()
 {
-	printf("Opening %s for logging\n", fhandle);
+	printf("Opening %s for logging\n", fhandle.c_str());
 	ofstream file;
-	file.open(fhandle);
+	file.open(fhandle.c_str());
 	if(!file.is_open())
 	{
 		//This was used for debugging purposes. 
