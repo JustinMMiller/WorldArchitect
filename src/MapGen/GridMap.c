@@ -9,6 +9,66 @@ bool GridMap::isWaterAt(int x, int y)
 	return getGridPointAt(x, y).water;
 }
 
+
+
+///This function returns all the points which are neighbors to the 
+///given coordinate (x, y) in the given GridMap.
+///Note: This method does return the given point in the set of Points it returns.
+vector<Point> GridMap::getNeighbors(int x, int y)
+{
+	vector<Point> ret;
+	vector<int> xSet, ySet;
+	if(x == 0)
+	{
+		xSet.push_back(0);
+		xSet.push_back(1);
+		xSet.push_back(getSizeX()-1);
+	}
+	else if(x == getSizeX()-1)
+	{
+		xSet.push_back(getSizeX()-2);
+		xSet.push_back(getSizeX()-1);
+		xSet.push_back(0);
+	}
+	else
+	{
+		xSet.push_back(x-1);
+		xSet.push_back(x);
+		xSet.push_back(x+1);
+	}
+	if(y == 0)
+	{
+		ySet.push_back(0);
+		ySet.push_back(1);
+		ySet.push_back(getSizeY()-1);
+	}
+	else if(x == getSizeY()-1)
+	{
+		ySet.push_back(getSizeY()-2);
+		ySet.push_back(getSizeY()-1);
+		ySet.push_back(0);
+	}
+	else
+	{
+		ySet.push_back(y-1);
+		ySet.push_back(y);
+		ySet.push_back(y+1);
+	}
+
+	for(int i : xSet)
+	{
+		for(int j : ySet)
+		{
+			Point p;
+			p.x = i;
+			p.y = j;
+			ret.push_back(p);
+		}
+	}
+	return ret;
+}
+
+
 int GridMap::distToWater(int x, int y)
 {
 	int dist = 0;
