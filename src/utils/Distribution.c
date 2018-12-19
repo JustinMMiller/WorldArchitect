@@ -88,7 +88,7 @@ double Distribution::getPercentile(double percentile)
 	{
 		std::sort(vals.begin(), vals.end());
 	}
-	return vals[(int)round((double)vals.size()*percentile)];
+	return vals[(int)round((double)vals.size()*percentile) - 1];
 }
 
 double Distribution::getMean()
