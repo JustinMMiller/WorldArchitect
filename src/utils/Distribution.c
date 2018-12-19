@@ -87,6 +87,7 @@ double Distribution::getPercentile(double percentile)
 	if(!sorted)
 	{
 		std::sort(vals.begin(), vals.end());
+		sorted = true;
 	}
 	return vals[(int)round((double)vals.size()*percentile) - 1];
 }
