@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 			}
 			else
 			{
-				BMP_SetPixelRGB(bmp, i, j, 0, 200, 0);
+				BMP_SetPixelRGB(bmp, i, j, 0, m->getHeightAt(i, j), 0);
 			}
 		}
 	}

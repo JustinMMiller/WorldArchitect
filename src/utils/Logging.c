@@ -37,7 +37,7 @@ void Logger::threadFunc()
 		{
 			//This was used for debugging purposes. 
 			//printf("No messages, %s sleeping\n", fhandle);
-			this_thread::sleep_for(chrono::seconds(1));
+			this_thread::sleep_for(chrono::milliseconds(250));
 		}
 		else
 		{

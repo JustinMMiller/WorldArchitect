@@ -11,6 +11,7 @@ namespace WorldArchitect
 		public:
 			virtual bool isWaterAt(int x, int y) = 0;
 			virtual int distToWater(int x, int y) = 0;
+			virtual int getHeightAt(int x, int y) = 0;
 			int getSizeX(){return x;}
 			int getSizeY(){return y;}
 			virtual ~Map() = 0;

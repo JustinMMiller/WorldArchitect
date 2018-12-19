@@ -97,9 +97,8 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 		h = h - floor(h);
 		h = floor(255*h);
 		add.height = h;
-		string str = to_string(add.x) + " " + to_string(add.y) + " " +  to_string(add.height) + "\n";
-		std::cout << str;
-		l->log(str);
+		string s(to_string(add.x) + " " + to_string(add.y) + " " + to_string(add.height) + "\n");
+		l->log(s);
 		bool canAdd = true;
 		vector<Point> neighbors = map->getNeighbors(add.x, add.y);
 		for(Point p : neighbors)
@@ -211,6 +210,7 @@ void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float per
 	}
 	delete[] numCands;
 	delete[] threads;
+	map->notifyAssignmentsDone();
 }
 
 /**

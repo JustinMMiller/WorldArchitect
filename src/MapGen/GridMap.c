@@ -1,5 +1,6 @@
 #include "GridMap.h"
 #include <stdbool.h>
+#include <stdio.h>
 
 using namespace WorldArchitect;
 using namespace std;
@@ -9,6 +10,15 @@ bool GridMap::isWaterAt(int x, int y)
 	return getGridPointAt(x, y).water;
 }
 
+void GridMap::notifyAssignmentsDone()
+{
+	printf("%f , %f\n", heights.getMean(), heights.getStdDev());
+}
+
+int GridMap::getHeightAt(int x, int y)
+{
+	return (int)round(getGridPointAt(x, y).height);
+}
 
 
 ///This function returns all the points which are neighbors to the 
@@ -81,6 +91,7 @@ int GridMap::distToWater(int x, int y)
 // 	y : size in Y direction
 // 	initial : initial value of points.
 GridMap::GridMap(int numX, int numY, GridPoint *initial)
+	: heights()
 {
 	this->lock = new shared_mutex();
 	this->x = numX;
@@ -155,6 +166,10 @@ void GridMap::updateGridPointAt(int locX, int locY, GridPoint *change)
 			to_string(locX) + " " + to_string(locY) + 
 			" was " + to_string(arr[locX][locY].LandmassIndex) +
 			" changed to " + to_string(change->LandmassIndex) + "\n");
+		}
+		else
+		{
+			heights.addVal((double)change->height);
 		}
 		arr[locX][locY] = *change;
 	}

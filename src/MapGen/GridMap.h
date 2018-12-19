@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include "vector.h"
+#include "utils/Distribution.h"
 
 
 namespace WorldArchitect
@@ -28,10 +29,13 @@ namespace WorldArchitect
 			/// Updates the GridPoint at the given point with the given GridPoint's values
 			void updateGridPointAt(int x, int y, GridPoint *change);
 			std::vector<Point> getNeighbors(int x, int y);
+			void notifyAssignmentsDone();
+			int getHeightAt(int x, int y) override;
 		private:
 			void initStorage(int numX, int numY, GridPoint *initial);
 			GridPoint **arr;
 			std::shared_mutex *lock;
+			Distribution heights;
 	};
 
 }
