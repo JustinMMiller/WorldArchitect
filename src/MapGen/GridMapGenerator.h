@@ -31,7 +31,6 @@ namespace WorldArchitect
 			int landTiles;
 			Method selection = GridRandom;
 			std::shared_mutex lock;
-			std::vector<Point> getNeighbors(GridMap *map, int x, int y);
 			void makeContinents(GridMap *map, int numContinents, float percentWater);
 			void growLandmass(GridMap *map, std::vector<Point> Landmass, std::vector<Point> Candidates, int numCands, Perlin *perlin);
 		public:

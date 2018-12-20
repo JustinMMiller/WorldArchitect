@@ -5,27 +5,26 @@
 
 using namespace WorldArchitect;
 using namespace std;
+LogManager *LogManager::instance = NULL;
 //Default constructor for a Logger. Ensures that the thread for the Logger 
 //is started on creation.
-Logger::Logger(char *filehandle, LogType t)
+Logger::Logger(std::string filehandle, LogType t)
 	: lock(),
-	fhandle(filehandle),
-	logType(t),
 	messages(),
 	closing(false)
 {
+	fhandle = std::string(filehandle);
+	this->logType = t;
+	this->open();
 }
-
-//This is the single instance of a LogManager allowed. Initially null.
-LogManager* LogManager::instance = NULL;
 
 //This is the thread function for a Logger. This runs in the background and consumes Message
 //objects from the messages queue. It sleeps for 1 second if there are no messages to consume.
 void Logger::threadFunc()
 {
-	printf("Opening %s for logging\n", fhandle);
+	printf("Opening %s for logging\n", fhandle.c_str());
 	ofstream file;
-	file.open(fhandle);
+	file.open(fhandle.c_str());
 	if(!file.is_open())
 	{
 		//This was used for debugging purposes. 
@@ -38,7 +37,7 @@ void Logger::threadFunc()
 		{
 			//This was used for debugging purposes. 
 			//printf("No messages, %s sleeping\n", fhandle);
-			this_thread::sleep_for(chrono::seconds(1));
+			this_thread::sleep_for(chrono::milliseconds(250));
 		}
 		else
 		{
@@ -97,7 +96,7 @@ void Logger::log(string mess)
 		open();
 	}
 	Message newMessage;
-	newMessage.message = mess;
+	newMessage.message = string(mess);
 	newMessage.timestamp = time(0);
 	addMessage(newMessage);
 }
@@ -105,7 +104,9 @@ void Logger::log(string mess)
 //This method starts the thread for the Logger.
 void Logger::open()
 {
+	lock.lock();
 	logThread = new thread(&Logger::threadFunc, this);
+	lock.unlock();
 }
 
 //This is a helper method for ensuring only one of each Logger is created.
@@ -116,8 +117,7 @@ LogType Logger::getType()
 
 //Constructor for LogManager
 LogManager::LogManager()
-	: logs(),
-	m()
+	: logs(), m()
 {
 	logs.push_back(new Logger("Error.log", Error));
 	logs.push_back(new Logger("MapCreation.log", MapCreation));
@@ -126,11 +126,11 @@ LogManager::LogManager()
 //This function returns the only instance of a LogManager, creating it if it is null.
 LogManager *LogManager::getInstance()
 {
-	if(!instance)
+	if(LogManager::instance == NULL)
 	{
-		instance = new LogManager();
+		LogManager::instance = new LogManager();
 	}
-	return instance;
+	return LogManager::instance;
 }
 
 //Empty destructor for LogManager.

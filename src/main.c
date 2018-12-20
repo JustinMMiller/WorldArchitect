@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
 	float percentWater = 0.9;
 	Method gen = GridPerlin;
 	string fname("drawing.bmp");
+	LogManager::getInstance();
 	if(argc < 2)
 	{
 		printf("Note: this program can be run with the following parameters");
@@ -95,7 +96,7 @@ int main(int argc, char *argv[])
 			}
 			else
 			{
-				BMP_SetPixelRGB(bmp, i, j, 0, 200, 0);
+				BMP_SetPixelRGB(bmp, i, j, 0, m->getHeightAt(i, j), 0);
 			}
 		}
 	}

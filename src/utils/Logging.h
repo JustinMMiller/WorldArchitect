@@ -63,7 +63,7 @@ namespace WorldArchitect
 			/// Holds the list of Messages sorted by timestamp.
 			std::priority_queue<Message> messages;
 			/// The file the Logger writes to
-			char *fhandle;
+			std::string fhandle;
 			/// The thread this Logger is running on.
 			std::thread *logThread;
 			/// What type of Logger is this. Each logfile is associated with a different type.
@@ -92,7 +92,7 @@ namespace WorldArchitect
 			 * \param t The type of the Logger. Used when checking if a specific Logger is available.
 			 * 
 			 */
-			Logger(char *filehandle, LogType t);
+			Logger(std::string filehandle, LogType t);
 			/// Destructor. Calls close()
 			~Logger();
 	};
@@ -125,7 +125,7 @@ namespace WorldArchitect
 			/// returns instance if available, instantiates and returns if it doesn't exist yet.
 			static LogManager *getInstance();
 			/// Returns the Logger of the requested type, creating it if it does not already exist. 
-			Logger *getLogger(LogType type);
+			Logger *getLogger(LogType ltype);
 			/// Closes all open Loggers.
 			void closeAllLogs();
 	}; // $$TODO : Should have a lock on the vector of Loggers. Need to figure out lock that'll work. May preemptively initialize every logger then open before returning if they aren't already open.

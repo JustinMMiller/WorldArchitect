@@ -11,62 +11,6 @@ GridMapGenerator::GridMapGenerator(Method method) :lock()
 }
 
 
-///This function returns all the points which are neighbors to the 
-///given coordinate (x, y) in the given GridMap.
-///Note: This method does return the given point in the set of Points it returns.
-vector<Point> GridMapGenerator::getNeighbors(GridMap *map, int x, int y)
-{
-	vector<Point> ret;
-	vector<int> xSet, ySet;
-	if(x == 0)
-	{
-		xSet.push_back(0);
-		xSet.push_back(1);
-		xSet.push_back(map->getSizeX()-1);
-	}
-	else if(x == map->getSizeX()-1)
-	{
-		xSet.push_back(map->getSizeX()-2);
-		xSet.push_back(map->getSizeX()-1);
-		xSet.push_back(0);
-	}
-	else
-	{
-		xSet.push_back(x-1);
-		xSet.push_back(x);
-		xSet.push_back(x+1);
-	}
-	if(y == 0)
-	{
-		ySet.push_back(0);
-		ySet.push_back(1);
-		ySet.push_back(map->getSizeY()-1);
-	}
-	else if(x == map->getSizeY()-1)
-	{
-		ySet.push_back(map->getSizeY()-2);
-		ySet.push_back(map->getSizeY()-1);
-		ySet.push_back(0);
-	}
-	else
-	{
-		ySet.push_back(y-1);
-		ySet.push_back(y);
-		ySet.push_back(y+1);
-	}
-
-	for(int i : xSet)
-	{
-		for(int j : ySet)
-		{
-			Point p;
-			p.x = i;
-			p.y = j;
-			ret.push_back(p);
-		}
-	}
-	return ret;
-}
 
 
 /// \class Compare
@@ -111,6 +55,8 @@ class Compare
 //grows it according to the chosen method. Defaults to GridRandom.
 void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector<Point> Candidates, int numCand, Perlin *perlin)
 {
+	Logger *l = LogManager::getInstance()->getLogger(MapCreation);
+	Perlin *perl = new Perlin();
 	int numCands = numCand;
 	bool canContinue = true;
 	typedef priority_queue<Point, vector<Point>, Compare> mypq;
@@ -147,8 +93,14 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 			addPoint = Candidates[cn];
 		}
 		GridPoint add = map->getGridPointAt(addPoint.x, addPoint.y);
+		double h = perl->noise((double)(add.x / (double)map->getSizeX()) * 10,0, (double)(add.y / (double)map->getSizeY())* 10.0);
+		h = h - floor(h);
+		h = floor(255*h);
+		add.height = h;
+		string s(to_string(add.x) + " " + to_string(add.y) + " " + to_string(add.height) + "\n");
+		l->log(s);
 		bool canAdd = true;
-		vector<Point> neighbors = getNeighbors(map, add.x, add.y);
+		vector<Point> neighbors = map->getNeighbors(add.x, add.y);
 		for(Point p : neighbors)
 		{
 			GridPoint g = map->getGridPointAt(p.x, p.y);
@@ -215,7 +167,7 @@ void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float per
 		cy = rand()%map->getSizeY();
 		if(map->getGridPointAt(cx, cy).LandmassIndex == -1)
 		{
-			vector<Point> neighbors = getNeighbors(map, cx, cy);
+			vector<Point> neighbors = map->getNeighbors(cx, cy);
 			for(Point p : neighbors)
 			{
 				GridPoint g = map->getGridPointAt(p.x, p.y);
@@ -258,6 +210,7 @@ void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float per
 	}
 	delete[] numCands;
 	delete[] threads;
+	map->notifyAssignmentsDone();
 }
 
 /**

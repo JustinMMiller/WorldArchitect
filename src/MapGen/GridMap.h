@@ -1,7 +1,15 @@
 #ifndef GRIDMAP_H
 #define GRIDMAP_H
 #include "Map.h"
-#include "Storage/GridPointStorage.h"
+#include "utils/GridPoint.h"
+#include "utils/Logging.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <shared_mutex>
+#include <string>
+#include <vector>
+#include "vector.h"
+#include "utils/Distribution.h"
 
 
 namespace WorldArchitect
@@ -13,13 +21,22 @@ namespace WorldArchitect
 	class GridMap : public Map
 	{
 		public :
-			GridMap(int x, int y, GridPoint *initial);
+			GridMap(int numX, int numY, GridPoint *initial);
 			~GridMap();
-			GridPoint getGridPointAt(int x, int y);
-			void updateGridPointAt(int x, int y, GridPoint *update);
-			bool isWaterAt(int x, int y); 	//Inherited from Map superclass.
+			bool isWaterAt(int x, int y) override; 	//Inherited from Map superclass.
+			int distToWater(int x, int y) override; 	//Inherited from Map superclass.
+			GridPoint getGridPointAt(int locX, int locY);
+			/// Updates the GridPoint at the given point with the given GridPoint's values
+			void updateGridPointAt(int x, int y, GridPoint *change);
+			std::vector<Point> getNeighbors(int x, int y);
+			void notifyAssignmentsDone();
+			int getHeightAt(int x, int y) override;
 		private:
-			GridPointStorage points;
+			void initStorage(int numX, int numY, GridPoint *initial);
+			GridPoint **arr;
+			std::shared_mutex *lock;
+			Distribution heights;
 	};
+
 }
 #endif
