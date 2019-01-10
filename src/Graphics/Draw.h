@@ -1,6 +1,6 @@
 #ifndef DRAW_H
 #define DRAW_H
-#include "MapGen/vector.h"
+#include "MapGenSystem/vector.h"
 #include "lib/qdbmp/qdbmp.h"
 #include <stdlib.h>
 

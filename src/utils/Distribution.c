@@ -34,7 +34,7 @@ void Distribution::calcStdDev()
 	else
 	{
 		double tot = pow(stdev, 2);
-		tot * size;
+		tot *= size;
 		for(double v : vals)
 		{
 			tot += pow(v - mean, 2);

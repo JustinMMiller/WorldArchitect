@@ -2,7 +2,7 @@
 #include<math.h>
 #include<string>
 #include "lib/qdbmp/qdbmp.h"
-#include "MapGen/GridMapGenerator.h"
+#include "MapGenSystem/GridMapGenerator.h"
 #include "utils/Logging.h"
 
 using namespace std;

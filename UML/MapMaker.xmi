@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI xmi.version="1.2" timestamp="2019-01-09T18:29:12" xmlns:UML="http://schema.omg.org/spec/UML/1.4" verified="false">
+<XMI xmi.version="1.2" timestamp="2019-01-09T18:59:40" xmlns:UML="http://schema.omg.org/spec/UML/1.4" verified="false">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -564,7 +564,7 @@
   </UML:Model>
  </XMI.content>
  <XMI.extensions xmi.extender="umbrello">
-  <docsettings documentation="" uniqueid="u00TngIUlOz4a" viewid="uu7SJBYDeMv1d"/>
+  <docsettings documentation="" uniqueid="u00TngIUlOz4a" viewid="uO1FJJMvQ09Ix"/>
   <listview>
    <listitem id="Views" type="800" open="1">
     <listitem id="Component_View" type="821" open="1">
