@@ -1,20 +1,24 @@
 #ifndef VECTORDEF
 #define VECTORDEF
 
-/// Pair of (x, y) with equivalence operator.
-typedef struct _POINT
+namespace WorldArchitect
 {
-	int x, y;
-	bool operator==(const _POINT& a) const
+	/// Pair of (x, y) with equivalence operator.
+	typedef struct _POINT
 	{
-		return (x == a.x && y == a.y);
-	}
-}Point;
+		int x, y;
+		bool operator==(const _POINT& a) const
+		{
+			return (x == a.x && y == a.y);
+		}
+	}Point;
 
-/// Vector of origin and direction
-typedef struct 
-{
-	Point point;
-	Point direction;
-} Vector;
+	/// Vector of origin and direction
+	typedef struct 
+	{
+		Point point;
+		Point direction;
+	} Vector;
+
+}
 #endif

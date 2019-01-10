@@ -3,10 +3,14 @@
 #include "Graphics/Draw.h"
 
 /// This class will be used for rendering and deciding terrain.
-class Terrain
+
+namespace WorldArchitect
 {
-	public:
-		ColorMap color;
-	//	string name;
-};
+	class Terrain
+	{
+		public:
+			ColorMap color;
+			//	string name;
+	};
+}
 #endif
