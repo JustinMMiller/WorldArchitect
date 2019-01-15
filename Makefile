@@ -37,5 +37,5 @@ $(BUILD_DIR)/%.$(OBJEXT) : $(SOURCE_DIR)/%.$(SRCEXT)
 clean :
 	rm -rf $(BUILD_DIR)
 
-doc:
+doc :
 	doxygen Doxyfile
