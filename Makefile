@@ -10,12 +10,12 @@ OUTPUT_DIR=output
 LIBS=-lm
 SOURCE_DIR=src
 LIB_DIR=$(SOURCE_DIR)/lib
-SRCEXT=c
+SRCEXT=cpp
 OBJEXT=o
 DEPEXT=d
 
-SOURCES=$(shell find $(SOURCE_DIR) -type f -name *.c)
-OBJECTS=$(patsubst $(SOURCE_DIR)/%,$(BUILD_DIR)/%,$(SOURCES:.c=.o))
+SOURCES=$(shell find $(SOURCE_DIR) -type f -name *.cpp)
+OBJECTS=$(patsubst $(SOURCE_DIR)/%,$(BUILD_DIR)/%,$(SOURCES:.cpp=.o))
 
 OBJECT_FILES= test.o qdbmp.o
 
