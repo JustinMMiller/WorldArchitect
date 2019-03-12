@@ -14,9 +14,10 @@ This will describe the purpose of the contents of each folder in this directory.
 	- This folder contains the code relating to Events and the Events system.
 - Graphics
 	- This folder contains code for exporting pictures of Maps. *This needs overhauled*
-- RaceSystem
-	- This folder contains code relating to Races implementations
 - TagSystem
-	- This folder contains code relating to Tags and the Tags system.
-- TerrainSystem
-	- This folder contains code relating to Terrains and the Terrains System.
+	- This folder contains code relating to Tags and the Tags system. 
+- SettlementSystem
+	- This folder contains code relating to Settlements.
+
+### Notes ###
+Previously, there was a TerrainSystem folder and a RaceSystem folder. This functionality has been folded into the TagSystem.
