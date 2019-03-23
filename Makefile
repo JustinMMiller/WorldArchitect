@@ -14,10 +14,9 @@ SRCEXT=cpp
 OBJEXT=o
 DEPEXT=d
 
-SOURCES=$(shell find $(SOURCE_DIR) -type f -name *.cpp)
-OBJECTS=$(patsubst $(SOURCE_DIR)/%,$(BUILD_DIR)/%,$(SOURCES:.cpp=.o))
+SOURCES=$(shell find $(SOURCE_DIR) -type f -name *.$(SRCEXT))
+OBJECTS=$(patsubst $(SOURCE_DIR)/%,$(BUILD_DIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
 
-OBJECT_FILES= test.o qdbmp.o
 
 all : $(TARGET)
 
@@ -36,6 +35,7 @@ $(BUILD_DIR)/%.$(OBJEXT) : $(SOURCE_DIR)/%.$(SRCEXT)
 	
 clean :
 	rm -rf $(BUILD_DIR)
+	rm -rf $(OUTPUT_DIR)
 
 doc :
 	doxygen Doxyfile

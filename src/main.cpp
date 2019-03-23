@@ -4,6 +4,7 @@
 #include "lib/qdbmp/qdbmp.h"
 #include "MapGenSystem/GridMapGenerator.h"
 #include "utils/Logging.h"
+#include "utils/Parameters.h"
 
 using namespace std;
 using namespace WorldArchitect;
