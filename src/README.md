@@ -12,8 +12,8 @@ This will describe the purpose of the contents of each folder in this directory.
 	- This folder will contain language specific binding code for languages which can be used to extend WorldArchitect
 - EventSystem
 	- This folder contains the code relating to Events and the Events system.
-- Graphics
-	- This folder contains code for exporting pictures of Maps. *This needs overhauled*
+- UI
+	- This folder contains code for User Interaction. 
 - TagSystem
 	- This folder contains code relating to Tags and the Tags system. 
 - SettlementSystem
