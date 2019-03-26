@@ -16,7 +16,7 @@ This will describe the purpose of the contents of each folder in this directory.
 	- This folder contains code for User Interaction. 
 - TagSystem
 	- This folder contains code relating to Tags and the Tags system. 
-		- Need way to classify Tags. Three labels : Terrain, HasRequirements (/other Tags/), Other(?)
+		- Need way to classify Tags. Three labels : Terrain, HasRequirements (*other Tags*), Other(?)
 - SettlementSystem
 	- This folder contains code relating to Settlements.
 
