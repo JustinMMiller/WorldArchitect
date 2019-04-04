@@ -1,0 +1,143 @@
+\hypertarget{namespace_world_architect}{}\section{World\+Architect Namespace Reference}
+\label{namespace_world_architect}\index{WorldArchitect@{WorldArchitect}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_world_architect_1_1___m_e_s_s_a_g_e}{\+\_\+\+M\+E\+S\+S\+A\+GE}}
+\begin{DoxyCompactList}\small\item\em Struct to order messages for a \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} so that order is preserved. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_world_architect_1_1___p_o_i_n_t}{\+\_\+\+P\+O\+I\+NT}}
+\begin{DoxyCompactList}\small\item\em Pair of (x, y) with equivalence operator. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_world_architect_1_1_distribution}{Distribution}}
+\begin{DoxyCompactList}\small\item\em This is a utility class for representing normal Gaussian distributions. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_world_architect_1_1_event}{Event}}
+\item 
+class \mbox{\hyperlink{class_world_architect_1_1_grid_map}{Grid\+Map}}
+\begin{DoxyCompactList}\small\item\em This class extends \mbox{\hyperlink{class_world_architect_1_1_map}{Map}}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_world_architect_1_1_grid_map_generator}{Grid\+Map\+Generator}}
+\begin{DoxyCompactList}\small\item\em This class extends \mbox{\hyperlink{class_world_architect_1_1_map_generator}{Map\+Generator}}. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_world_architect_1_1_grid_point}{Grid\+Point}}
+\begin{DoxyCompactList}\small\item\em This struct is how a \mbox{\hyperlink{class_world_architect_1_1_grid_map}{Grid\+Map}} stores its data for each point internally. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}}
+\begin{DoxyCompactList}\small\item\em Each \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} writes it\textquotesingle{}s contents to a specific file. Works asynchronously. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_world_architect_1_1_log_manager}{Log\+Manager}}
+\begin{DoxyCompactList}\small\item\em Used to manage Loggers. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_world_architect_1_1_map}{Map}}
+\item 
+class \mbox{\hyperlink{class_world_architect_1_1_map_generator}{Map\+Generator}}
+\begin{DoxyCompactList}\small\item\em Virtual class to represent a \mbox{\hyperlink{class_world_architect_1_1_map}{Map}} Generator. Extended with other methods. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_world_architect_1_1_parameter}{Parameter}}
+\item 
+class \mbox{\hyperlink{class_world_architect_1_1_perlin}{Perlin}}
+\item 
+class \mbox{\hyperlink{class_world_architect_1_1_settlement}{Settlement}}
+\item 
+class \mbox{\hyperlink{class_world_architect_1_1_tag}{Tag}}
+\item 
+struct \mbox{\hyperlink{struct_world_architect_1_1_vector}{Vector}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{struct_world_architect_1_1_vector}{Vector}} of origin and direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_world_architect_1_1___p_o_i_n_t}{World\+Architect\+::\+\_\+\+P\+O\+I\+NT}} \mbox{\hyperlink{namespace_world_architect_afe984ab247ed2917d3a738c7d83d33ca}{Point}}
+\begin{DoxyCompactList}\small\item\em Pair of (x, y) with equivalence operator. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{struct_world_architect_1_1___m_e_s_s_a_g_e}{World\+Architect\+::\+\_\+\+M\+E\+S\+S\+A\+GE}} \mbox{\hyperlink{namespace_world_architect_a43ffc83197b30a5636e3dc65fba782a1}{Message}}
+\begin{DoxyCompactList}\small\item\em Struct to order messages for a \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} so that order is preserved. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7b}{Method}} \{ \mbox{\hyperlink{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7ba73e5bbdae306a94e7fa95e797dfeb5dd}{Grid\+Random}}, 
+\mbox{\hyperlink{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7ba023523cc51ab3633fe50997121f93a44}{Grid\+Perlin}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8e}{Log\+Type}} \{ \mbox{\hyperlink{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8ea44dfaf0aee28e2619e6bff75a7d60ba2}{Error}}, 
+\mbox{\hyperlink{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8ea7af42ff20928d5e5e2650a97d7e277d0}{Map\+Creation}}
+ \}
+\begin{DoxyCompactList}\small\item\em This enum lists the different types of Loggers. Used for lookup of Loggers when requested with get\+Logger. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_world_architect_1_1_map_generator}{Map\+Generator}} $\ast$ \mbox{\hyperlink{namespace_world_architect_a984fb538abd7ab5b38bbce0a7bfae707}{get\+Map\+Generator}} (\mbox{\hyperlink{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7b}{Method}} method)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{namespace_world_architect_a43ffc83197b30a5636e3dc65fba782a1}\label{namespace_world_architect_a43ffc83197b30a5636e3dc65fba782a1}} 
+\index{WorldArchitect@{WorldArchitect}!Message@{Message}}
+\index{Message@{Message}!WorldArchitect@{WorldArchitect}}
+\subsubsection{\texorpdfstring{Message}{Message}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_world_architect_1_1___m_e_s_s_a_g_e}{World\+Architect\+::\+\_\+\+M\+E\+S\+S\+A\+GE}}  \mbox{\hyperlink{namespace_world_architect_a43ffc83197b30a5636e3dc65fba782a1}{World\+Architect\+::\+Message}}}
+
+
+
+Struct to order messages for a \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} so that order is preserved. 
+
+\mbox{\Hypertarget{namespace_world_architect_afe984ab247ed2917d3a738c7d83d33ca}\label{namespace_world_architect_afe984ab247ed2917d3a738c7d83d33ca}} 
+\index{WorldArchitect@{WorldArchitect}!Point@{Point}}
+\index{Point@{Point}!WorldArchitect@{WorldArchitect}}
+\subsubsection{\texorpdfstring{Point}{Point}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_world_architect_1_1___p_o_i_n_t}{World\+Architect\+::\+\_\+\+P\+O\+I\+NT}} \mbox{\hyperlink{namespace_world_architect_afe984ab247ed2917d3a738c7d83d33ca}{World\+Architect\+::\+Point}}}
+
+
+
+Pair of (x, y) with equivalence operator. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8e}\label{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8e}} 
+\index{WorldArchitect@{WorldArchitect}!LogType@{LogType}}
+\index{LogType@{LogType}!WorldArchitect@{WorldArchitect}}
+\subsubsection{\texorpdfstring{LogType}{LogType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8e}{World\+Architect\+::\+Log\+Type}}}
+
+
+
+This enum lists the different types of Loggers. Used for lookup of Loggers when requested with get\+Logger. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Error@{Error}!WorldArchitect@{WorldArchitect}}\index{WorldArchitect@{WorldArchitect}!Error@{Error}}}\mbox{\Hypertarget{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8ea44dfaf0aee28e2619e6bff75a7d60ba2}\label{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8ea44dfaf0aee28e2619e6bff75a7d60ba2}} 
+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MapCreation@{MapCreation}!WorldArchitect@{WorldArchitect}}\index{WorldArchitect@{WorldArchitect}!MapCreation@{MapCreation}}}\mbox{\Hypertarget{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8ea7af42ff20928d5e5e2650a97d7e277d0}\label{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8ea7af42ff20928d5e5e2650a97d7e277d0}} 
+Map\+Creation&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 32 of file Logging.\+h.
+
+\mbox{\Hypertarget{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7b}\label{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7b}} 
+\index{WorldArchitect@{WorldArchitect}!Method@{Method}}
+\index{Method@{Method}!WorldArchitect@{WorldArchitect}}
+\subsubsection{\texorpdfstring{Method}{Method}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7b}{World\+Architect\+::\+Method}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GridRandom@{GridRandom}!WorldArchitect@{WorldArchitect}}\index{WorldArchitect@{WorldArchitect}!GridRandom@{GridRandom}}}\mbox{\Hypertarget{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7ba73e5bbdae306a94e7fa95e797dfeb5dd}\label{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7ba73e5bbdae306a94e7fa95e797dfeb5dd}} 
+Grid\+Random&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GridPerlin@{GridPerlin}!WorldArchitect@{WorldArchitect}}\index{WorldArchitect@{WorldArchitect}!GridPerlin@{GridPerlin}}}\mbox{\Hypertarget{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7ba023523cc51ab3633fe50997121f93a44}\label{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7ba023523cc51ab3633fe50997121f93a44}} 
+Grid\+Perlin&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 14 of file Map\+Generator.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespace_world_architect_a984fb538abd7ab5b38bbce0a7bfae707}\label{namespace_world_architect_a984fb538abd7ab5b38bbce0a7bfae707}} 
+\index{WorldArchitect@{WorldArchitect}!getMapGenerator@{getMapGenerator}}
+\index{getMapGenerator@{getMapGenerator}!WorldArchitect@{WorldArchitect}}
+\subsubsection{\texorpdfstring{getMapGenerator()}{getMapGenerator()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_world_architect_1_1_map_generator}{Map\+Generator}} $\ast$ World\+Architect\+::get\+Map\+Generator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_world_architect_a9bb4333e2d555bf42bf7d14ec2a2ae7b}{Method}}}]{method }\end{DoxyParamCaption})}
+
+get\+Map\+Generator This method returns an instance of a \mbox{\hyperlink{class_world_architect_1_1_map_generator}{Map\+Generator}} depending on the Method it is passed. 
+
+Definition at line 11 of file Map\+Generator.\+cpp.
+

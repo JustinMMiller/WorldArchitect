@@ -1,0 +1,79 @@
+\hypertarget{class_world_architect_1_1_log_manager}{}\section{World\+Architect\+::Log\+Manager Class Reference}
+\label{class_world_architect_1_1_log_manager}\index{WorldArchitect::LogManager@{WorldArchitect::LogManager}}
+
+
+Used to manage Loggers.  
+
+
+
+
+{\ttfamily \#include $<$Logging.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} $\ast$ \mbox{\hyperlink{class_world_architect_1_1_log_manager_acd160df28467052ffcb0adac0a5ec40b}{get\+Logger}} (\mbox{\hyperlink{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8e}{Log\+Type}} ltype)
+\begin{DoxyCompactList}\small\item\em Returns the \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} of the requested type, creating it if it does not already exist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_architect_1_1_log_manager_aa237d20cfb9e2843bd0f13d70dd5e7f3}{close\+All\+Logs}} ()
+\begin{DoxyCompactList}\small\item\em Closes all open Loggers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_world_architect_1_1_log_manager}{Log\+Manager}} $\ast$ \mbox{\hyperlink{class_world_architect_1_1_log_manager_adc7504f084d4cc05071328651efcb272}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em returns instance if available, instantiates and returns if it doesn\textquotesingle{}t exist yet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Used to manage Loggers. 
+
+This is a singleton to request a \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} of a specific type. This ensures that only one \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} is writing to a given file. 
+
+Definition at line 108 of file Logging.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_world_architect_1_1_log_manager_aa237d20cfb9e2843bd0f13d70dd5e7f3}\label{class_world_architect_1_1_log_manager_aa237d20cfb9e2843bd0f13d70dd5e7f3}} 
+\index{WorldArchitect::LogManager@{WorldArchitect::LogManager}!closeAllLogs@{closeAllLogs}}
+\index{closeAllLogs@{closeAllLogs}!WorldArchitect::LogManager@{WorldArchitect::LogManager}}
+\subsubsection{\texorpdfstring{closeAllLogs()}{closeAllLogs()}}
+{\footnotesize\ttfamily void World\+Architect\+::\+Log\+Manager\+::close\+All\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes all open Loggers. 
+
+\mbox{\Hypertarget{class_world_architect_1_1_log_manager_adc7504f084d4cc05071328651efcb272}\label{class_world_architect_1_1_log_manager_adc7504f084d4cc05071328651efcb272}} 
+\index{WorldArchitect::LogManager@{WorldArchitect::LogManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!WorldArchitect::LogManager@{WorldArchitect::LogManager}}
+\subsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_world_architect_1_1_log_manager}{Log\+Manager}} $\ast$ Log\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+returns instance if available, instantiates and returns if it doesn\textquotesingle{}t exist yet. 
+
+
+
+Definition at line 127 of file Logging.\+cpp.
+
+\mbox{\Hypertarget{class_world_architect_1_1_log_manager_acd160df28467052ffcb0adac0a5ec40b}\label{class_world_architect_1_1_log_manager_acd160df28467052ffcb0adac0a5ec40b}} 
+\index{WorldArchitect::LogManager@{WorldArchitect::LogManager}!getLogger@{getLogger}}
+\index{getLogger@{getLogger}!WorldArchitect::LogManager@{WorldArchitect::LogManager}}
+\subsubsection{\texorpdfstring{getLogger()}{getLogger()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} $\ast$ Log\+Manager\+::get\+Logger (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8e}{Log\+Type}}}]{ltype }\end{DoxyParamCaption})}
+
+
+
+Returns the \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} of the requested type, creating it if it does not already exist. 
+
+
+
+Definition at line 143 of file Logging.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/utils/\mbox{\hyperlink{_logging_8h}{Logging.\+h}}\item 
+src/utils/\mbox{\hyperlink{_logging_8cpp}{Logging.\+cpp}}\end{DoxyCompactItemize}

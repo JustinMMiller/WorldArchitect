@@ -1,0 +1,89 @@
+.TH "WorldArchitect::Map" 3 "Sat Mar 23 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WorldArchitect::Map
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Map\&.h>\fP
+.PP
+Inherited by \fBWorldArchitect::GridMap\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBisWaterAt\fP (int \fBx\fP, int \fBy\fP)=0"
+.br
+.ti -1c
+.RI "virtual int \fBdistToWater\fP (int \fBx\fP, int \fBy\fP)=0"
+.br
+.ti -1c
+.RI "virtual int \fBgetHeightAt\fP (int \fBx\fP, int \fBy\fP)=0"
+.br
+.ti -1c
+.RI "int \fBgetSizeX\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetSizeY\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~Map\fP ()=0"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBx\fP"
+.br
+.ti -1c
+.RI "int \fBy\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file Map\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Map::~Map ()\fC [pure virtual]\fP"
+
+.PP
+Definition at line 4 of file Map\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int WorldArchitect::Map::distToWater (int x, int y)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBWorldArchitect::GridMap\fP\&.
+.SS "virtual int WorldArchitect::Map::getHeightAt (int x, int y)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBWorldArchitect::GridMap\fP\&.
+.SS "int WorldArchitect::Map::getSizeX ()\fC [inline]\fP"
+
+.PP
+Definition at line 15 of file Map\&.h\&.
+.SS "int WorldArchitect::Map::getSizeY ()\fC [inline]\fP"
+
+.PP
+Definition at line 16 of file Map\&.h\&.
+.SS "virtual bool WorldArchitect::Map::isWaterAt (int x, int y)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBWorldArchitect::GridMap\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int WorldArchitect::Map::x\fC [protected]\fP"
+
+.PP
+Definition at line 10 of file Map\&.h\&.
+.SS "int WorldArchitect::Map::y\fC [protected]\fP"
+
+.PP
+Definition at line 10 of file Map\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WorldArchitect from the source code\&.

@@ -1,0 +1,60 @@
+.TH "src/main.cpp" 3 "Sat Mar 23 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/main.cpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include 'lib/qdbmp/qdbmp\&.h'\fP
+.br
+\fC#include 'MapGenSystem/GridMapGenerator\&.h'\fP
+.br
+\fC#include 'utils/Logging\&.h'\fP
+.br
+\fC#include 'utils/Parameters\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "char * \fBgetCmdOption\fP (char **begin, char **end, const string &option)"
+.br
+.ti -1c
+.RI "bool \fBcmdOptionExists\fP (char **begin, char **end, const string &option)"
+.br
+.ti -1c
+.RI "void \fBprintOpts\fP ()"
+.br
+.ti -1c
+.RI "int \fBmain\fP (int argc, char *argv[])"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "bool cmdOptionExists (char ** begin, char ** end, const string & option)"
+
+.PP
+Definition at line 22 of file main\&.cpp\&.
+.SS "char* getCmdOption (char ** begin, char ** end, const string & option)"
+
+.PP
+Definition at line 12 of file main\&.cpp\&.
+.SS "int main (int argc, char * argv[])"
+This is the main function\&. Currently used to manually render image of map generated with the MapGenerator selected\&. This functionality will be moved to Graphics later (probably)\&. 
+.PP
+Definition at line 42 of file main\&.cpp\&.
+.SS "void printOpts ()"
+
+.PP
+Definition at line 27 of file main\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WorldArchitect from the source code\&.

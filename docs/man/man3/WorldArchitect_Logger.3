@@ -1,0 +1,106 @@
+.TH "WorldArchitect::Logger" 3 "Sat Mar 23 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WorldArchitect::Logger \- Each \fBLogger\fP writes it's contents to a specific file\&. Works asynchronously\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Logging\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogType\fP \fBgetType\fP ()"
+.br
+.RI "Returns the type of the \fBLogger\fP\&. Used to determine if specific Loggers have been instantiated by the \fBLogManager\fP\&. "
+.ti -1c
+.RI "void \fBlog\fP (std::string mess)"
+.br
+.RI "This takes in the string from the user, forms it into a Message and passes it to addMessage\&. "
+.ti -1c
+.RI "void \fBclose\fP ()"
+.br
+.RI "This function sets the closing variable and waits for the thread to finish\&. "
+.ti -1c
+.RI "void \fBopen\fP ()"
+.br
+.RI "This function starts the \fBLogger\fP thread\&. "
+.ti -1c
+.RI "\fBLogger\fP (std::string filehandle, \fBLogType\fP t)"
+.br
+.RI "Creates a new \fBLogger\fP\&. "
+.ti -1c
+.RI "\fB~Logger\fP ()"
+.br
+.RI "Destructor\&. Calls \fBclose()\fP "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Each \fBLogger\fP writes it's contents to a specific file\&. Works asynchronously\&. 
+
+This class is accessed through the \fBLogManager\fP singleton\&. Each \fBLogger\fP is responsible for one log file\&. It is designed to be thread safe\&.
+.PP
+\fBAuthor:\fP
+.RS 4
+Justin Miller 
+.RE
+.PP
+
+.PP
+Definition at line 58 of file Logging\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Logger::Logger (std::string filehandle, \fBLogType\fP t)"
+
+.PP
+Creates a new \fBLogger\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilehandle\fP the name of the file to log to\&. 
+.br
+\fIt\fP The type of the \fBLogger\fP\&. Used when checking if a specific \fBLogger\fP is available\&. 
+.RE
+.PP
+
+.PP
+Definition at line 11 of file Logging\&.cpp\&.
+.SS "Logger::~Logger ()"
+
+.PP
+Destructor\&. Calls \fBclose()\fP 
+.PP
+Definition at line 75 of file Logging\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Logger::close ()"
+
+.PP
+This function sets the closing variable and waits for the thread to finish\&. 
+.PP
+Definition at line 82 of file Logging\&.cpp\&.
+.SS "\fBLogType\fP Logger::getType ()"
+
+.PP
+Returns the type of the \fBLogger\fP\&. Used to determine if specific Loggers have been instantiated by the \fBLogManager\fP\&. 
+.PP
+Definition at line 113 of file Logging\&.cpp\&.
+.SS "void Logger::log (std::string mess)"
+
+.PP
+This takes in the string from the user, forms it into a Message and passes it to addMessage\&. 
+.PP
+Definition at line 92 of file Logging\&.cpp\&.
+.SS "void Logger::open ()"
+
+.PP
+This function starts the \fBLogger\fP thread\&. 
+.PP
+Definition at line 105 of file Logging\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WorldArchitect from the source code\&.

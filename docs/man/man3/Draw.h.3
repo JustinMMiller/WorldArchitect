@@ -1,0 +1,43 @@
+.TH "src/Graphics/Draw.h" 3 "Wed Jan 16 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/Graphics/Draw.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'MapGenSystem/vector\&.h'\fP
+.br
+\fC#include 'lib/qdbmp/qdbmp\&.h'\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBColorMap\fP"
+.br
+.RI "Struct to hold RGB values for use with QDBMP library\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBdrawPointsVector\fP (Vector v, BMP *bmp)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void drawPointsVector (Vector v, BMP * bmp)"
+\fBdrawPointsVector(Vector v, BMP *bmp)\fP
+.PP
+This function takes in a Vector (a Vector consists of an origin point and a direction vector (also a Point because math)) and renders it onto the given BMP\&. This function currently does nothing\&. may be used later\&. Was from original tests with qdbmp library\&.
+.PP
+This function currently does nothing\&. may be used later\&. Was from original tests with qdbmp library\&. 
+.PP
+Definition at line 7 of file Draw\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WorldArchitect from the source code\&.

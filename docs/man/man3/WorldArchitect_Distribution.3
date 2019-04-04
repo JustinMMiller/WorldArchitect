@@ -1,0 +1,103 @@
+.TH "WorldArchitect::Distribution" 3 "Sat Mar 23 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WorldArchitect::Distribution \- This is a utility class for representing normal Gaussian distributions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Distribution\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBgetPercentile\fP (double percentile)"
+.br
+.ti -1c
+.RI "double \fBgetMean\fP ()"
+.br
+.RI "returns the mean of the \fBDistribution\fP "
+.ti -1c
+.RI "double \fBgetStdDev\fP ()"
+.br
+.RI "returns the standard deviation of the \fBDistribution\fP "
+.ti -1c
+.RI "void \fBaddVal\fP (double val)"
+.br
+.RI "Adds a single double to the \fBDistribution\fP\&. "
+.ti -1c
+.RI "void \fBaddVals\fP (std::vector< double > newVals)"
+.br
+.RI "Adds a vector of doubles to the \fBDistribution\fP\&. "
+.ti -1c
+.RI "\fBDistribution\fP ()"
+.br
+.ti -1c
+.RI "\fB~Distribution\fP ()"
+.br
+.ti -1c
+.RI "\fBDistribution\fP (double mean, double stdev)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is a utility class for representing normal Gaussian distributions\&. 
+.PP
+Definition at line 13 of file Distribution\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Distribution::Distribution ()"
+
+.PP
+Definition at line 6 of file Distribution\&.cpp\&.
+.SS "Distribution::~Distribution ()"
+
+.PP
+Definition at line 145 of file Distribution\&.cpp\&.
+.SS "Distribution::Distribution (double mean, double stdev)"
+Constructor which allows you to specify the mean and standard deviation\&. Note, that if any values are added to a \fBDistribution\fP created in this way the mean and standard deviation are recalculated\&. 
+.PP
+Definition at line 149 of file Distribution\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Distribution::addVal (double val)"
+
+.PP
+Adds a single double to the \fBDistribution\fP\&. 
+.PP
+Definition at line 113 of file Distribution\&.cpp\&.
+.SS "void Distribution::addVals (std::vector< double > newVals)"
+
+.PP
+Adds a vector of doubles to the \fBDistribution\fP\&. 
+.PP
+Definition at line 129 of file Distribution\&.cpp\&.
+.SS "double Distribution::getMean ()"
+
+.PP
+returns the mean of the \fBDistribution\fP 
+.PP
+Definition at line 95 of file Distribution\&.cpp\&.
+.SS "double Distribution::getPercentile (double percentile)"
+\\function getPercentile 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpercentile\fP - double from (0,1\&.0) This function will return the value in the distribution with the given percentile\&. This won't be a perfectly accurate implementation\&. I will be using the sorted values of the distribution to calculate percentiles\&. 
+.RE
+.PP
+
+.PP
+Definition at line 85 of file Distribution\&.cpp\&.
+.SS "double Distribution::getStdDev ()"
+
+.PP
+returns the standard deviation of the \fBDistribution\fP 
+.PP
+Definition at line 104 of file Distribution\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WorldArchitect from the source code\&.

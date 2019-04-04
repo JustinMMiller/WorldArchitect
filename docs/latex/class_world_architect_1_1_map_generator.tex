@@ -1,0 +1,47 @@
+\hypertarget{class_world_architect_1_1_map_generator}{}\section{World\+Architect\+::Map\+Generator Class Reference}
+\label{class_world_architect_1_1_map_generator}\index{WorldArchitect::MapGenerator@{WorldArchitect::MapGenerator}}
+
+
+Virtual class to represent a \mbox{\hyperlink{class_world_architect_1_1_map}{Map}} Generator. Extended with other methods.  
+
+
+
+
+{\ttfamily \#include $<$Map\+Generator.\+h$>$}
+
+Inheritance diagram for World\+Architect\+::Map\+Generator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_world_architect_1_1_map_generator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_world_architect_1_1_map}{Map}} $\ast$ \mbox{\hyperlink{class_world_architect_1_1_map_generator_a0b9c37985de91e45501f69785a9dde8f}{generate\+Map}} (int mapX, int mapY, int num\+Continents, float percent\+Water)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Virtual class to represent a \mbox{\hyperlink{class_world_architect_1_1_map}{Map}} Generator. Extended with other methods. 
+
+Definition at line 23 of file Map\+Generator.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_world_architect_1_1_map_generator_a0b9c37985de91e45501f69785a9dde8f}\label{class_world_architect_1_1_map_generator_a0b9c37985de91e45501f69785a9dde8f}} 
+\index{WorldArchitect::MapGenerator@{WorldArchitect::MapGenerator}!generateMap@{generateMap}}
+\index{generateMap@{generateMap}!WorldArchitect::MapGenerator@{WorldArchitect::MapGenerator}}
+\subsubsection{\texorpdfstring{generateMap()}{generateMap()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_world_architect_1_1_map}{Map}}$\ast$ World\+Architect\+::\+Map\+Generator\+::generate\+Map (\begin{DoxyParamCaption}\item[{int}]{mapX,  }\item[{int}]{mapY,  }\item[{int}]{num\+Continents,  }\item[{float}]{percent\+Water }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+This function will return a completed \mbox{\hyperlink{class_world_architect_1_1_map}{Map}} object. The program should be blind to the exact implementation used to generate this map. 
+
+Implemented in \mbox{\hyperlink{class_world_architect_1_1_grid_map_generator_a7155387434e6d740c487eeade985f78d}{World\+Architect\+::\+Grid\+Map\+Generator}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Map\+Gen\+System/\mbox{\hyperlink{_map_generator_8h}{Map\+Generator.\+h}}\end{DoxyCompactItemize}

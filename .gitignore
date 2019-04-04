@@ -1,7 +1,4 @@
 *.bmp
 build/
 output/*
-docs/
-node_modules/
 wiki/
-package-lock.json

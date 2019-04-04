@@ -1,0 +1,136 @@
+\hypertarget{class_world_architect_1_1_map}{}\section{World\+Architect\+::Map Class Reference}
+\label{class_world_architect_1_1_map}\index{WorldArchitect::Map@{WorldArchitect::Map}}
+
+
+{\ttfamily \#include $<$Map.\+h$>$}
+
+Inheritance diagram for World\+Architect\+::Map\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_world_architect_1_1_map}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_world_architect_1_1_map_a9bc642e73c611d59d5185c7973c8bd09}{is\+Water\+At}} (int \mbox{\hyperlink{class_world_architect_1_1_map_a1b4cf9200dca11577b4567584a1e62b8}{x}}, int \mbox{\hyperlink{class_world_architect_1_1_map_abd1e160bb8b03587caac4fb508c13307}{y}})=0
+\item 
+virtual int \mbox{\hyperlink{class_world_architect_1_1_map_aeb09ef48c0b9cb0e0ff33b9ca4842829}{dist\+To\+Water}} (int \mbox{\hyperlink{class_world_architect_1_1_map_a1b4cf9200dca11577b4567584a1e62b8}{x}}, int \mbox{\hyperlink{class_world_architect_1_1_map_abd1e160bb8b03587caac4fb508c13307}{y}})=0
+\item 
+virtual int \mbox{\hyperlink{class_world_architect_1_1_map_ac2f33a10a0d3136515552c171d138ef2}{get\+Height\+At}} (int \mbox{\hyperlink{class_world_architect_1_1_map_a1b4cf9200dca11577b4567584a1e62b8}{x}}, int \mbox{\hyperlink{class_world_architect_1_1_map_abd1e160bb8b03587caac4fb508c13307}{y}})=0
+\item 
+int \mbox{\hyperlink{class_world_architect_1_1_map_a6742f753cca8c5bbc84e81187723b753}{get\+SizeX}} ()
+\item 
+int \mbox{\hyperlink{class_world_architect_1_1_map_ae26053131c967d9732e64f27c0765c65}{get\+SizeY}} ()
+\item 
+virtual \mbox{\hyperlink{class_world_architect_1_1_map_add0f5f3c2af54df264d4d257814a58a3}{$\sim$\+Map}} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_world_architect_1_1_map_a1b4cf9200dca11577b4567584a1e62b8}{x}}
+\item 
+int \mbox{\hyperlink{class_world_architect_1_1_map_abd1e160bb8b03587caac4fb508c13307}{y}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 8 of file Map.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_world_architect_1_1_map_add0f5f3c2af54df264d4d257814a58a3}\label{class_world_architect_1_1_map_add0f5f3c2af54df264d4d257814a58a3}} 
+\index{WorldArchitect::Map@{WorldArchitect::Map}!````~Map@{$\sim$Map}}
+\index{````~Map@{$\sim$Map}!WorldArchitect::Map@{WorldArchitect::Map}}
+\subsubsection{\texorpdfstring{$\sim$Map()}{~Map()}}
+{\footnotesize\ttfamily Map\+::$\sim$\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Definition at line 4 of file Map.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_world_architect_1_1_map_aeb09ef48c0b9cb0e0ff33b9ca4842829}\label{class_world_architect_1_1_map_aeb09ef48c0b9cb0e0ff33b9ca4842829}} 
+\index{WorldArchitect::Map@{WorldArchitect::Map}!distToWater@{distToWater}}
+\index{distToWater@{distToWater}!WorldArchitect::Map@{WorldArchitect::Map}}
+\subsubsection{\texorpdfstring{distToWater()}{distToWater()}}
+{\footnotesize\ttfamily virtual int World\+Architect\+::\+Map\+::dist\+To\+Water (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_world_architect_1_1_grid_map_ace26eee126a54bab32beee43a8adb560}{World\+Architect\+::\+Grid\+Map}}.
+
+\mbox{\Hypertarget{class_world_architect_1_1_map_ac2f33a10a0d3136515552c171d138ef2}\label{class_world_architect_1_1_map_ac2f33a10a0d3136515552c171d138ef2}} 
+\index{WorldArchitect::Map@{WorldArchitect::Map}!getHeightAt@{getHeightAt}}
+\index{getHeightAt@{getHeightAt}!WorldArchitect::Map@{WorldArchitect::Map}}
+\subsubsection{\texorpdfstring{getHeightAt()}{getHeightAt()}}
+{\footnotesize\ttfamily virtual int World\+Architect\+::\+Map\+::get\+Height\+At (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_world_architect_1_1_grid_map_a00b9a9b88ebb3272a1cd2438d1c558ab}{World\+Architect\+::\+Grid\+Map}}.
+
+\mbox{\Hypertarget{class_world_architect_1_1_map_a6742f753cca8c5bbc84e81187723b753}\label{class_world_architect_1_1_map_a6742f753cca8c5bbc84e81187723b753}} 
+\index{WorldArchitect::Map@{WorldArchitect::Map}!getSizeX@{getSizeX}}
+\index{getSizeX@{getSizeX}!WorldArchitect::Map@{WorldArchitect::Map}}
+\subsubsection{\texorpdfstring{getSizeX()}{getSizeX()}}
+{\footnotesize\ttfamily int World\+Architect\+::\+Map\+::get\+SizeX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 15 of file Map.\+h.
+
+\mbox{\Hypertarget{class_world_architect_1_1_map_ae26053131c967d9732e64f27c0765c65}\label{class_world_architect_1_1_map_ae26053131c967d9732e64f27c0765c65}} 
+\index{WorldArchitect::Map@{WorldArchitect::Map}!getSizeY@{getSizeY}}
+\index{getSizeY@{getSizeY}!WorldArchitect::Map@{WorldArchitect::Map}}
+\subsubsection{\texorpdfstring{getSizeY()}{getSizeY()}}
+{\footnotesize\ttfamily int World\+Architect\+::\+Map\+::get\+SizeY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 16 of file Map.\+h.
+
+\mbox{\Hypertarget{class_world_architect_1_1_map_a9bc642e73c611d59d5185c7973c8bd09}\label{class_world_architect_1_1_map_a9bc642e73c611d59d5185c7973c8bd09}} 
+\index{WorldArchitect::Map@{WorldArchitect::Map}!isWaterAt@{isWaterAt}}
+\index{isWaterAt@{isWaterAt}!WorldArchitect::Map@{WorldArchitect::Map}}
+\subsubsection{\texorpdfstring{isWaterAt()}{isWaterAt()}}
+{\footnotesize\ttfamily virtual bool World\+Architect\+::\+Map\+::is\+Water\+At (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_world_architect_1_1_grid_map_ae4562a4b2e6db010954854d64d1c5103}{World\+Architect\+::\+Grid\+Map}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_world_architect_1_1_map_a1b4cf9200dca11577b4567584a1e62b8}\label{class_world_architect_1_1_map_a1b4cf9200dca11577b4567584a1e62b8}} 
+\index{WorldArchitect::Map@{WorldArchitect::Map}!x@{x}}
+\index{x@{x}!WorldArchitect::Map@{WorldArchitect::Map}}
+\subsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily int World\+Architect\+::\+Map\+::x\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 10 of file Map.\+h.
+
+\mbox{\Hypertarget{class_world_architect_1_1_map_abd1e160bb8b03587caac4fb508c13307}\label{class_world_architect_1_1_map_abd1e160bb8b03587caac4fb508c13307}} 
+\index{WorldArchitect::Map@{WorldArchitect::Map}!y@{y}}
+\index{y@{y}!WorldArchitect::Map@{WorldArchitect::Map}}
+\subsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily int World\+Architect\+::\+Map\+::y\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 10 of file Map.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Map\+Gen\+System/\mbox{\hyperlink{_map_8h}{Map.\+h}}\item 
+src/\+Map\+Gen\+System/\mbox{\hyperlink{_map_8cpp}{Map.\+cpp}}\end{DoxyCompactItemize}
