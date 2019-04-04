@@ -1,0 +1,60 @@
+.TH "WorldArchitect::LogManager" 3 "Thu Apr 4 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WorldArchitect::LogManager \- Used to manage Loggers\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Logging\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogger\fP * \fBgetLogger\fP (\fBLogType\fP ltype)"
+.br
+.RI "Returns the \fBLogger\fP of the requested type, creating it if it does not already exist\&. "
+.ti -1c
+.RI "void \fBcloseAllLogs\fP ()"
+.br
+.RI "Closes all open Loggers\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBLogManager\fP * \fBgetInstance\fP ()"
+.br
+.RI "returns instance if available, instantiates and returns if it doesn't exist yet\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Used to manage Loggers\&. 
+
+This is a singleton to request a \fBLogger\fP of a specific type\&. This ensures that only one \fBLogger\fP is writing to a given file\&. 
+.PP
+Definition at line 108 of file Logging\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void WorldArchitect::LogManager::closeAllLogs ()"
+
+.PP
+Closes all open Loggers\&. 
+.SS "\fBLogManager\fP * LogManager::getInstance ()\fC [static]\fP"
+
+.PP
+returns instance if available, instantiates and returns if it doesn't exist yet\&. 
+.PP
+Definition at line 127 of file Logging\&.c\&.
+.SS "\fBLogger\fP * LogManager::getLogger (\fBLogType\fP ltype)"
+
+.PP
+Returns the \fBLogger\fP of the requested type, creating it if it does not already exist\&. 
+.PP
+Definition at line 143 of file Logging\&.c\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WorldArchitect from the source code\&.

@@ -1,0 +1,35 @@
+.TH "WorldArchitect::MapGenerator" 3 "Thu Apr 4 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WorldArchitect::MapGenerator \- Virtual class to represent a \fBMap\fP Generator\&. Extended with other methods\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <MapGenerator\&.h>\fP
+.PP
+Inherited by \fBWorldArchitect::GridMapGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBMap\fP * \fBgenerateMap\fP (int mapX, int mapY, int numContinents, float percentWater)=0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Virtual class to represent a \fBMap\fP Generator\&. Extended with other methods\&. 
+.PP
+Definition at line 23 of file MapGenerator\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBMap\fP* WorldArchitect::MapGenerator::generateMap (int mapX, int mapY, int numContinents, float percentWater)\fC [pure virtual]\fP"
+This function will return a completed \fBMap\fP object\&. The program should be blind to the exact implementation used to generate this map\&. 
+.PP
+Implemented in \fBWorldArchitect::GridMapGenerator\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WorldArchitect from the source code\&.

@@ -1,0 +1,53 @@
+.TH "WorldArchitect::_MESSAGE" 3 "Thu Apr 4 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WorldArchitect::_MESSAGE \- Struct to order messages for a \fBLogger\fP so that order is preserved\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Logging\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator<\fP (const struct \fB_MESSAGE\fP &rhs) const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "time_t \fBtimestamp\fP"
+.br
+.ti -1c
+.RI "std::string \fBmessage\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Struct to order messages for a \fBLogger\fP so that order is preserved\&. 
+.PP
+Definition at line 39 of file Logging\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool WorldArchitect::_MESSAGE::operator< (const struct \fB_MESSAGE\fP & rhs) const\fC [inline]\fP"
+
+.PP
+Definition at line 43 of file Logging\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string WorldArchitect::_MESSAGE::message"
+
+.PP
+Definition at line 42 of file Logging\&.h\&.
+.SS "time_t WorldArchitect::_MESSAGE::timestamp"
+
+.PP
+Definition at line 41 of file Logging\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WorldArchitect from the source code\&.

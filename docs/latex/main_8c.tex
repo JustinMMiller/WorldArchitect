@@ -1,0 +1,62 @@
+\hypertarget{main_8c}{}\section{src/main.c File Reference}
+\label{main_8c}\index{src/main.c@{src/main.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}lib/qdbmp/qdbmp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Map\+Gen/\+Grid\+Map\+Generator.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils/\+Logging.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{main_8c_a4542de3a68109a4c2f0d9f0b24fe62fe}{get\+Cmd\+Option}} (char $\ast$$\ast$begin, char $\ast$$\ast$end, const string \&option)
+\item 
+bool \mbox{\hyperlink{main_8c_acb8d5bae311381b5ec6877465cc8535c}{cmd\+Option\+Exists}} (char $\ast$$\ast$begin, char $\ast$$\ast$end, const string \&option)
+\item 
+void \mbox{\hyperlink{main_8c_a8dd6d873c1c9e3c7d5f96dd2fa9ba0e7}{print\+Opts}} ()
+\item 
+int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_acb8d5bae311381b5ec6877465cc8535c}\label{main_8c_acb8d5bae311381b5ec6877465cc8535c}} 
+\index{main.c@{main.c}!cmdOptionExists@{cmdOptionExists}}
+\index{cmdOptionExists@{cmdOptionExists}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{cmdOptionExists()}{cmdOptionExists()}}
+{\footnotesize\ttfamily bool cmd\+Option\+Exists (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{begin,  }\item[{char $\ast$$\ast$}]{end,  }\item[{const string \&}]{option }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a4542de3a68109a4c2f0d9f0b24fe62fe}\label{main_8c_a4542de3a68109a4c2f0d9f0b24fe62fe}} 
+\index{main.c@{main.c}!getCmdOption@{getCmdOption}}
+\index{getCmdOption@{getCmdOption}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{getCmdOption()}{getCmdOption()}}
+{\footnotesize\ttfamily char$\ast$ get\+Cmd\+Option (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{begin,  }\item[{char $\ast$$\ast$}]{end,  }\item[{const string \&}]{option }\end{DoxyParamCaption})}
+
+
+
+Definition at line 11 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+This is the main function. Currently used to manually render image of map generated with the Map\+Generator selected. This functionality will be moved to Graphics later (probably). 
+
+Definition at line 41 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a8dd6d873c1c9e3c7d5f96dd2fa9ba0e7}\label{main_8c_a8dd6d873c1c9e3c7d5f96dd2fa9ba0e7}} 
+\index{main.c@{main.c}!printOpts@{printOpts}}
+\index{printOpts@{printOpts}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{printOpts()}{printOpts()}}
+{\footnotesize\ttfamily void print\+Opts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file main.\+c.
+

@@ -1,0 +1,37 @@
+\hypertarget{_logging_8h}{}\section{src/utils/\+Logging.h File Reference}
+\label{_logging_8h}\index{src/utils/Logging.h@{src/utils/Logging.h}}
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_world_architect_1_1___m_e_s_s_a_g_e}{World\+Architect\+::\+\_\+\+M\+E\+S\+S\+A\+GE}}
+\begin{DoxyCompactList}\small\item\em Struct to order messages for a \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} so that order is preserved. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_world_architect_1_1_logger}{World\+Architect\+::\+Logger}}
+\begin{DoxyCompactList}\small\item\em Each \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} writes it\textquotesingle{}s contents to a specific file. Works asynchronously. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_world_architect_1_1_log_manager}{World\+Architect\+::\+Log\+Manager}}
+\begin{DoxyCompactList}\small\item\em Used to manage Loggers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_world_architect}{World\+Architect}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_world_architect_1_1___m_e_s_s_a_g_e}{World\+Architect\+::\+\_\+\+M\+E\+S\+S\+A\+GE}} \mbox{\hyperlink{namespace_world_architect_a43ffc83197b30a5636e3dc65fba782a1}{World\+Architect\+::\+Message}}
+\begin{DoxyCompactList}\small\item\em Struct to order messages for a \mbox{\hyperlink{class_world_architect_1_1_logger}{Logger}} so that order is preserved. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8e}{World\+Architect\+::\+Log\+Type}} \{ \mbox{\hyperlink{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8ea44dfaf0aee28e2619e6bff75a7d60ba2}{World\+Architect\+::\+Error}}, 
+\mbox{\hyperlink{namespace_world_architect_adf13e54f2c38346ed9d5013cff07fc8ea7af42ff20928d5e5e2650a97d7e277d0}{World\+Architect\+::\+Map\+Creation}}
+ \}
+\begin{DoxyCompactList}\small\item\em This enum lists the different types of Loggers. Used for lookup of Loggers when requested with get\+Logger. \end{DoxyCompactList}\end{DoxyCompactItemize}

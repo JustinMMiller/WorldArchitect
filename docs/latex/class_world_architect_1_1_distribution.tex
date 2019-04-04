@@ -1,0 +1,150 @@
+\hypertarget{class_world_architect_1_1_distribution}{}\section{World\+Architect\+::Distribution Class Reference}
+\label{class_world_architect_1_1_distribution}\index{WorldArchitect::Distribution@{WorldArchitect::Distribution}}
+
+
+This is a utility class for representing normal Gaussian distributions.  
+
+
+
+
+{\ttfamily \#include $<$Distribution.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_world_architect_1_1_distribution_a2a692fa51284c64fd37476e7d6b1376e}{get\+Percentile}} (double percentile)
+\item 
+double \mbox{\hyperlink{class_world_architect_1_1_distribution_ab73d4ad1b0fb08c1fc9fe4c4973ff853}{get\+Mean}} ()
+\begin{DoxyCompactList}\small\item\em returns the mean of the \mbox{\hyperlink{class_world_architect_1_1_distribution}{Distribution}} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_world_architect_1_1_distribution_a835105360b0c7da1a0eec0943963f0d7}{get\+Std\+Dev}} ()
+\begin{DoxyCompactList}\small\item\em returns the standard deviation of the \mbox{\hyperlink{class_world_architect_1_1_distribution}{Distribution}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_architect_1_1_distribution_a406368b730c3a22d7cbc84d1a00f544e}{add\+Val}} (double val)
+\begin{DoxyCompactList}\small\item\em Adds a single double to the \mbox{\hyperlink{class_world_architect_1_1_distribution}{Distribution}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_architect_1_1_distribution_a42bcb9543c69fb3b07f84038a9344dae}{add\+Vals}} (std\+::vector$<$ double $>$ new\+Vals)
+\begin{DoxyCompactList}\small\item\em Adds a vector of doubles to the \mbox{\hyperlink{class_world_architect_1_1_distribution}{Distribution}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_world_architect_1_1_distribution_ada837c9a1da728290d6bbea0bb6b266f}{Distribution}} ()
+\item 
+\mbox{\hyperlink{class_world_architect_1_1_distribution_a68522687bdcca605cce35adb68afdcac}{$\sim$\+Distribution}} ()
+\item 
+\mbox{\hyperlink{class_world_architect_1_1_distribution_ae8b48b89df0dbc5d326b22789a014a3a}{Distribution}} (double mean, double stdev)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is a utility class for representing normal Gaussian distributions. 
+
+Definition at line 13 of file Distribution.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_world_architect_1_1_distribution_ada837c9a1da728290d6bbea0bb6b266f}\label{class_world_architect_1_1_distribution_ada837c9a1da728290d6bbea0bb6b266f}} 
+\index{WorldArchitect::Distribution@{WorldArchitect::Distribution}!Distribution@{Distribution}}
+\index{Distribution@{Distribution}!WorldArchitect::Distribution@{WorldArchitect::Distribution}}
+\subsubsection{\texorpdfstring{Distribution()}{Distribution()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Distribution\+::\+Distribution (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 6 of file Distribution.\+c.
+
+\mbox{\Hypertarget{class_world_architect_1_1_distribution_a68522687bdcca605cce35adb68afdcac}\label{class_world_architect_1_1_distribution_a68522687bdcca605cce35adb68afdcac}} 
+\index{WorldArchitect::Distribution@{WorldArchitect::Distribution}!````~Distribution@{$\sim$Distribution}}
+\index{````~Distribution@{$\sim$Distribution}!WorldArchitect::Distribution@{WorldArchitect::Distribution}}
+\subsubsection{\texorpdfstring{$\sim$Distribution()}{~Distribution()}}
+{\footnotesize\ttfamily Distribution\+::$\sim$\+Distribution (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 145 of file Distribution.\+c.
+
+\mbox{\Hypertarget{class_world_architect_1_1_distribution_ae8b48b89df0dbc5d326b22789a014a3a}\label{class_world_architect_1_1_distribution_ae8b48b89df0dbc5d326b22789a014a3a}} 
+\index{WorldArchitect::Distribution@{WorldArchitect::Distribution}!Distribution@{Distribution}}
+\index{Distribution@{Distribution}!WorldArchitect::Distribution@{WorldArchitect::Distribution}}
+\subsubsection{\texorpdfstring{Distribution()}{Distribution()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Distribution\+::\+Distribution (\begin{DoxyParamCaption}\item[{double}]{mean,  }\item[{double}]{stdev }\end{DoxyParamCaption})}
+
+Constructor which allows you to specify the mean and standard deviation. Note, that if any values are added to a \mbox{\hyperlink{class_world_architect_1_1_distribution}{Distribution}} created in this way the mean and standard deviation are recalculated. 
+
+Definition at line 149 of file Distribution.\+c.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_world_architect_1_1_distribution_a406368b730c3a22d7cbc84d1a00f544e}\label{class_world_architect_1_1_distribution_a406368b730c3a22d7cbc84d1a00f544e}} 
+\index{WorldArchitect::Distribution@{WorldArchitect::Distribution}!addVal@{addVal}}
+\index{addVal@{addVal}!WorldArchitect::Distribution@{WorldArchitect::Distribution}}
+\subsubsection{\texorpdfstring{addVal()}{addVal()}}
+{\footnotesize\ttfamily void Distribution\+::add\+Val (\begin{DoxyParamCaption}\item[{double}]{val }\end{DoxyParamCaption})}
+
+
+
+Adds a single double to the \mbox{\hyperlink{class_world_architect_1_1_distribution}{Distribution}}. 
+
+
+
+Definition at line 113 of file Distribution.\+c.
+
+\mbox{\Hypertarget{class_world_architect_1_1_distribution_a42bcb9543c69fb3b07f84038a9344dae}\label{class_world_architect_1_1_distribution_a42bcb9543c69fb3b07f84038a9344dae}} 
+\index{WorldArchitect::Distribution@{WorldArchitect::Distribution}!addVals@{addVals}}
+\index{addVals@{addVals}!WorldArchitect::Distribution@{WorldArchitect::Distribution}}
+\subsubsection{\texorpdfstring{addVals()}{addVals()}}
+{\footnotesize\ttfamily void Distribution\+::add\+Vals (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{new\+Vals }\end{DoxyParamCaption})}
+
+
+
+Adds a vector of doubles to the \mbox{\hyperlink{class_world_architect_1_1_distribution}{Distribution}}. 
+
+
+
+Definition at line 129 of file Distribution.\+c.
+
+\mbox{\Hypertarget{class_world_architect_1_1_distribution_ab73d4ad1b0fb08c1fc9fe4c4973ff853}\label{class_world_architect_1_1_distribution_ab73d4ad1b0fb08c1fc9fe4c4973ff853}} 
+\index{WorldArchitect::Distribution@{WorldArchitect::Distribution}!getMean@{getMean}}
+\index{getMean@{getMean}!WorldArchitect::Distribution@{WorldArchitect::Distribution}}
+\subsubsection{\texorpdfstring{getMean()}{getMean()}}
+{\footnotesize\ttfamily double Distribution\+::get\+Mean (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns the mean of the \mbox{\hyperlink{class_world_architect_1_1_distribution}{Distribution}} 
+
+
+
+Definition at line 95 of file Distribution.\+c.
+
+\mbox{\Hypertarget{class_world_architect_1_1_distribution_a2a692fa51284c64fd37476e7d6b1376e}\label{class_world_architect_1_1_distribution_a2a692fa51284c64fd37476e7d6b1376e}} 
+\index{WorldArchitect::Distribution@{WorldArchitect::Distribution}!getPercentile@{getPercentile}}
+\index{getPercentile@{getPercentile}!WorldArchitect::Distribution@{WorldArchitect::Distribution}}
+\subsubsection{\texorpdfstring{getPercentile()}{getPercentile()}}
+{\footnotesize\ttfamily double Distribution\+::get\+Percentile (\begin{DoxyParamCaption}\item[{double}]{percentile }\end{DoxyParamCaption})}
+
+\textbackslash{}function get\+Percentile 
+\begin{DoxyParams}{Parameters}
+{\em percentile} & -\/ double from (0,1.\+0) This function will return the value in the distribution with the given percentile. This won\textquotesingle{}t be a perfectly accurate implementation. I will be using the sorted values of the distribution to calculate percentiles. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 85 of file Distribution.\+c.
+
+\mbox{\Hypertarget{class_world_architect_1_1_distribution_a835105360b0c7da1a0eec0943963f0d7}\label{class_world_architect_1_1_distribution_a835105360b0c7da1a0eec0943963f0d7}} 
+\index{WorldArchitect::Distribution@{WorldArchitect::Distribution}!getStdDev@{getStdDev}}
+\index{getStdDev@{getStdDev}!WorldArchitect::Distribution@{WorldArchitect::Distribution}}
+\subsubsection{\texorpdfstring{getStdDev()}{getStdDev()}}
+{\footnotesize\ttfamily double Distribution\+::get\+Std\+Dev (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns the standard deviation of the \mbox{\hyperlink{class_world_architect_1_1_distribution}{Distribution}} 
+
+
+
+Definition at line 104 of file Distribution.\+c.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/utils/\mbox{\hyperlink{_distribution_8h}{Distribution.\+h}}\item 
+src/utils/\mbox{\hyperlink{_distribution_8c}{Distribution.\+c}}\end{DoxyCompactItemize}

@@ -1,0 +1,117 @@
+.TH "WorldArchitect" 3 "Thu Apr 4 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WorldArchitect
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fB_MESSAGE\fP"
+.br
+.RI "Struct to order messages for a \fBLogger\fP so that order is preserved\&. "
+.ti -1c
+.RI "class \fBDistribution\fP"
+.br
+.RI "This is a utility class for representing normal Gaussian distributions\&. "
+.ti -1c
+.RI "class \fBGridMap\fP"
+.br
+.RI "This class extends \fBMap\fP\&. "
+.ti -1c
+.RI "class \fBGridMapGenerator\fP"
+.br
+.RI "This class extends \fBMapGenerator\fP\&. "
+.ti -1c
+.RI "struct \fBGridPoint\fP"
+.br
+.RI "This struct is how a \fBGridMap\fP stores its data for each point internally\&. "
+.ti -1c
+.RI "class \fBLogger\fP"
+.br
+.RI "Each \fBLogger\fP writes it's contents to a specific file\&. Works asynchronously\&. "
+.ti -1c
+.RI "class \fBLogManager\fP"
+.br
+.RI "Used to manage Loggers\&. "
+.ti -1c
+.RI "class \fBMap\fP"
+.br
+.ti -1c
+.RI "class \fBMapGenerator\fP"
+.br
+.RI "Virtual class to represent a \fBMap\fP Generator\&. Extended with other methods\&. "
+.ti -1c
+.RI "class \fBPerlin\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBWorldArchitect::_MESSAGE\fP \fBMessage\fP"
+.br
+.RI "Struct to order messages for a \fBLogger\fP so that order is preserved\&. "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMethod\fP { \fBGridRandom\fP, \fBGridPerlin\fP }"
+.br
+.ti -1c
+.RI "enum \fBLogType\fP { \fBError\fP, \fBMapCreation\fP }"
+.br
+.RI "This enum lists the different types of Loggers\&. Used for lookup of Loggers when requested with getLogger\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMapGenerator\fP * \fBgetMapGenerator\fP (\fBMethod\fP method)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBWorldArchitect::_MESSAGE\fP  \fBWorldArchitect::Message\fP"
+
+.PP
+Struct to order messages for a \fBLogger\fP so that order is preserved\&. 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBWorldArchitect::LogType\fP"
+
+.PP
+This enum lists the different types of Loggers\&. Used for lookup of Loggers when requested with getLogger\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIError \fP\fP
+.TP
+\fB\fIMapCreation \fP\fP
+.PP
+Definition at line 32 of file Logging\&.h\&.
+.SS "enum \fBWorldArchitect::Method\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIGridRandom \fP\fP
+.TP
+\fB\fIGridPerlin \fP\fP
+.PP
+Definition at line 14 of file MapGenerator\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBMapGenerator\fP * WorldArchitect::getMapGenerator (\fBMethod\fP method)"
+getMapGenerator This method returns an instance of a \fBMapGenerator\fP depending on the Method it is passed\&. 
+.PP
+Definition at line 11 of file MapGenerator\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WorldArchitect from the source code\&.

@@ -1,0 +1,105 @@
+.TH "WorldArchitect::GridMap" 3 "Thu Apr 4 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WorldArchitect::GridMap \- This class extends \fBMap\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <GridMap\&.h>\fP
+.PP
+Inherits \fBWorldArchitect::Map\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGridMap\fP (int numX, int numY, \fBGridPoint\fP *initial)"
+.br
+.ti -1c
+.RI "\fB~GridMap\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisWaterAt\fP (int \fBx\fP, int \fBy\fP) override"
+.br
+.ti -1c
+.RI "int \fBdistToWater\fP (int \fBx\fP, int \fBy\fP) override"
+.br
+.ti -1c
+.RI "\fBGridPoint\fP \fBgetGridPointAt\fP (int locX, int locY)"
+.br
+.ti -1c
+.RI "void \fBupdateGridPointAt\fP (int \fBx\fP, int \fBy\fP, \fBGridPoint\fP *change)"
+.br
+.RI "Updates the \fBGridPoint\fP at the given point with the given \fBGridPoint\fP's values\&. "
+.ti -1c
+.RI "std::vector< \fBPoint\fP > \fBgetNeighbors\fP (int \fBx\fP, int \fBy\fP)"
+.br
+.ti -1c
+.RI "void \fBnotifyAssignmentsDone\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetHeightAt\fP (int \fBx\fP, int \fBy\fP) override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This class extends \fBMap\fP\&. 
+
+This class extends \fBMap\fP\&. This is a \fBMap\fP for use with \fBGridPoint\fP generation (Generating terrain at a point by point level\&.) 
+.PP
+Definition at line 21 of file GridMap\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GridMap::GridMap (int numX, int numY, \fBGridPoint\fP * initial)"
+
+.PP
+Definition at line 93 of file GridMap\&.c\&.
+.SS "GridMap::~GridMap ()"
+
+.PP
+Definition at line 180 of file GridMap\&.c\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int GridMap::distToWater (int x, int y)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBWorldArchitect::Map\fP\&.
+.PP
+Definition at line 82 of file GridMap\&.c\&.
+.SS "\fBGridPoint\fP GridMap::getGridPointAt (int locX, int locY)"
+
+.PP
+Definition at line 128 of file GridMap\&.c\&.
+.SS "int GridMap::getHeightAt (int x, int y)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBWorldArchitect::Map\fP\&.
+.PP
+Definition at line 18 of file GridMap\&.c\&.
+.SS "vector< \fBPoint\fP > GridMap::getNeighbors (int x, int y)"
+This function returns all the points which are neighbors to the given coordinate (x, y) in the given \fBGridMap\fP\&. Note: This method does return the given point in the set of Points it returns\&. 
+.PP
+Definition at line 27 of file GridMap\&.c\&.
+.SS "bool GridMap::isWaterAt (int x, int y)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBWorldArchitect::Map\fP\&.
+.PP
+Definition at line 8 of file GridMap\&.c\&.
+.SS "void GridMap::notifyAssignmentsDone ()"
+
+.PP
+Definition at line 13 of file GridMap\&.c\&.
+.SS "void GridMap::updateGridPointAt (int x, int y, \fBGridPoint\fP * change)"
+
+.PP
+Updates the \fBGridPoint\fP at the given point with the given \fBGridPoint\fP's values\&. 
+.PP
+Definition at line 147 of file GridMap\&.c\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for WorldArchitect from the source code\&.
