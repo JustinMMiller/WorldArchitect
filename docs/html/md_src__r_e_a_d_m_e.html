@@ -90,12 +90,15 @@ $(function() {
 <li>This folder contains the code relating to Events and the Events system.</li>
 </ul>
 </li>
-<li>Graphics<ul>
-<li>This folder contains code for exporting pictures of Maps. <em>This needs overhauled</em></li>
+<li>UI<ul>
+<li>This folder contains code for User Interaction.</li>
 </ul>
 </li>
 <li>TagSystem<ul>
-<li>This folder contains code relating to Tags and the Tags system.</li>
+<li>This folder contains code relating to Tags and the Tags system.<ul>
+<li>Need way to classify Tags. Three labels : Terrain, HasRequirements (<em>other Tags</em>), Other(?)</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>SettlementSystem<ul>
@@ -104,7 +107,35 @@ $(function() {
 </li>
 </ul>
 <h3>Notes</h3>
-<p>Previously, there was a TerrainSystem folder and a RaceSystem folder. This functionality has been folded into the TagSystem. </p>
+<p>Previously, there was a TerrainSystem folder and a RaceSystem folder. This functionality has been folded into the TagSystem.</p>
+<h3>Api Notes</h3>
+<ul>
+<li>Maps<ul>
+<li>Has conditions a Settlement or Tag can access</li>
+</ul>
+</li>
+<li>Settlements<ul>
+<li>Has lists of Tags and Events which have occured here.</li>
+</ul>
+</li>
+<li>Events<ul>
+<li>Needs the Tags of a Settlement</li>
+</ul>
+</li>
+<li>Tags<ul>
+<li>Needs to access other tags for a Settlement and/or <a class="el" href="class_map.html" title="This is a virtual class for extension for different Map Generation methods.">Map</a> conditions at that point.</li>
+</ul>
+</li>
+<li>UI<ul>
+<li>Provides methods for requesting user input and potentially displaying information to the user.</li>
+</ul>
+</li>
+<li>Bindings<ul>
+<li>Will provide the language specific configuration/setup/loading for the various bindings for <a class="el" href="namespace_world_architect.html">WorldArchitect</a>.</li>
+<li>The classes which represent those extensions will live in the same folder as the rest, this will just be environment setup code. </li>
+</ul>
+</li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

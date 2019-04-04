@@ -2,7 +2,7 @@ var searchData=
 [
   ['main',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
   ['main_2ecpp',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['map',['Map',['../class_map.html',1,'Map'],['../class_world_architect_1_1_map.html',1,'WorldArchitect::Map']]],
+  ['map',['Map',['../class_world_architect_1_1_map.html',1,'WorldArchitect::Map'],['../class_map.html',1,'Map']]],
   ['map_2ecpp',['Map.cpp',['../_map_8cpp.html',1,'']]],
   ['map_2eh',['Map.h',['../_map_8h.html',1,'']]],
   ['mapcreation',['MapCreation',['../namespace_world_architect.html#adf13e54f2c38346ed9d5013cff07fc8ea7af42ff20928d5e5e2650a97d7e277d0',1,'WorldArchitect']]],

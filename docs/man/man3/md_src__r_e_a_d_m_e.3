@@ -1,4 +1,4 @@
-.TH "md_src__r_e_a_d_m_e" 3 "Sat Mar 23 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
+.TH "md_src__r_e_a_d_m_e" 3 "Thu Apr 4 2019" "Version 0.0.1" "WorldArchitect" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -38,15 +38,19 @@ This folder contains the code relating to Events and the Events system\&.
 .PP
 
 .IP "\(bu" 2
-Graphics
+UI
 .IP "  \(bu" 4
-This folder contains code for exporting pictures of Maps\&. \fIThis needs overhauled\fP
+This folder contains code for User Interaction\&.
 .PP
 
 .IP "\(bu" 2
 TagSystem
 .IP "  \(bu" 4
 This folder contains code relating to Tags and the Tags system\&.
+.IP "    \(bu" 6
+Need way to classify Tags\&. Three labels : Terrain, HasRequirements (\fIother Tags\fP), Other(?)
+.PP
+
 .PP
 
 .IP "\(bu" 2
@@ -59,4 +63,47 @@ This folder contains code relating to Settlements\&.
 .PP
 .SS "Notes"
 .PP
-Previously, there was a TerrainSystem folder and a RaceSystem folder\&. This functionality has been folded into the TagSystem\&. 
+Previously, there was a TerrainSystem folder and a RaceSystem folder\&. This functionality has been folded into the TagSystem\&.
+.PP
+.SS "Api Notes"
+.PP
+.IP "\(bu" 2
+Maps
+.IP "  \(bu" 4
+Has conditions a Settlement or Tag can access
+.PP
+
+.IP "\(bu" 2
+Settlements
+.IP "  \(bu" 4
+Has lists of Tags and Events which have occured here\&.
+.PP
+
+.IP "\(bu" 2
+Events
+.IP "  \(bu" 4
+Needs the Tags of a Settlement
+.PP
+
+.IP "\(bu" 2
+Tags
+.IP "  \(bu" 4
+Needs to access other tags for a Settlement and/or \fBMap\fP conditions at that point\&.
+.PP
+
+.IP "\(bu" 2
+UI
+.IP "  \(bu" 4
+Provides methods for requesting user input and potentially displaying information to the user\&.
+.PP
+
+.IP "\(bu" 2
+Bindings
+.IP "  \(bu" 4
+Will provide the language specific configuration/setup/loading for the various bindings for \fBWorldArchitect\fP\&.
+.IP "  \(bu" 4
+The classes which represent those extensions will live in the same folder as the rest, this will just be environment setup code\&. 
+.PP
+
+.PP
+

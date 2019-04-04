@@ -24,13 +24,16 @@ This will describe the purpose of the contents of each folder in this directory.
 \begin{DoxyItemize}
 \item This folder contains the code relating to Events and the Events system.
 \end{DoxyItemize}
-\item Graphics
+\item UI
 \begin{DoxyItemize}
-\item This folder contains code for exporting pictures of Maps. {\itshape This needs overhauled}
+\item This folder contains code for User Interaction.
 \end{DoxyItemize}
 \item Tag\+System
 \begin{DoxyItemize}
 \item This folder contains code relating to Tags and the Tags system.
+\begin{DoxyItemize}
+\item Need way to classify Tags. Three labels \+: Terrain, Has\+Requirements ({\itshape other Tags}), Other(?)
+\end{DoxyItemize}
 \end{DoxyItemize}
 \item Settlement\+System
 \begin{DoxyItemize}
@@ -40,4 +43,35 @@ This will describe the purpose of the contents of each folder in this directory.
 
 \subsubsection*{Notes}
 
-Previously, there was a Terrain\+System folder and a Race\+System folder. This functionality has been folded into the Tag\+System. 
+Previously, there was a Terrain\+System folder and a Race\+System folder. This functionality has been folded into the Tag\+System.
+
+\subsubsection*{Api Notes}
+
+
+\begin{DoxyItemize}
+\item Maps
+\begin{DoxyItemize}
+\item Has conditions a Settlement or Tag can access
+\end{DoxyItemize}
+\item Settlements
+\begin{DoxyItemize}
+\item Has lists of Tags and Events which have occured here.
+\end{DoxyItemize}
+\item Events
+\begin{DoxyItemize}
+\item Needs the Tags of a Settlement
+\end{DoxyItemize}
+\item Tags
+\begin{DoxyItemize}
+\item Needs to access other tags for a Settlement and/or \mbox{\hyperlink{class_map}{Map}} conditions at that point.
+\end{DoxyItemize}
+\item UI
+\begin{DoxyItemize}
+\item Provides methods for requesting user input and potentially displaying information to the user.
+\end{DoxyItemize}
+\item Bindings
+\begin{DoxyItemize}
+\item Will provide the language specific configuration/setup/loading for the various bindings for \mbox{\hyperlink{namespace_world_architect}{World\+Architect}}.
+\item The classes which represent those extensions will live in the same folder as the rest, this will just be environment setup code. 
+\end{DoxyItemize}
+\end{DoxyItemize}
