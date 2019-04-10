@@ -8,8 +8,6 @@ This will describe the purpose of the contents of each folder in this directory.
 	- This folder contains code relating to Maps and Map Generation.
 - utils
 	- This folder contains utilities and helpers useful in various locations which I wrote.
-- Bindings
-	- This folder will contain language specific binding code for languages which can be used to extend WorldArchitect
 - EventSystem
 	- This folder contains the code relating to Events and the Events system.
 - UI
@@ -35,6 +33,3 @@ Previously, there was a TerrainSystem folder and a RaceSystem folder. This funct
 	- Needs to access other tags for a Settlement and/or Map conditions at that point.
 - UI
 	- Provides methods for requesting user input and potentially displaying information to the user.
-- Bindings
-	- Will provide the language specific configuration/setup/loading for the various bindings for WorldArchitect.
-	- The classes which represent those extensions will live in the same folder as the rest, this will just be environment setup code.
