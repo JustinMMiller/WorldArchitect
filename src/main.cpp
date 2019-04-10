@@ -3,6 +3,7 @@
 #include<string>
 #include "lib/qdbmp/qdbmp.h"
 #include "MapGenSystem/GridMapGenerator.h"
+#include "MapGenSystem/MapGenSystem.h"
 #include "utils/Logging.h"
 #include "utils/Parameters.h"
 
@@ -46,6 +47,7 @@ int main(int argc, char *argv[])
 	float percentWater = 0.9;
 	Method gen = GridPerlin;
 	string fname("drawing.bmp");
+	MapGenSystem *msys = new MapGenSystem();
 	LogManager::getInstance();
 	if(argc < 2)
 	{
@@ -85,7 +87,7 @@ int main(int argc, char *argv[])
 		printf( "An error has occurred: %s (code %d)\n", BMP_GetErrorDescription(), BMP_GetError() );
 	}
 
-	MapGenerator *mapGen = WorldArchitect::getMapGenerator(gen);
+	MapGenerator *mapGen = msys->getMapGenerator(gen);
 	Map *m = mapGen->generateMap(p_width, p_height, numLandmasses, percentWater);
 	for(int i = 0; i < m->getSizeX(); i++)
 	{

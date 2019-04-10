@@ -31,7 +31,5 @@ namespace WorldArchitect
 	};
 
 
-	//This function returns a MapGenerator which uses the requested method.
-	MapGenerator *getMapGenerator(Method method);
 }
 #endif
