@@ -41,7 +41,7 @@ void printOpts()
  */
 int main(int argc, char *argv[])
 {
-	int p_width = 512, p_height = 512;
+	int p_width = 128, p_height = 128;
 	int numLandmasses = 20;
 	float percentWater = 0.9;
 	Method gen = GridPerlin;
@@ -101,7 +101,6 @@ int main(int argc, char *argv[])
 			}
 		}
 	}
-	//drawPointsVector(v, bmp);
 	BMP_WriteFile(bmp, fname.c_str());
 	BMP_Free(bmp);
 	return 0;
