@@ -89,8 +89,7 @@ int main(int argc, char *argv[])
 		printf( "An error has occurred: %s (code %d)\n", BMP_GetErrorDescription(), BMP_GetError() );
 	}
 
-	MapGenerator *mapGen = msys->getMapGenerator(gen);
-	Map *m = mapGen->generateMap(p_width, p_height, numLandmasses, percentWater);
+	Map *m = msys->getMap();
 	std::cout << "Example Tag : " << tsys->checkTag("example", NULL) << std::endl;
 	for(int i = 0; i < m->getSizeX(); i++)
 	{

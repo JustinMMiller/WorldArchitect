@@ -2,6 +2,7 @@
 #define MAPGENSYSTEM_H
 
 #include <thread>
+#include <mutex>
 
 #include "MapGenerator.h"
 #include "GridMapGenerator.h"
@@ -19,6 +20,7 @@ namespace WorldArchitect
 			~MapGenSystem();
 			static MapGenSystem *getInstance();
 		private:
+			std::mutex m;
 			MapGenSystem();
 			Map *map = NULL;
 			void threadFunc(Method method);

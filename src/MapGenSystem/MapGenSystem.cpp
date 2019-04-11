@@ -32,6 +32,7 @@ void MapGenSystem::createMap(Method method)
 }
 
 MapGenSystem::MapGenSystem()
+	: m()
 {
 }
 
@@ -46,6 +47,7 @@ MapGenSystem * MapGenSystem::getInstance()
 
 Map * MapGenSystem::getMap()
 {
+	m.lock();
 	if(this->map == NULL)
 	{
 		this->createMap(GridPerlin);
@@ -54,6 +56,7 @@ Map * MapGenSystem::getMap()
 	{
 		this->t.join();
 	}
+	m.unlock();
 	return this->map;
 }
 
