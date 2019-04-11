@@ -1,11 +1,16 @@
 #ifndef SETTLEMENT_H
 #define SETTLEMENT_H
+
 namespace WorldArchitect
 {
 	class Settlement
 	{
 		public:
-			int x = 10, y = 10;
+			Settlement(int lx, int ly);
+			int getX() {return this->x;};
+			int getY() {return this->y;};
+		private:
+			int x, y;
 	};
 }
 #endif

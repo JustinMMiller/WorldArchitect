@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 	}
 
 	Map *m = msys->getMap();
-	std::cout << "Example Tag : " << tsys->checkTag("example", new Settlement()) << std::endl;
+	std::cout << "Example Tag : " << tsys->checkTag("example", new Settlement(10,10)) << std::endl;
 	for(int i = 0; i < m->getSizeX(); i++)
 	{
 		for(int j = 0; j < m->getSizeY(); j++)

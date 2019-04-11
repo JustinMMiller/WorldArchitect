@@ -30,5 +30,5 @@ void WorldArchitect::prepareLuaState(sol::state *lua)
 			sol::base_classes, sol::bases<Map>());
 	lua->new_usertype<MapGenSystem>("MapSys", "getMap", &MapGenSystem::getMap,
 			"getInstance", &MapGenSystem::getInstance);
-	lua->new_usertype<Settlement>("Settlement", "x", &Settlement::x, "y", &Settlement::y);
+	lua->new_usertype<Settlement>("Settlement", "getX", &Settlement::getX, "getY", &Settlement::getY);
 }
