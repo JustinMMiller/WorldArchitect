@@ -9,7 +9,6 @@
 #include<thread>
 #include<queue>
 #include<random>
-#include "vector.h"
 #include "MapGenerator.h"
 #include "GridMap.h"
 #include "utils/Perlin.h"
@@ -32,7 +31,7 @@ namespace WorldArchitect
 			Method selection = GridRandom;
 			std::shared_mutex lock;
 			void makeContinents(GridMap *map, int numContinents, float percentWater);
-			void growLandmass(GridMap *map, std::vector<Point> Landmass, std::vector<Point> Candidates, int numCands, Perlin *perlin);
+			void growLandmass(GridMap *map, std::vector<GridPoint> Landmass, std::vector<GridPoint> Candidates, int numCands, Perlin *perlin);
 		public:
 			GridMapGenerator(Method method);
 			Map * generateMap(int mapX, int mapY, int numContinents, float percentWater);

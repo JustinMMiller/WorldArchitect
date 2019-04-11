@@ -38,7 +38,7 @@ class Compare
 		}
 		reverse = revparam;
 	}
-	bool operator() (Point& lhs, Point& rhs)
+	bool operator() (GridPoint& lhs, GridPoint& rhs)
 	{
 		double lx, ly, rx, ry;
 		lx = (double)lhs.x / scaleX;
@@ -53,16 +53,16 @@ class Compare
 
 //This is the method each thread runs. It takes in the starter Landmasses and the associated candidates and
 //grows it according to the chosen method. Defaults to GridRandom.
-void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector<Point> Candidates, int numCand, Perlin *perlin)
+void GridMapGenerator::growLandmass(GridMap *map, vector<GridPoint> Landmass, vector<GridPoint> Candidates, int numCand, Perlin *perlin)
 {
 	Logger *l = LogManager::getInstance()->getLogger(MapCreation);
 	Perlin *perl = new Perlin();
 	int numCands = numCand;
 	bool canContinue = true;
-	typedef priority_queue<Point, vector<Point>, Compare> mypq;
+	typedef priority_queue<GridPoint, vector<GridPoint>, Compare> mypq;
 	GridPoint first = map->getGridPointAt(Landmass[0].x, Landmass[0].y);
 	mypq pq(Compare(first.LandmassIndex%2==0, map->getSizeX(), map->getSizeY(), perlin));
-	for(Point p : Candidates)pq.push(p);
+	for(GridPoint p : Candidates)pq.push(p);
 	while(numUsed < landTiles && canContinue)
 	{
 		if(numCands == 0)
@@ -70,14 +70,14 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 			canContinue = false;
 			break;
 		}
-		Point addPoint;
+		GridPoint addPoint;
 		int cn = 0;
 		if(selection == GridPerlin)
 		{
 			cn = ceil((double)numCands * 0.1);
 			int sel = 0;
 			if(cn > 0)sel = rand()%cn;
-			vector<Point> t(sel);
+			vector<GridPoint> t(sel);
 			for(int k = 0; k < sel; k++)
 			{
 				t.push_back(pq.top());
@@ -85,7 +85,7 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 			}
 			addPoint = pq.top();
 			pq.pop();
-			for(Point p : t)pq.push(p);
+			for(GridPoint p : t)pq.push(p);
 		}
 		else
 		{
@@ -100,8 +100,8 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 		string s(to_string(add.x) + " " + to_string(add.y) + " " + to_string(add.height) + "\n");
 		l->log(s);
 		bool canAdd = true;
-		vector<Point> neighbors = map->getNeighbors(add.x, add.y);
-		for(Point p : neighbors)
+		vector<GridPoint> neighbors = map->getNeighbors(add.x, add.y);
+		for(GridPoint p : neighbors)
 		{
 			GridPoint g = map->getGridPointAt(p.x, p.y);
 			if(g.LandmassIndex == -1)
@@ -136,7 +136,7 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 		{
 		}
 		else{
-			vector<Point> candUpdate;
+			vector<GridPoint> candUpdate;
 			copy(Candidates.begin(), Candidates.begin()+cn, back_inserter(candUpdate));
 			copy(Candidates.begin()+cn+1, Candidates.end(), back_inserter(candUpdate));
 			Candidates = candUpdate;
@@ -150,10 +150,10 @@ void GridMapGenerator::growLandmass(GridMap *map, vector<Point> Landmass, vector
 //to grow each one in a thread of it's own.
 void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float percentWater)
 {
-	vector<vector<Point> > Landmasses(numContinents, vector<Point>());
-	Landmasses.push_back(vector<Point>());
-	vector<vector<Point> > Candidates(numContinents, vector<Point>());
-	Candidates.push_back(vector<Point>());
+	vector<vector<GridPoint> > Landmasses(numContinents, vector<GridPoint>());
+	Landmasses.push_back(vector<GridPoint>());
+	vector<vector<GridPoint> > Candidates(numContinents, vector<GridPoint>());
+	Candidates.push_back(vector<GridPoint>());
 	int *numCands = new int[numContinents];
 	int cx, cy;
 	numUsed = 0;
@@ -167,8 +167,8 @@ void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float per
 		cy = rand()%map->getSizeY();
 		if(map->getGridPointAt(cx, cy).LandmassIndex == -1)
 		{
-			vector<Point> neighbors = map->getNeighbors(cx, cy);
-			for(Point p : neighbors)
+			vector<GridPoint> neighbors = map->getNeighbors(cx, cy);
+			for(GridPoint p : neighbors)
 			{
 				GridPoint g = map->getGridPointAt(p.x, p.y);
 				if(g.LandmassIndex == -1)
@@ -183,12 +183,12 @@ void GridMapGenerator::makeContinents(GridMap *map, int numContinents, float per
 			update.LandmassIndex = continentsMade;
 			update.water = false;
 			map->updateGridPointAt(cx, cy, &update);
-			Point newLand;
+			GridPoint newLand;
 			newLand.x = cx;
 			newLand.y = cy;
-			vector<Point>::iterator position = std::find(Candidates[continentsMade].begin(), Candidates[continentsMade].end(), newLand);
+			vector<GridPoint>::iterator position = std::find(Candidates[continentsMade].begin(), Candidates[continentsMade].end(), newLand);
 			Landmasses[continentsMade].push_back(newLand);
-			vector<Point> candUpdate;
+			vector<GridPoint> candUpdate;
 			copy(Candidates[continentsMade].begin(), position, back_inserter(candUpdate));
 			copy(position + 1, Candidates[continentsMade].end(), back_inserter(candUpdate));
 			Candidates[continentsMade] = candUpdate;

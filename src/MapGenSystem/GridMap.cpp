@@ -24,9 +24,9 @@ int GridMap::getHeightAt(int x, int y)
 ///This function returns all the points which are neighbors to the 
 ///given coordinate (x, y) in the given GridMap.
 ///Note: This method does return the given point in the set of Points it returns.
-vector<Point> GridMap::getNeighbors(int x, int y)
+vector<GridPoint> GridMap::getNeighbors(int x, int y)
 {
-	vector<Point> ret;
+	vector<GridPoint> ret;
 	vector<int> xSet, ySet;
 	if(x == 0)
 	{
@@ -69,7 +69,7 @@ vector<Point> GridMap::getNeighbors(int x, int y)
 	{
 		for(int j : ySet)
 		{
-			Point p;
+			GridPoint p;
 			p.x = i;
 			p.y = j;
 			ret.push_back(p);

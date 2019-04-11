@@ -8,7 +8,6 @@
 #include <shared_mutex>
 #include <string>
 #include <vector>
-#include "vector.h"
 #include "utils/Distribution.h"
 
 
@@ -28,7 +27,7 @@ namespace WorldArchitect
 			GridPoint getGridPointAt(int locX, int locY);
 			/// Updates the GridPoint at the given point with the given GridPoint's values
 			void updateGridPointAt(int x, int y, GridPoint *change);
-			std::vector<Point> getNeighbors(int x, int y);
+			std::vector<GridPoint> getNeighbors(int x, int y);
 			void notifyAssignmentsDone();
 			int getHeightAt(int x, int y) override;
 		private:

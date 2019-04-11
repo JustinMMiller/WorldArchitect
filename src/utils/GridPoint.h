@@ -16,7 +16,7 @@ namespace WorldArchitect
 	 * @var GridPoint::water : is the point water.
 	 * @var GridPoint::TerrainIndex : lookup for what Terrain the point is categorized as.
 	 */
-	typedef struct 
+	typedef struct _GridPoint
 	{
 		int x, y;
 		float height;
@@ -24,6 +24,18 @@ namespace WorldArchitect
 		int LandmassIndex;
 		bool water;
 		int TerrainIndex;
+		bool operator==(const _GridPoint& a) const
+		{
+			return (
+					x == a.x &&
+					y == a.y &&
+					height == a.height &&
+					ClimateIndex == a.ClimateIndex &&
+					LandmassIndex == a.LandmassIndex &&
+					water == a.water &&
+					TerrainIndex == a.TerrainIndex
+			       );
+		}
 	} GridPoint;
 }
 #endif
