@@ -23,6 +23,10 @@ This will describe the purpose of the contents of each folder in this directory.
 ### Notes ###
 Previously, there was a TerrainSystem folder and a RaceSystem folder. This functionality has been folded into the TagSystem.
 
+Plan for later : Once I get to serializing Maps and whatnot, a Map will have to provide a method to serialize itself to and from 
+some markup language (JSON?). This will mean I can control file system io and I won't have to worry about allowing arbitrary scripts
+arbitrary file access.
+
 
 ### Api Notes ###
 - Maps

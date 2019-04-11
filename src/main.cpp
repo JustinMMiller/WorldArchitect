@@ -6,6 +6,7 @@
 #include "MapGenSystem/MapGenSystem.h"
 #include "utils/Logging.h"
 #include "utils/Parameters.h"
+#include "TagSystem/TagSystem.h"
 
 using namespace std;
 using namespace WorldArchitect;
@@ -47,7 +48,8 @@ int main(int argc, char *argv[])
 	float percentWater = 0.9;
 	Method gen = GridPerlin;
 	string fname("drawing.bmp");
-	MapGenSystem *msys = new MapGenSystem();
+	MapGenSystem *msys = MapGenSystem::getInstance();
+	TagSystem *tsys = new TagSystem();
 	LogManager::getInstance();
 	if(argc < 2)
 	{
@@ -89,6 +91,7 @@ int main(int argc, char *argv[])
 
 	MapGenerator *mapGen = msys->getMapGenerator(gen);
 	Map *m = mapGen->generateMap(p_width, p_height, numLandmasses, percentWater);
+	std::cout << "Example Tag : " << tsys->checkTag("example", NULL) << std::endl;
 	for(int i = 0; i < m->getSizeX(); i++)
 	{
 		for(int j = 0; j < m->getSizeY(); j++)

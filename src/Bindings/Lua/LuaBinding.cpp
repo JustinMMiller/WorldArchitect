@@ -12,10 +12,10 @@
 #include "utils/GridPoint.h"
 #include "utils/Logging.h"
 
-using namespace WorldArchitect;
 
-void prepareLuaState(sol::state *lua)
+void WorldArchitect::prepareLuaState(sol::state *lua)
 {
+	lua->open_libraries(sol::lib::base);
 	lua->new_usertype<Map>("Map", "isWaterAt", &Map::isWaterAt, 
 			"new", sol::no_constructor,
 			"distToWater", &Map::distToWater, 

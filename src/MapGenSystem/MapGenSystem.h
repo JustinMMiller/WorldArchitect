@@ -17,10 +17,13 @@ namespace WorldArchitect
 			void createMap(Method method);
 			Map *getMap();
 			~MapGenSystem();
+			static MapGenSystem *getInstance();
 		private:
+			MapGenSystem();
 			Map *map = NULL;
 			void threadFunc(Method method);
 			std::thread t;
+			static MapGenSystem *instance;
 	};
 }
 

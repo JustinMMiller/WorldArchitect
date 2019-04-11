@@ -2,7 +2,7 @@
 
 using namespace WorldArchitect;
 
-
+MapGenSystem * MapGenSystem::instance = NULL;
 
 /**
  * getMapGenerator
@@ -29,6 +29,19 @@ MapGenerator * MapGenSystem::getMapGenerator(Method method)
 void MapGenSystem::createMap(Method method)
 {
 	this->t = std::thread(&MapGenSystem::threadFunc, this, method);
+}
+
+MapGenSystem::MapGenSystem()
+{
+}
+
+MapGenSystem * MapGenSystem::getInstance()
+{
+	if(MapGenSystem::instance == NULL)
+	{
+		MapGenSystem::instance = new MapGenSystem();
+	}
+	return MapGenSystem::instance;
 }
 
 Map * MapGenSystem::getMap()
