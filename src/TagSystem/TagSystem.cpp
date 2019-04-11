@@ -5,7 +5,7 @@ using namespace WorldArchitect;
 TagSystem::TagSystem()
 	: tags()
 {
-	tags.push_back(new Tag("example", "test.lua"));
+	tags.push_back(new Tag("example", "Tags/test.lua"));
 }
 
 void TagSystem::loadTags()

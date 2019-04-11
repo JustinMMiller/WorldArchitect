@@ -35,7 +35,8 @@ $(BUILD_DIR)/%.$(OBJEXT) : $(SOURCE_DIR)/%.$(SRCEXT)
 	
 clean :
 	rm -rf $(BUILD_DIR)
-	rm -rf $(OUTPUT_DIR)
+	rm -rf $(OUTPUT_DIR)/$(TARGET)
+	rm -rf $(OUTPUT_DIR)/*.log
 
 doc :
 	doxygen Doxyfile
