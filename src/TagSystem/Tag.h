@@ -8,6 +8,8 @@
 
 namespace WorldArchitect
 {
+	/// \class Tag
+	/// \brief This class associates a tag string with a script which checks to see if a Settlement meets the condition for said Tag.
 	class Tag
 	{
 		public:
