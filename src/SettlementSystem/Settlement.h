@@ -4,6 +4,8 @@ namespace WorldArchitect
 {
 	class Settlement
 	{
+		public:
+			int x = 10, y = 10;
 	};
 }
 #endif

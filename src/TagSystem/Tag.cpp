@@ -6,7 +6,7 @@ using namespace WorldArchitect;
 
 bool Tag::meetsCondition(Settlement *s)
 {
-	return lua["testFunc"](MapGenSystem::getInstance()->getMap());
+	return lua["testFunc"](s);
 }
 
 Tag::Tag(std::string tagName, std::string scriptFile)
