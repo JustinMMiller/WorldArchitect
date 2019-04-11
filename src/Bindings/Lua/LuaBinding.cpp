@@ -13,6 +13,10 @@
 #include "utils/Logging.h"
 
 
+/**
+ * This function takes in a sol::state and does all the necessary usertype
+ * declarations for it to work with other parts of the program.
+ */
 void WorldArchitect::prepareLuaState(sol::state *lua)
 {
 	lua->open_libraries(sol::lib::base);
