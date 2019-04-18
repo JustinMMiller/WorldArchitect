@@ -19,6 +19,9 @@ This will describe the purpose of the contents of each folder in this directory.
 		- Need way to classify Tags. Three labels : Terrain, HasRequirements (*other Tags*), Other(?)
 - SettlementSystem
 	- This folder contains code relating to Settlements.
+- SQLite
+	- This folder contains code for the SQLite storage system. Many systems will be switching to using this behind the scenes.
+	- Schema : ![WorldArchitect Schema](../schema.png)
 
 ### Notes ###
 Previously, there was a TerrainSystem folder and a RaceSystem folder. This functionality has been folded into the TagSystem.
