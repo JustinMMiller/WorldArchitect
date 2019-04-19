@@ -115,7 +115,6 @@ void GridMap::initStorage(int numX, int numY, GridPoint *initial)
 			arr[i][j].x = i;
 			arr[i][j].y = j;
 			arr[i][j].height = initial->height;
-			arr[i][j].ClimateIndex = initial->ClimateIndex;
 			arr[i][j].LandmassIndex = initial->LandmassIndex;
 			arr[i][j].water = initial->water;
 			arr[i][j].TerrainIndex = initial->TerrainIndex;

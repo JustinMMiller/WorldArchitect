@@ -20,7 +20,6 @@ namespace WorldArchitect
 	{
 		int x, y;
 		float height;
-		int ClimateIndex;
 		int LandmassIndex;
 		bool water;
 		int TerrainIndex;
@@ -30,7 +29,6 @@ namespace WorldArchitect
 					x == a.x &&
 					y == a.y &&
 					height == a.height &&
-					ClimateIndex == a.ClimateIndex &&
 					LandmassIndex == a.LandmassIndex &&
 					water == a.water &&
 					TerrainIndex == a.TerrainIndex

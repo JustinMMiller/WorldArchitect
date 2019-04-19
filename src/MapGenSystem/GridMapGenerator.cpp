@@ -223,7 +223,6 @@ Map * GridMapGenerator::generateMap(int mapX, int mapY, int numContinents, float
 	t->x = 0;
 	t->y = 0;
 	t->height = 0.0f;
-	t->ClimateIndex = 0;
 	t->LandmassIndex = -1;
 	t->water = true;
 	t->TerrainIndex = 0;
