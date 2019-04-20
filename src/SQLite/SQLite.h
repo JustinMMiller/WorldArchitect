@@ -1,10 +1,23 @@
 #ifndef SQLITE_H
 #define SQLITE_H
 
-#include "libs/sqlite_orm/sqlite_orm.h"
+#include <mutex>
+#include <cstdarg>
+#include <vector>
+#include <sqlite3pp.h>
 
-class SQLite
+
+namespace WorldArchitect
 {
+	class SQLite
+	{
+		public:
+			SQLite *getInstance();
+		private:
+			SQLite();
+			static SQLite *instance;
+			std::mutex lock;
+	};
 }
 
 #endif

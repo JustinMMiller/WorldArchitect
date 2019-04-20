@@ -3,7 +3,7 @@ LINKER=g++
 INC_DIR=src
 INCLUDES=-I. -I$(INC_DIR)
 CFLAGS=-I. -c -std=c++17 -g -Wall $(INCLUDES)
-LINKARGS=-lm -g -pthread
+LINKARGS=-lm -g -pthread -lsqlite3pp -lsqlite3
 TARGET=out
 BUILD_DIR=build
 OUTPUT_DIR=output
