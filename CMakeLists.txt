@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 3.14)
 
 project(WorldArchitect)
 
@@ -7,6 +7,8 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(Threads REQUIRED)
+
+find_package(SQLite3 REQUIRED)
 
 file(GLOB_RECURSE WA_SOURCES src/**/*.cpp)
 
