@@ -22,6 +22,7 @@ all : $(TARGET)
 
 $(TARGET) : $(OBJECTS)
 	mkdir -p $(OUTPUT_DIR)
+	cp -r Scripts/Tags $(OUTPUT_DIR)
 	$(LINKER) $(LINKARGS) -g $^ -o $(OUTPUT_DIR)/$@ $(LIBS) 
 
 $(BUILD_DIR)/%.$(OBJEXT) : $(SOURCE_DIR)/%.$(SRCEXT)
