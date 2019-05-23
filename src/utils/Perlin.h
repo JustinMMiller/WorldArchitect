@@ -24,9 +24,9 @@ namespace WorldArchitect
 			double fade(double t);
 			double lerp(double t, double a, double b);
 			double grad(int hash, double x, double y, double z);
+			int fidelity;
 			double amp;
 			void initP(unsigned int seed);
-			int fidelity;
 	};
 }
 #endif
