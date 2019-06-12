@@ -3,3 +3,4 @@ build/
 output/*
 wiki/
 docs/*
+.vscode/*
