@@ -5,7 +5,7 @@
 #include "MapGenSystem/GridMapGenerator.h"
 #include "MapGenSystem/MapGenSystem.h"
 #include "utils/Logging.h"
-#include "utils/Parameters.h"
+#include "utils/Parameter.h"
 #include "TagSystem/TagSystem.h"
 
 using namespace std;

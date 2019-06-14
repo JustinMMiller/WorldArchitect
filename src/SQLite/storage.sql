@@ -19,25 +19,11 @@ CREATE TABLE Landmass (
 	FOREIGN KEY (TagName) REFERENCES Tag(TagName)
 );
 
-CREATE TABLE GridPoint (
-	x integer,
-	y integer,
-	Terrain text,
-	Landmass text,
-	water integer NOT NULL,
-	height real NOT NULL,
-	PRIMARY KEY (x, y),
-	FOREIGN KEY (Terrain) REFERENCES Terrain (TagName),
-	FOREIGN KEY (Landmass) REFERENCES Landmass (TagName)
-);
-
 CREATE TABLE Settlement (
 	SettlementID integer PRIMARY KEY AUTOINCREMENT,
 	SettlementName text,
 	x integer NOT NULL,
 	y integer NOT NULL,
-	FOREIGN KEY (x) REFERENCES GridPoint (x),
-	FOREIGN KEY (y) REFERENCES GridPoint (y)
 );
 
 CREATE TABLE SettlementTags (
@@ -55,4 +41,10 @@ CREATE TABLE SettlementEvents (
 	FOREIGN KEY (SettlementID) REFERENCES Settlement (SettlementID),
 	FOREIGN KEY (EventID) REFERENCES Event(EventID),
 	PRIMARY KEY (SettlementID, EventID, DateOccured)
+);
+
+CREATE TABLE Parameters (
+	Name text, 
+	Value text,
+	PRIMARY KEY (Name)
 );

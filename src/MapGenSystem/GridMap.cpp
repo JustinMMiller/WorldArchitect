@@ -20,6 +20,10 @@ int GridMap::getHeightAt(int x, int y)
 	return (int)round(getGridPointAt(x, y).height);
 }
 
+void GridMap::populate()
+{
+}
+
 
 ///This function returns all the points which are neighbors to the 
 ///given coordinate (x, y) in the given GridMap.

@@ -1,17 +1,22 @@
 # README #
-This repo is for my work on a map and history generator. The goal is to generate a map with various settlements, kingdoms, and geographical features, and simulate time passing to create locations with history for use in fantasy rpgs
+This repo is for my work on a map and history generator. 
+The goal is to generate a map with various settlements, kingdoms, 
+and geographical features, and simulate time passing to create 
+locations with history for use in fantasy rpgs. Also, because 
+I'm silly, further goal is to design it in such a way that different
+parts of it can be extended.
 
 ### MapMaker ###
 * Terrain
 	- Outline
-	-  Heightmap
-	-  Rivers, lakes, oceans
-	-  Mountains, hills
-	-  Volcanoes
-	-  Climate
+	- Heightmap
+	- Rivers, lakes, oceans
+	- Mountains, hills
+	- Volcanoes
+	- Climate
 * Terrain Deformation
-	-  Craters
-	-  Volcano formation
+	- Craters
+	- Volcano formation
 	- Mountain formation
 	- Fissures
 * Locations

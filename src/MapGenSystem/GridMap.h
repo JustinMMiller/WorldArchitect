@@ -24,12 +24,13 @@ namespace WorldArchitect
 			~GridMap();
 			bool isWaterAt(int x, int y) override; 	//Inherited from Map superclass.
 			int distToWater(int x, int y) override; 	//Inherited from Map superclass.
+			int getHeightAt(int x, int y) override;
+			void populate() override;
 			GridPoint getGridPointAt(int locX, int locY);
 			/// Updates the GridPoint at the given point with the given GridPoint's values
 			void updateGridPointAt(int x, int y, GridPoint *change);
 			std::vector<GridPoint> getNeighbors(int x, int y);
 			void notifyAssignmentsDone();
-			int getHeightAt(int x, int y) override;
 		private:
 			void initStorage(int numX, int numY, GridPoint *initial);
 			GridPoint **arr;
