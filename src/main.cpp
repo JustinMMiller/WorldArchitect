@@ -34,6 +34,7 @@ void printOpts()
 	printf("-l <number> to indicate number of landmasses to generate\n");
 	printf("-s <number> to indicate size of map (currently supports square maps)\n");
 	printf("-g <method> to choose generation method (ie GridPerlin, GridRandom)\n");
+	printf("-h Display this help menu\n");
 }
 
 /** 
@@ -51,13 +52,15 @@ int main(int argc, char *argv[])
 	MapGenSystem *msys = MapGenSystem::getInstance();
 	TagSystem *tsys = new TagSystem();
 	LogManager::getInstance();
-	if(argc < 2)
-	{
-		printf("Note: this program can be run with the following parameters");
-		printOpts();
-	}
+	std::cout << argv[0] << std::endl;
+	if(argc < 2) {}
 	else
 	{
+		if(cmdOptionExists(argv, argv+argc, "-h"))
+		{
+			printOpts();
+			return 0;
+		}
 		if(cmdOptionExists(argv, argv+argc, "-f"))
 		{
 			fname = string(getCmdOption(argv, argv+argc, "-f"));
@@ -82,15 +85,19 @@ int main(int argc, char *argv[])
 			else if(res == "GridRandom")gen = GridRandom;
 		}
 	}
+
+	Map *m = msys->getMap();
+
 	BMP *bmp;
-	bmp = BMP_Create(p_width, p_height, 24);
+	bmp = BMP_Create(m->getSizeX(), m->getSizeY(), 24);
 	if(BMP_GetError() != BMP_OK)
 	{
 		printf( "An error has occurred: %s (code %d)\n", BMP_GetErrorDescription(), BMP_GetError() );
 	}
 
-	Map *m = msys->getMap();
+	//Test to make sure that tags are working. Will be removed later.
 	std::cout << "Example Tag : " << tsys->checkTag("example", new Settlement(10,10)) << std::endl;
+
 	for(int i = 0; i < m->getSizeX(); i++)
 	{
 		for(int j = 0; j < m->getSizeY(); j++)
