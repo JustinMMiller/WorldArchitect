@@ -5,13 +5,23 @@
 
 namespace WorldArchitect
 {
-	template<typename T> class Parameter
+	enum ParamType
+	{
+		IntParam,
+		StringParam,
+		RealParam
+	};
+
+	class Parameter
 	{
 		public:
-			void setValue(T newval) {value = newval;}
-			T getValue() {return value;}
+			void setValue(std::string newval) {value = newval;}
+			std::string getValue() const {return value;}
+			Parameter(std::string v, ParamType t) : value(v), type(t) {}
+			Parameter() {}
 		private:
-			T value;
+			std::string value;
+			ParamType type;
 	};
 }
 #endif

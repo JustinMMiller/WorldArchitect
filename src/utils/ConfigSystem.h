@@ -1,6 +1,7 @@
 #ifndef CONFIGSYSTEM_H
 #define CONFIGSYSTEM_H
 
+#include <shared_mutex>
 #include <string>
 #include <unordered_map>
 
@@ -11,14 +12,17 @@ namespace WorldArchitect
 	class ConfigSystem
 	{
 		public:
-			template <typename T> void addParameter(std::string name, T value = T());
-			template <typename T> T getParameterValue(std::string name);
-			template <typename T> void setParameterValue(std::string name, T newValue);
+			void addParameter(std::string name, ParamType t, std::string value = std::string());
+			std::string getParameterValue(std::string name);
+			void setParameterValue(std::string name, std::string newValue);
 			std::string listParams();
-			ConfigSystem();
 			~ConfigSystem();
+			static ConfigSystem * getInstance();
 		private:
-			//std::unordered_map<std::string, Parameter* > params;
+			ConfigSystem();
+			std::unordered_map<std::string, Parameter > params;
+			static ConfigSystem *instance;
+			std::shared_mutex mut;
 	};
 }
 
