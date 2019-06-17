@@ -1,4 +1,12 @@
+#include <dirent.h>
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <nlohmann/json.hpp>
+
 #include "TagSystem.h"
+#include "utils/ConfigSystem.h"
 
 using namespace WorldArchitect;
 
@@ -8,7 +16,13 @@ using namespace WorldArchitect;
 TagSystem::TagSystem()
 	: tags()
 {
-	tags.push_back(new Tag("example", "Tags/test.lua"));
+}
+
+void TagSystem::init()
+{
+	auto config = ConfigSystem::getInstance();
+	config->addParameter("TagDir", ParamType::StringParam, "Tags");
+	config->addParameter("TagConfFile", ParamType::StringParam, "conf.json");
 }
 
 /**
@@ -16,6 +30,17 @@ TagSystem::TagSystem()
  */
 void TagSystem::loadTags()
 {
+	auto conf = ConfigSystem::getInstance();
+	std::filesystem::path tagdir(conf->getParameterValue("TagDir"));
+	std::filesystem::path tagconf = tagdir;
+	tagconf /= conf->getParameterValue("TagConfFile");
+	std::ifstream i(tagconf.string());
+	nlohmann::json j;
+	i >> j;
+	for (auto ent : j)
+	{
+		tags.push_back(new LuaTag(ent["name"], tagdir / ent["file"]));
+	}
 }
 
 /**

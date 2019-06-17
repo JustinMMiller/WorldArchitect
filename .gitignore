@@ -4,3 +4,4 @@ output/*
 wiki/
 docs/*
 .vscode/*
+.clang_complete

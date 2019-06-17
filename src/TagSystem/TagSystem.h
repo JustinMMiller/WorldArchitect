@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "Tag.h"
+#include "LuaTag.h"
 #include "SettlementSystem/Settlement.h"
 
 namespace WorldArchitect
@@ -21,6 +22,7 @@ namespace WorldArchitect
 			TagSystem();
 			void loadTags();
 			bool checkTag(std::string tagName, Settlement *s);
+			void init();
 		private:
 			std::vector<Tag*> tags;
 			Tag *getTag(std::string tagName);

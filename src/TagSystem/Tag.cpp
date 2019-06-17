@@ -10,34 +10,15 @@ using namespace WorldArchitect;
  */
 bool Tag::meetsCondition(Settlement *s)
 {
-	return lua["testFunc"](s);
+	return false;
 }
 
-/**
- * Constructor which takes in a tagName and a scriptFile.
- * @param tagName The name for this Tag
- * @param scriptFile The name of the script to load for this Tag.
- */
-Tag::Tag(std::string tagName, std::string scriptFile)
+Tag::Tag()
+	: name()
 {
-	prepareLuaState(&(this->lua));
-	this->lua.script_file(scriptFile);
-	this->name = tagName;
 }
 
-/**
- * Constructor which only takes in a tagName. 
- * @param tagName The name for this Tag.
- */
 Tag::Tag(std::string tagName)
+	: name(tagName)
 {
-	this->name = tagName;
-}
-
-/**
- * This function just returns the name of the Tag.
- */
-std::string Tag::getName()
-{
-	return this->name;
 }

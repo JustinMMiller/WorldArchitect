@@ -16,4 +16,4 @@ add_executable(WorldArchitect src/main.cpp ${WA_SOURCES})
 
 target_include_directories(WorldArchitect PUBLIC src)
 
-target_link_libraries(WorldArchitect Threads::Threads lua)
+target_link_libraries(WorldArchitect Threads::Threads lua stdc++fs)

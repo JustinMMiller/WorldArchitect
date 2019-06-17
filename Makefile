@@ -2,12 +2,12 @@ CC=g++
 LINKER=g++
 INC_DIR=src
 INCLUDES=-I. -I$(INC_DIR)
-CFLAGS=-I. -c -std=c++17 -g -Wall $(INCLUDES)
+CFLAGS=-I. -c -std=c++17 -g -Wall $(INCLUDES) 
 LINKARGS=-lm -g -pthread -lsqlite3pp -lsqlite3
 TARGET=out
 BUILD_DIR=build
 OUTPUT_DIR=output
-LIBS=-lm -llua
+LIBS=-lm -llua -lstdc++fs
 SOURCE_DIR=src
 LIB_DIR=$(SOURCE_DIR)/lib
 SRCEXT=cpp

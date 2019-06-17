@@ -6,6 +6,7 @@
 #include "MapGenSystem/MapGenSystem.h"
 #include "utils/Logging.h"
 #include "utils/Parameter.h"
+#include "utils/ConfigSystem.h"
 #include "TagSystem/TagSystem.h"
 
 using namespace std;
@@ -51,6 +52,10 @@ int main(int argc, char *argv[])
 	string fname("drawing.bmp");
 	MapGenSystem *msys = MapGenSystem::getInstance();
 	TagSystem *tsys = new TagSystem();
+	tsys->init();
+	tsys->loadTags();
+	auto conf = ConfigSystem::getInstance();
+	std::cout << conf->listParams() << std::endl;
 	LogManager::getInstance();
 	std::cout << argv[0] << std::endl;
 	if(argc < 2) {}

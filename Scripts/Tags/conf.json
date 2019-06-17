@@ -1,0 +1,10 @@
+[
+{
+	"name":"example",
+	"file":"test.lua"
+},
+{
+	"name":"test2",
+	"file":"test2.lua"
+}
+]

@@ -4,7 +4,6 @@
 #include <string>
 
 #include "SettlementSystem/Settlement.h"
-#include "lib/sol2/sol.hpp"
 
 namespace WorldArchitect
 {
@@ -13,12 +12,11 @@ namespace WorldArchitect
 	class Tag
 	{
 		public:
-			bool meetsCondition(Settlement *s);
-			Tag(std::string tagName, std::string scriptFile);
+			virtual bool meetsCondition(Settlement *s) = 0;
 			Tag(std::string tagName);
-			std::string getName();
+			Tag();
+			std::string getName() {return name;}
 		private:
-			sol::state lua;
 			std::string name;
 	};
 }
